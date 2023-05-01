@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
     [field: SerializeField]
     public WeaponAttack WeaponAttack { get; private set; }
     [field: SerializeField]
-    public WeaponReload WeaponReload{ get; private set; }
+    public WeaponReload WeaponReload { get; private set; }
     [HideInInspector] public bool IsAccessToAttack { get; private set; } = true;
 
     private void Awake()
@@ -26,11 +26,6 @@ public class Weapon : MonoBehaviour
 
     public void BlockAttack() => IsAccessToAttack = false;
     public void UnblockAttack() => IsAccessToAttack = true;
-    public void SetAmmunition(WeaponAmmunition ammunition)
-    {
-        WeaponAmmunition = ammunition;
-        OnChangeAmmo.Invoke();
-    }
     public void SpendAmmo(int ammo)
     {
         WeaponAmmunition.SpendAmmo(ammo);
@@ -41,6 +36,13 @@ public class Weapon : MonoBehaviour
         WeaponAmmunition.Reload(WeaponPreset);
         OnReloadAmmo.Invoke();
     }
+
+    public void SetWeaponAmmunition(WeaponAmmunition ammunition) => WeaponAmmunition = ammunition;
+    public void SetAmmoInClip(int ammoInClip)
+    {
+        WeaponPreset.ChangeAmmoInClip(ammoInClip);
+        WeaponAmmunition.Reload(WeaponPreset);
+    }
 }
 
 [Serializable]
@@ -50,6 +52,8 @@ public class WeaponPreset
     public int shotCost;
     public float damage;
     public TagEnum Team;
+
+    public void ChangeAmmoInClip(int ammoInClip) => this.ammoInClip = ammoInClip;
 }
 
 

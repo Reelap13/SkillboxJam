@@ -8,7 +8,7 @@ public class WeaponReload : MonoBehaviour
     public Weapon Weapon { get; private set; }
     
     [field: SerializeField]
-    public float ReloadTime;
+    public float ReloadTime { get; private set; }
 
     [SerializeField, Range(0, 1)] private float fastReload;
     [SerializeField, Range(0, 1)] private float penaltyReload;
@@ -42,7 +42,7 @@ public class WeaponReload : MonoBehaviour
         timeAfterReload = 0;
     }
 
-    private void AbortReload()
+    public void AbortReload()
     {
         reloadInProcess = false;
     }
@@ -52,4 +52,6 @@ public class WeaponReload : MonoBehaviour
         reloadInProcess = false;
         Weapon.ReloadWeapon();
     }
+
+    public void ChangereloadTime(float reloadTime) => ReloadTime = reloadTime;
 }

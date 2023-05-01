@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class DoubleWeapon : MonoBehaviour
 {
-    [fiald: SerializeField]
-    public Weapon FirstWeapon;
-    [fiald: SerializeField]
-    public Weapon SecondWeapon;
+    [field: SerializeField]
+    public Weapon FirstWeapon { get; private set; }
+    [field: SerializeField]
+    public Weapon SecondWeapon { get; private set; }
 
     private void Awake()
+    {
+        PreSet();
+    }
+
+    protected virtual void PreSet()
     {
         FirstWeapon.WeaponAttack.SetMouseButton(MouseButton.LEFT);
         SecondWeapon.WeaponAttack.SetMouseButton(MouseButton.RIGHT);
