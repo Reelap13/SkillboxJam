@@ -21,7 +21,7 @@ public abstract class WeaponAttack : MonoBehaviour
 
 
     private bool AccessToAttack => Weapon.IsAccessToAttack;
-    private int ShotCost => Weapon.WeaponPreset.shotCost;
+    protected int ShotCost => Weapon.WeaponPreset.shotCost;
     protected int Ammo => Weapon.WeaponAmmunition.Ammo;
     protected float Damage => Weapon.WeaponPreset.damage;
     protected TagEnum Team => Weapon.WeaponPreset.Team;
@@ -90,6 +90,8 @@ public abstract class WeaponAttack : MonoBehaviour
         }
         OnAttackTick.Invoke();
     }
+
+    public void SetMouseButton(MouseButton mouseButton) => MouseButton = mouseButton;
 
     protected abstract void PerformAttack();
     protected abstract void DisposeAttack();

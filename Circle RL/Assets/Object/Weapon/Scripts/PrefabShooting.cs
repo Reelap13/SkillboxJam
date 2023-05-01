@@ -6,6 +6,7 @@ public class PrefabShooting : WeaponAttack
 {
     [SerializeField] private Projectile projectile;
     [SerializeField] private Transform shootingPoint;
+    [SerializeField] private float scatter;
     private GameObject projectilePref;
 
     private void Awake()
@@ -15,15 +16,19 @@ public class PrefabShooting : WeaponAttack
 
     protected override void PerformAttack()
     {
-        Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.position).normalized;
+        for (int _ = 0; _ < ShotCost; ++_)
+        {
+            Vector3 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.position).normalized;
+            direction = (direction + new Vector3(Random.Range(-scatter, +scatter), +Random.Range(-scatter, +scatter), 0)).normalized;
 
-        GameObject newProjectile = Instantiate(projectilePref) as GameObject;
-        newProjectile.GetComponent<Transform>().position = shootingPoint.position; 
-        
-        float angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        newProjectile.GetComponent<Transform>().rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
+            GameObject newProjectile = Instantiate(projectilePref) as GameObject;
+            newProjectile.GetComponent<Transform>().position = shootingPoint.position;
 
-        newProjectile.GetComponent<Projectile>().Shoot(new ProjectileParameters(shootingPoint.position, direction, Damage, Team));
+            float angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            newProjectile.GetComponent<Transform>().rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
+
+            newProjectile.GetComponent<Projectile>().Shoot(new ProjectileParameters(shootingPoint.position, direction, Damage, Team));
+        }
     }
 
     protected override void DisposeAttack()
