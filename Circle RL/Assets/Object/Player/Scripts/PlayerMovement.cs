@@ -20,11 +20,11 @@ public class PlayerMovement : MonoBehaviour
     {
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
-        _rb.velocity = direction.normalized * _speed;
     }
 
     public void FixedUpdate()
     {
+        _rb.position += direction.normalized * _speed * Time.fixedDeltaTime;
     }
 
 }

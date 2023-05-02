@@ -40,7 +40,7 @@ public abstract class WeaponAttack : MonoBehaviour
         if (Input.GetMouseButtonUp((int)MouseButton) && attackInProcess)
             EndAttack();
 
-        if (attackInProcess)
+        if (Input.GetMouseButton((int)MouseButton))
             InAttackTick();
     }
 
@@ -78,6 +78,7 @@ public abstract class WeaponAttack : MonoBehaviour
         {
             if (Ammo >= ShotCost)
             {
+                attackInProcess = true;
                 timeAfterShoot = 0;
                 Weapon.SpendAmmo(ShotCost);
                 PerformAttack();
