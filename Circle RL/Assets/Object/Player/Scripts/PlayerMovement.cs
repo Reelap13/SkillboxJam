@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rb;
     private Transform _tr;
+    private Vector2 direction;
 
     private void Start()
     {
@@ -17,21 +18,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Move();  
+        direction.x = Input.GetAxis("Horizontal");
+        direction.y = Input.GetAxis("Vertical");
+        _rb.velocity = direction.normalized * _speed;
     }
 
-    private Vector3 directionToRight = new Vector3(1, 0, 0);
-    private Vector3 directionToUp = new Vector3(0, 1, 0);
-    private void Move()
+    public void FixedUpdate()
     {
-        Vector3 direction = new Vector3(0, 0, 0);
-        if (Input.GetButton("Horizontal")) 
-            direction += (directionToRight * Input.GetAxis("Horizontal")).normalized;
-        if (Input.GetButton("Vertical")) 
-            direction += (directionToUp * Input.GetAxis("Vertical")).normalized;
-
-        direction = direction.normalized;
-        _tr.position = Vector3.MoveTowards(_tr.position, _tr.position + direction * _speed, _speed * Time.deltaTime);
     }
 
 }

@@ -6,14 +6,14 @@ public class BulletMovement : ProjectileMovement
 {
     [SerializeField] private float speed;
 
-    private Transform _tr;
+    private Rigidbody2D _rb;
     private bool isMoving = false;
     private void Awake()
     {
-        _tr = GetComponent<Transform>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isMoving)
             Move();
@@ -21,7 +21,7 @@ public class BulletMovement : ProjectileMovement
 
     private void Move()
     {
-        _tr.position = Vector3.MoveTowards(_tr.position, _tr.position + Direction * speed, speed * Time.deltaTime);
+        _rb.velocity = Direction.normalized * speed;
     }
 
     public override void StartMovement()

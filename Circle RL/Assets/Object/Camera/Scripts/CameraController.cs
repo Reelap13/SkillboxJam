@@ -9,12 +9,12 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _distanceFromAim;
 
     private Transform _tr;
-    void Start()
+    void Awake()
     {
         _tr = GetComponent<Transform>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
