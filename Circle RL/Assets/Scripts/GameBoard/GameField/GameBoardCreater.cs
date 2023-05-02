@@ -8,7 +8,7 @@ public class GameBoardCreater : MonoBehaviour
 {
     [SerializeField] GameObject wall, floar;
     [SerializeField] int n, m;
-    [SerializeField] int r;
+    [SerializeField] int _r;
     void Awake()
     {
         SummonBoard();
@@ -22,7 +22,7 @@ public class GameBoardCreater : MonoBehaviour
                 GameObject obj;
                 int x = 2 * i - n;
                 int y = 2 * j - m;
-                if (x * x + y * y <= 4 * r * r)
+                if (x * x + y * y < 4 * r * r)
                 {
                     obj = Instantiate(floar);
                 }
@@ -30,9 +30,7 @@ public class GameBoardCreater : MonoBehaviour
                 {
                     obj = Instantiate(wall);
                 }
-                //Debug.Log(x + "" + y);
                 obj.transform.position = new UnityEngine.Vector3(x, y, 1);
-                Debug.Log(obj.transform.position);
 
                 obj.transform.parent = gameObject.transform;
 
@@ -40,14 +38,11 @@ public class GameBoardCreater : MonoBehaviour
             }
     }
 
-    void Start()
+
+    int r
     {
-        
+        get { return _r; }
+        set { _r = value; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
