@@ -347,14 +347,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 364304754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97bc67bd39e0ad4a881f2b7793567ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7539da51a1b786f46a87ccd676301794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 3383912230479112745, guid: a8db5a8226537db43af39dd5606c6cd7, type: 3}
-  floar: {fileID: 6334723541875424295, guid: bfbf5790a72360b4d9ec03539c6d9c91, type: 3}
+  wall: {fileID: 5989856202687076776, guid: 27ac6712064dd634b98e2adaa08eccdc, type: 3}
+  floar: {fileID: 1937976951283864406, guid: a21d757ebaf0bc94f90b5d9073952e07, type: 3}
   n: 40
   m: 40
-  _r: 4
+  _r: 5
 --- !u!4 &435955782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4453924206019169577, guid: 13fef7b4cdd18334fa11b8aabf62012b, type: 3}
@@ -1310,10 +1310,10 @@ MonoBehaviour:
   r: 2
   chunkSize: 2
   objects:
-  - obj: {fileID: 3383912230479112745, guid: a8db5a8226537db43af39dd5606c6cd7, type: 3}
+  - obj: {fileID: 5989856202687076776, guid: 27ac6712064dd634b98e2adaa08eccdc, type: 3}
     x: 1
     y: 1
-  - obj: {fileID: 3383912230479112745, guid: a8db5a8226537db43af39dd5606c6cd7, type: 3}
+  - obj: {fileID: 5989856202687076776, guid: 27ac6712064dd634b98e2adaa08eccdc, type: 3}
     x: -1
     y: -1
   - obj: {fileID: 2069402737232620144, guid: 0ed016b76140d0c48bdfed9caa4bb676, type: 3}
