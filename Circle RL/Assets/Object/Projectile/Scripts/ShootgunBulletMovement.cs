@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovement : ProjectileMovement
+public class ShootgunBulletMovement : ProjectileMovement
 {
     [SerializeField] private float speed;
     [SerializeField] Projectile projectile;
+    [SerializeField] float slowDown;
 
+    private float Acceleration => projectile.ProjectileParameters.Acceleration;
     private Rigidbody2D _rb;
     private bool isMoving = false;
     private void Awake()
@@ -18,6 +21,8 @@ public class BulletMovement : ProjectileMovement
     {
         if (isMoving)
             Move();
+        
+        speed = Math.Max(speed - slowDown * Time.fixedDeltaTime, 0);
     }
 
     private void Move()
@@ -28,5 +33,6 @@ public class BulletMovement : ProjectileMovement
     public override void StartMovement()
     {
         isMoving = true;
+        speed *= UnityEngine.Random.Range(1 - Acceleration, 1 + Acceleration);
     }
 }
