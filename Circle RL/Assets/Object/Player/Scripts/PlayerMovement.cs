@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        direction.x = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
     }
 
     public void FixedUpdate()
     {
-        _rb.position += direction.normalized * _speed * Time.fixedDeltaTime;
+        _rb.MovePosition(_rb.position + direction.normalized * _speed * Time.deltaTime);
     }
 
 }
