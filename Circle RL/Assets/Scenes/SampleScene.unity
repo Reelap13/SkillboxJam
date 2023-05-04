@@ -558,8 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507e241280794a54fa6ce33caa90a49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r: 0
-  chunkSize: 0
+  r: 2
+  chunkSize: 2
   objects:
   - obj: {fileID: 3383912230479112745, guid: a8db5a8226537db43af39dd5606c6cd7, type: 3}
     x: 1
