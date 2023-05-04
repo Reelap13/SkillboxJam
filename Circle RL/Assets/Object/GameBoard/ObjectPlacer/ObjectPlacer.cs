@@ -16,7 +16,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
     [SerializeField] public float x, y;
 }
 
-public class ObjectPlacer : MonoBehaviour
+public class ObjectPlacer : MonoBehaviour, IResetable
 {
     
     [SerializeField] int r;
@@ -31,12 +31,9 @@ public class ObjectPlacer : MonoBehaviour
         get { return instance; }
     }
 
-    private void Awake()
-    {
-        SpawnObject();
-    }
     private void Start()
     {
+        SpawnObject();
         if (instance != null)
         {
             Destroy(gameObject);
@@ -44,7 +41,6 @@ public class ObjectPlacer : MonoBehaviour
         }
         Debug.Log("New object placer was created");
         instance = this;
-        DontDestroyOnLoad(gameObject);
         field = new bool[2 * r, 2 * r];
     }
     void SetFieldBorder()
@@ -125,6 +121,14 @@ public class ObjectPlacer : MonoBehaviour
             }
         field = newField;
         SetFieldBorder();
+    }
+    public void resetObject()
+    {
+        foreach (Transform obj in transform)
+        {
+            Destroy(obj.gameObject);
+        }
+        SpawnObject();
     }
 
 }

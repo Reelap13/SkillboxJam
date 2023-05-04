@@ -10,27 +10,22 @@ public class EnemyCounter : WinCondition
     private void Awake()
     {
         enemyCounter = 0;
-        IEnemy.summonEnemy += OnEnemySummon;
-        IEnemy.destroyEnemy += OnEnemyDestroy;
+        IEnemy.summonEnemy.AddListener(OnEnemySummon);
+        IEnemy.destroyEnemy.AddListener(OnEnemyDestroy);
         isWin = false;
     }
 
     private void OnEnemySummon()
     {
         enemyCounter++;
+        isWin = enemyCounter <= 0;
+        Debug.Log(enemyCounter);
     }
     private void OnEnemyDestroy()
     {
         enemyCounter--;
+        isWin = enemyCounter <= 0;
+        Debug.Log(enemyCounter);
     }
 
-    void Update()
-    {
-        if (enemyCounter > 0)
-        {
-            isWin = false;
-            return;
-        }
-        isWin = true;
-    }
 }

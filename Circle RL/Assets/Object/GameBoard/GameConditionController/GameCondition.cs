@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCondition : MonoBehaviour
+public class GameCondition : MonoBehaviour, IResetable
 {
     public delegate void WinGamenDelegate();
     static public event WinGamenDelegate winGamenEvent;
@@ -33,7 +33,11 @@ public class GameCondition : MonoBehaviour
             isItAlreadyWin = true;
         }
 
-        
+
+    }
+    public void resetObject()
+    {
+        isItAlreadyWin = false;
     }
 
 }

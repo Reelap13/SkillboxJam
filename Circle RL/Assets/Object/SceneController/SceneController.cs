@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     static SceneController instance;
+    [SerializeField] List<GameObject> resetables;
     static public SceneController Instance
     {
         get { return instance; }
@@ -25,6 +26,17 @@ public class SceneController : MonoBehaviour
     }
     public void loadNextScene()
     {
+        foreach (var obj in resetables)
+        {
+            foreach (var toReset in obj.GetComponents<IResetable>())
+            {
+                if (toReset != null)
+                {
+                    toReset.resetObject();
+                }
+            }
+            
+        }
         level++;
     }
 }
