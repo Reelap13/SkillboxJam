@@ -45,12 +45,12 @@ public class ObjectPlacer : MonoBehaviour
     }
     void SpawnObject()
     {
-        Debug.Log(objects);
         foreach (var obj in objects)
         {
             GameObject t = Instantiate(obj.obj);
-            t.transform.position = new Vector3(obj.x, obj.y, 0);
+            Debug.Log(new Vector3(obj.x, obj.y, 0));
             t.transform.parent = gameObject.transform;
+            t.transform.position = new Vector3(obj.x, obj.y, 0);
         }
     }
     public void AddObject(GameObject obj)

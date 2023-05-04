@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class IEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public delegate void SummonEnemy();
+    static public event SummonEnemy summonEnemy;
+    public delegate void DestroyEnemy();
+    static public event DestroyEnemy destroyEnemy;
     void Start()
     {
-        
+        summonEnemy.Invoke();
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        destroyEnemy.Invoke();
+    }
     void Update()
     {
         
