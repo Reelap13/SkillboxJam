@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameCondition : MonoBehaviour
 {
     public delegate void WinGamenDelegate();
-    public event WinGamenDelegate winGamenEvent;
+    static public event WinGamenDelegate winGamenEvent;
     WinCondition[] winConditions;
     bool isItAlreadyWin;
     private void Awake()

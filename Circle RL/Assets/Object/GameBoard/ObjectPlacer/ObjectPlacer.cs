@@ -18,16 +18,34 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class ObjectPlacer : MonoBehaviour
 {
-
+    
     [SerializeField] int r;
     [SerializeField] float chunkSize;
     bool[,] field;
     [SerializeField] List<objectOnBoard> objects;
+    static public ObjectPlacer instance;
+
+
+    static public ObjectPlacer Instance
+    {
+        get { return instance; }
+    }
 
     private void Awake()
     {
-        field = new bool[2*r, 2*r];
         SpawnObject();
+    }
+    private void Start()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Debug.Log("New object placer was created");
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        field = new bool[2 * r, 2 * r];
     }
     void SetFieldBorder()
     {
@@ -48,7 +66,6 @@ public class ObjectPlacer : MonoBehaviour
         foreach (var obj in objects)
         {
             GameObject t = Instantiate(obj.obj);
-            Debug.Log(new Vector3(obj.x, obj.y, 0));
             t.transform.parent = gameObject.transform;
             t.transform.position = new Vector3(obj.x, obj.y, 0);
         }
