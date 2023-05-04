@@ -354,7 +354,7 @@ MonoBehaviour:
   floar: {fileID: 1937976951283864406, guid: a21d757ebaf0bc94f90b5d9073952e07, type: 3}
   n: 40
   m: 40
-  _r: 5
+  _r: 7
 --- !u!4 &435955782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4453924206019169577, guid: 13fef7b4cdd18334fa11b8aabf62012b, type: 3}
@@ -414,7 +414,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1307,18 +1307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507e241280794a54fa6ce33caa90a49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r: 2
-  chunkSize: 2
-  objects:
-  - obj: {fileID: 5989856202687076776, guid: 27ac6712064dd634b98e2adaa08eccdc, type: 3}
-    x: 1
-    y: 1
-  - obj: {fileID: 5989856202687076776, guid: 27ac6712064dd634b98e2adaa08eccdc, type: 3}
-    x: -1
-    y: -1
-  - obj: {fileID: 2069402737232620144, guid: 0ed016b76140d0c48bdfed9caa4bb676, type: 3}
-    x: -1
-    y: 1
+  r: 3
+  chunkSize: 4
+  objects: []
 --- !u!1 &1456838544
 GameObject:
   m_ObjectHideFlags: 0

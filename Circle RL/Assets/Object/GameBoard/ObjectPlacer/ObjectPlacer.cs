@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 [Serializable] struct objectOnBoard
@@ -25,6 +26,8 @@ public class ObjectPlacer : MonoBehaviour, IResetable
     [SerializeField] List<objectOnBoard> objects;
     static public ObjectPlacer instance;
 
+    
+
 
     static public ObjectPlacer Instance
     {
@@ -42,19 +45,39 @@ public class ObjectPlacer : MonoBehaviour, IResetable
         Debug.Log("New object placer was created");
         instance = this;
         field = new bool[2 * r, 2 * r];
+        SetFieldBorder();
     }
     void SetFieldBorder()
     {
+        Debug.Log("Set field border");
         for (int i = 0; i < 2 * r; i++)
             for (int j = 0; j < 2 * r; j++)
             {
                 int x = i - r;
                 int y = j - r;
-                if (x*x + y*y >= r*r*4)
+
+                //GameObject t;
+
+                if (x*x + y*y >= (r - 0.5) * (r - 0.5))
                 {
-                    field[x, y] = true;
+                    field[i, j] = true;
+
+
+
+                }
+                /*else
+                {
+                    Debug.Log("Mark created");
+
+                    t = Instantiate(objects[0].obj);
+                    t.transform.parent = gameObject.transform;
+                    t.transform.position = new Vector3(chunkSize * x, chunkSize * y, 0);
                 }
 
+                t = Instantiate(objects[0].obj);
+                t.transform.parent = gameObject.transform;
+                t.transform.position = new Vector3(chunkSize * x, chunkSize * y, 0);
+                */
             }
     }
     void SpawnObject()
