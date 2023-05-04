@@ -32,12 +32,14 @@ public struct ProjectileParameters
     public Vector2 Direction;
     public float Damage;
     public TagEnum Team;
+    public float Acceleration;
 
-    public ProjectileParameters(Vector2 startingPoint, Vector2 direction, float damage, TagEnum team)
+    public ProjectileParameters(Vector2 startingPoint, Vector2 direction, float damage, TagEnum team, float acceleration)
     {
         StartingPoint = startingPoint;
         Direction = direction;
         Damage = damage;
         Team = team;
+        Acceleration = acceleration;
     }
 }

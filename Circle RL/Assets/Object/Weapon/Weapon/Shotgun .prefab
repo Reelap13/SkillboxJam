@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5134820132240795455
+--- !u!1 &5018460582200039329
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5134820132240795452}
-  - component: {fileID: 5134820132240795453}
-  - component: {fileID: 5134820132240795454}
-  - component: {fileID: 5134820132240795451}
+  - component: {fileID: 5018460582200039343}
+  - component: {fileID: 5018460582200039338}
+  - component: {fileID: 5018460582200039341}
+  - component: {fileID: 5018460582200039340}
   m_Layer: 0
-  m_Name: Shot of 3 bullets with scatter
+  m_Name: 'Shotgun '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5134820132240795452
+--- !u!4 &5018460582200039343
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134820132240795455}
+  m_GameObject: {fileID: 5018460582200039329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5134820132240795453
+--- !u!114 &5018460582200039338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134820132240795455}
+  m_GameObject: {fileID: 5018460582200039329}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93280c99438e4c34f8ad3f5c604124b7, type: 3}
@@ -53,19 +53,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <WeaponPreset>k__BackingField:
-    ammoInClip: 12
-    shotCost: 3
-    damage: 10
+    ammoInClip: 60
+    shotCost: 1
+    damage: 5
     Team: 1
-  <WeaponAttack>k__BackingField: {fileID: 5134820132240795454}
-  <WeaponReload>k__BackingField: {fileID: 5134820132240795451}
---- !u!114 &5134820132240795454
+  <WeaponAttack>k__BackingField: {fileID: 5018460582200039341}
+  <WeaponReload>k__BackingField: {fileID: 5018460582200039340}
+--- !u!114 &5018460582200039341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134820132240795455}
+  m_GameObject: {fileID: 5018460582200039329}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46173c0e1a60247439313edd5d3f9794, type: 3}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MouseButton>k__BackingField: 0
   timeBetweenShoots: 0.5
-  <Weapon>k__BackingField: {fileID: 5134820132240795453}
+  <Weapon>k__BackingField: {fileID: 5018460582200039338}
   OnAttackStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -89,22 +89,24 @@ MonoBehaviour:
   OnEmptyClip:
     m_PersistentCalls:
       m_Calls: []
-  projectile: {fileID: 4016331565663850041, guid: 9adc0099516300947a98470f5dec3b5d, type: 3}
-  shootingPoint: {fileID: 0}
-  scatter: 0.2
---- !u!114 &5134820132240795451
+  projectile: {fileID: 8591076912604195420, guid: 6a17554c5bf999b4bad0e95462f8d69b, type: 3}
+  countOfShooting: 8
+  bulletAcceleration: 0.25
+  shootingPoint: {fileID: 5018460582200039343}
+  scatter: 30
+--- !u!114 &5018460582200039340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134820132240795455}
+  m_GameObject: {fileID: 5018460582200039329}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8e20a16b82f70446b76ae417c361709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Weapon>k__BackingField: {fileID: 5134820132240795453}
-  <ReloadTime>k__BackingField: 0
+  <Weapon>k__BackingField: {fileID: 5018460582200039338}
+  <ReloadTime>k__BackingField: 4
   fastReload: 0
   penaltyReload: 0

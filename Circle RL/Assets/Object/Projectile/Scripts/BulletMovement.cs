@@ -5,7 +5,9 @@ using UnityEngine;
 public class BulletMovement : ProjectileMovement
 {
     [SerializeField] private float speed;
+    [SerializeField] Projectile projectile;
 
+    private float Acceleration => projectile.ProjectileParameters.Acceleration;
     private Rigidbody2D _rb;
     private bool isMoving = false;
     private void Awake()
@@ -27,5 +29,6 @@ public class BulletMovement : ProjectileMovement
     public override void StartMovement()
     {
         isMoving = true;
+        speed *= Random.Range(1 - Acceleration, 1 + Acceleration);
     }
 }
