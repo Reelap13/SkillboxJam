@@ -7,9 +7,11 @@ public class Projectile : MonoBehaviour
 {
 
     [field: SerializeField]
-    public ProjectileMovement ProjectileMovement;
+    public ProjectileMovement ProjectileMovement { get; private set; }
     [field: SerializeField]
-    public  ProjectileDealingDamage projectileDealingDamage;
+    public ProjectileDealingDamage projectileDealingDamage { get; private set; }
+    [field: SerializeField]
+    public ProjectilePreset ProjectilePreset { get; private set; }
 
     public ProjectileParameters ProjectileParameters { get; private set; }
     public void Shoot(ProjectileParameters parameters)
@@ -22,7 +24,7 @@ public class Projectile : MonoBehaviour
 [Serializable]
 public struct ProjectilePreset
 {
-    public float speed;
+    public ProjectileTypes ProjectileTypes;
 }
 
 [Serializable]

@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 9186903767707573972}
   - component: {fileID: 4758775972117378482}
   - component: {fileID: 4262115469881424941}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShotgunBullet
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,8 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfd100d72d740346832373b3929082c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileMovement: {fileID: 0}
-  projectileDealingDamage: {fileID: 3217911938984843372}
+  <ProjectileMovement>k__BackingField: {fileID: 6552477807467013782}
+  <projectileDealingDamage>k__BackingField: {fileID: 3217911938984843372}
+  <ProjectilePreset>k__BackingField:
+    ProjectileTypes: 0
 --- !u!114 &6552477807467013782
 MonoBehaviour:
   m_ObjectHideFlags: 0

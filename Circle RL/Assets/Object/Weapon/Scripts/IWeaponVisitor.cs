@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IWeaponVisitor
 {
-    
+    public void Visit(ProjectileDealingDamageByTouch deal);
 }

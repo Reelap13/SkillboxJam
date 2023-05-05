@@ -8,8 +8,22 @@ public static class Tag
                 return "Enemy";
             case TagEnum.PLAYER:
                 return "Player";
+            case TagEnum.PROJECTILE:
+                return "Projectile";
             default:
                 return "";
+        }
+    }
+
+    public static bool IsParticipantOfTeam(string tag)
+    {
+        switch (tag)
+        {
+            case "Enemy":
+            case "Player":
+                return true;
+            default:
+                return false;
         }
     }
 }
@@ -17,5 +31,6 @@ public static class Tag
 public enum TagEnum
 {
     ENEMY,
-    PLAYER
+    PLAYER,
+    PROJECTILE
 }

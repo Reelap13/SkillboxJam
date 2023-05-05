@@ -9,6 +9,10 @@ public class ProjectileDealingDamageByTouch : ProjectileDealingDamage
         if (collision.tag == Tag.getTag(Team))
             return;
 
-        //deal damage
+        if (!Tag.IsParticipantOfTeam(collision.tag))
+            return;
+
+        IWeaponVisitor weaponVisitor = collision.GetComponent<IWeaponVisitor>();
+        weaponVisitor?.Visit(this);
     }
 }
