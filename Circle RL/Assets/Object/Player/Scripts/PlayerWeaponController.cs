@@ -8,7 +8,6 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private GameObject SecondWeapon;
     [SerializeField] private GameObject ThirdWeapon;
     [SerializeField] private GameObject FourthWeapon;
-    [SerializeField] private GameObject FifthWeapon;
 
     [field: SerializeField, Space]
     public float TimeBetweenSwap { get; private set; }
@@ -31,8 +30,6 @@ public class PlayerWeaponController : MonoBehaviour
             SwapWeapon(3);
         else if (Input.GetKeyDown(KeyCode.Alpha4))
             SwapWeapon(4);
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-            SwapWeapon(5);
     }
 
     public void SwapWeapon(int number)
@@ -51,7 +48,6 @@ public class PlayerWeaponController : MonoBehaviour
         SecondWeapon?.SetActive(false);
         ThirdWeapon?.SetActive(false);
         FourthWeapon?.SetActive(false);
-        FifthWeapon?.SetActive(false);
     }
 
     private void TurnOnWeapon(int number)
@@ -70,9 +66,6 @@ public class PlayerWeaponController : MonoBehaviour
                 break;
             case 4:
                 FourthWeapon?.SetActive(true);
-                break;
-            case 5:
-                FifthWeapon?.SetActive(true);
                 break;
         }
     }
