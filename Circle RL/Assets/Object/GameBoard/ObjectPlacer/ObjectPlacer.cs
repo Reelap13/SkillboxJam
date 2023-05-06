@@ -56,9 +56,8 @@ public class ObjectPlacer : MonoBehaviour, IResetable
                 int x = i - r;
                 int y = j - r;
 
-                //GameObject t;
 
-                if (x*x + y*y >= (r - 0.5) * (r - 0.5))
+                if (x*x + y*y >= (r - 0.5) * (r - 0.5) || (x == 0 && y == 0))
                 {
                     field[i, j] = true;
 
@@ -67,17 +66,12 @@ public class ObjectPlacer : MonoBehaviour, IResetable
                 }
                 /*else
                 {
-                    Debug.Log("Mark created");
+                    GameObject t;
 
                     t = Instantiate(objects[0].obj);
                     t.transform.parent = gameObject.transform;
                     t.transform.position = new Vector3(chunkSize * x, chunkSize * y, 0);
-                }
-
-                t = Instantiate(objects[0].obj);
-                t.transform.parent = gameObject.transform;
-                t.transform.position = new Vector3(chunkSize * x, chunkSize * y, 0);
-                */
+                }*/
             }
     }
     void SpawnObject()
@@ -105,6 +99,7 @@ public class ObjectPlacer : MonoBehaviour, IResetable
         {
             return;
         }
+        counter = UnityEngine.Random.Range(1, counter+1);
         for (int i = 0; i < 2 * r; i++)
             for (int j = 0; j < 2 * r; j++)
             {
