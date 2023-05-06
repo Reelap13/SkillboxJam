@@ -15,7 +15,7 @@ public class EnemyTakeDamage : MonoBehaviour, IWeaponVisitor
 
     public void Visit(ProjectileDealingDamageByTouch deal, Vector2 direction)
     {
-        rb.AddForce(direction * deal.PushForce);
+        rb?.AddForce(direction * deal.PushForce);
         enemy.EnemyParameters.TakeDamage(deal.Damage);
     }
 
