@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,9 +136,9 @@ MonoBehaviour:
   <EnemyBehavior>k__BackingField: {fileID: 3224736106385674150}
   <EnemyAbility>k__BackingField: {fileID: 3224736106385674149}
   <EnemyPreset>k__BackingField:
-    StartHealth: 20
+    StartHealth: 60
     StartShield: 0
-    Damage: 10
+    Damage: 1
     Team: 0
 --- !u!114 &3224736106385674150
 MonoBehaviour:
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0aaa50e9c049544a6ae21503a3b1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   nextWayPointDistance: 1
   slowdown: 1
 --- !u!114 &3224736106385674139

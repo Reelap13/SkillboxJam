@@ -9,8 +9,18 @@ public class PlayerAbilityController : MonoBehaviour
     [SerializeField] private Ability abilityZ;
     [SerializeField] private Ability abilityX;
     [SerializeField] private Ability abilitySpace;
+    bool isAbilityInUse;
+    public bool IsAbilityInUse
+    {
+        get { return isAbilityInUse; }
+        set { isAbilityInUse = value; }
+    }
     void Update()
     {
+        if (isAbilityInUse)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Q))
             abilityQ.use();
         else if (Input.GetKeyDown(KeyCode.E))

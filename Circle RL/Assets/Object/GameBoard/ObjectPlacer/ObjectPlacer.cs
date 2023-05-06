@@ -19,7 +19,6 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 
 public class ObjectPlacer : MonoBehaviour, IResetable
 {
-    
     [SerializeField] int r;
     [SerializeField] float chunkSize;
     bool[,] field;
@@ -64,14 +63,15 @@ public class ObjectPlacer : MonoBehaviour, IResetable
 
 
                 }
-                /*else
+                //*
+                else
                 {
                     GameObject t;
 
                     t = Instantiate(objects[0].obj);
                     t.transform.parent = gameObject.transform;
                     t.transform.position = new Vector3(chunkSize * x, chunkSize * y, 0);
-                }*/
+                }//*/
             }
     }
     void SpawnObject()
@@ -147,6 +147,7 @@ public class ObjectPlacer : MonoBehaviour, IResetable
             Destroy(obj.gameObject);
         }
         SpawnObject();
+        
     }
 
 }

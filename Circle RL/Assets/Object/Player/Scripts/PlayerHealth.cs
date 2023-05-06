@@ -5,10 +5,20 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    static public UnityEvent loseAllHitPoint;
+    public UnityEvent loseHitPoint;
     [SerializeField] int maxHitPoint;
     float hitPoint;
     int invincibles;
+
+
+    private void Start()
+    {
+        hitPoint = maxHitPoint;
+    }
+    public int MaxHitPoint
+    {
+        get { return maxHitPoint; }
+    }
 
     public bool IsInvincible
     {
@@ -40,10 +50,11 @@ public class PlayerHealth : MonoBehaviour
             }
             hitPoint = value;
             hitPoint = Mathf.Min(maxHitPoint, hitPoint);
+            loseHitPoint?.Invoke();
             if (hitPoint <= 0)
             {
+                Destroy(gameObject);
                 Debug.Log("DEATH");
-                loseAllHitPoint?.Invoke();
             }
         }
     }

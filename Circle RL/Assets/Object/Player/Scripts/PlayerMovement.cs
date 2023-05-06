@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
+    private Vector2 additionalMovement;
+
     private Rigidbody2D _rb;
     private Transform _tr;
     private Vector2 direction;
@@ -16,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
         _tr = GetComponent<Transform>();
     }
 
+    public void addMovement(Vector2 move)
+    {
+        additionalMovement += move;
+    }
+
     private void Update()
     {
         direction.x = Input.GetAxisRaw("Horizontal");
@@ -24,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + direction.normalized * _speed * Time.deltaTime);
+        _rb.MovePosition(_rb.position + direction.normalized * _speed * Time.deltaTime + additionalMovement);
+        additionalMovement = Vector2.zero;
     }
 
 }

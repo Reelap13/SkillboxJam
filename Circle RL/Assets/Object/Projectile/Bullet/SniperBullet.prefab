@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Projectile>k__BackingField: {fileID: 4760903526890881071}
-  speed: 50
+  speed: 20
   projectile: {fileID: 4760903526890881071}
 --- !u!114 &1838545878617911839
 MonoBehaviour:
