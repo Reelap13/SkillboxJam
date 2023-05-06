@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class AIEnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 400f;
+    [SerializeField] private float speed = 3f;
     [SerializeField] private float nextWayPointDistance = 1f;
     public Transform Target { get; private set; }
+    public bool AccessMoving { get; private set; } = true;
     private Seeker seeker;
     private Rigidbody2D rb;
     private Transform tr;
@@ -49,7 +50,8 @@ public class AIEnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        if (path == null)
+        Debug.Log(AccessMoving);
+        if (path == null || !AccessMoving)
             return;
 
         if (currentWaypoint >= path.vectorPath.Count)
@@ -70,4 +72,12 @@ public class AIEnemyMovement : MonoBehaviour
         if (distant < nextWayPointDistance)
             ++currentWaypoint;
     }
+
+    private void RayCastHit()
+    {
+        RaycastHit2D hit;
+    }
+
+    public void BlockMovement() => AccessMoving = false;
+    public void UnblockMovement() => AccessMoving = true;
 }

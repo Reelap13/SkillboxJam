@@ -10,8 +10,8 @@ public class EnemyCounter : WinCondition
     private void Awake()
     {
         enemyCounter = 0;
-        EnemyBehavior.summonEnemy.AddListener(OnEnemySummon);
-        EnemyBehavior.destroyEnemy.AddListener(OnEnemyDestroy);
+        Enemy.summonEnemy.AddListener(OnEnemySummon);
+        Enemy.destroyEnemy.AddListener(OnEnemyDestroy);
         isWin = false;
     }
 

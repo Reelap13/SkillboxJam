@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class ProjectileDealingDamage : MonoBehaviour
 {
     [field: SerializeField]
-    public Projectile Projectile { get; private set; }
+    protected Projectile Projectile { get; private set; }
     public TagEnum Team => Projectile.ProjectileParameters.Team;
     public float Damage => Projectile.ProjectileParameters.Damage;
+    public float PushForce => Projectile.ProjectileParameters.PushForce;
 }

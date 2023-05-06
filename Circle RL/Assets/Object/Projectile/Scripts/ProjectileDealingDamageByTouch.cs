@@ -18,7 +18,7 @@ public class ProjectileDealingDamageByTouch : ProjectileDealingDamage
 
         isDamage = true;
         IWeaponVisitor weaponVisitor = collision.GetComponent<IWeaponVisitor>();
-        weaponVisitor?.Visit(this);
+        weaponVisitor?.Visit(this, Projectile.ProjectileParameters.Direction);
         Destroy(gameObject);
     }
 }

@@ -7,6 +7,7 @@ public class PrefabShooting : WeaponAttack
     [SerializeField] private Projectile projectile;
     [SerializeField] private int countOfShooting = 1;
     [SerializeField, Range(0, 0.75f)] private float bulletAcceleration = 0;
+    [SerializeField] private float pushForce = 0;
     [SerializeField] private Transform shootingPoint;
     [SerializeField, Range(0, 90f)] private float scatter = 0;
     private GameObject projectilePref;
@@ -38,7 +39,7 @@ public class PrefabShooting : WeaponAttack
             float angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             newProjectile.GetComponent<Transform>().rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
 
-            newProjectile.GetComponent<Projectile>().Shoot(new ProjectileParameters(shootingPoint.position, direction, Damage, Team, bulletAcceleration));
+            newProjectile.GetComponent<Projectile>().Shoot(new ProjectileParameters(shootingPoint.position, direction, Damage, Team, bulletAcceleration, pushForce));
         }
     }
 
