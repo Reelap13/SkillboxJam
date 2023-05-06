@@ -28,8 +28,6 @@ public class PlayerWeaponController : MonoBehaviour
             SwapWeapon(2);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             SwapWeapon(3);
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-            SwapWeapon(4);
     }
 
     public void SwapWeapon(int number)
