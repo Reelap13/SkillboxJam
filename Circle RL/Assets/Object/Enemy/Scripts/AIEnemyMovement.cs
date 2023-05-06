@@ -25,7 +25,7 @@ public class AIEnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<Transform>();
         Target = PlayerController.Instance.Transform;
-        InvokeRepeating("PathUpdate", 0f, 2f);
+        InvokeRepeating("PathUpdate", 0f, 0.5f);
     }
 
     private void PathUpdate()
@@ -50,7 +50,6 @@ public class AIEnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        Debug.Log(AccessMoving);
         if (path == null || !AccessMoving)
             return;
 

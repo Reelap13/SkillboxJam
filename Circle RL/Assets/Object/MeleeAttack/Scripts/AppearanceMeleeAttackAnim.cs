@@ -28,7 +28,7 @@ public class AppearanceMeleeAttackAnim : MeleeAttackAnim
             color.a = (startA + (maxA - startA) * t * t) / FROM_256_TO_1;
             spriteRenderer.color = color;
             t += Time.deltaTime / AnimTime;
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
 
         MeleeAttack.MeleeAttackGiveDamage.GiveDamage();

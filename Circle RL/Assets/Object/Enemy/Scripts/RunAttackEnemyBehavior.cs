@@ -8,7 +8,7 @@ public class RunAttackEnemyBehavior : EnemyBehavior
     [SerializeField] private float distanceForPerformingAbility;
     private AIEnemyMovement movement;
     private Rigidbody2D rb;
-    private const int ENEMY_LAYER = ~(5 << 9);//ѕобитова€ маска 9 и 11 слоев(5 - 101) двигаем на 9 влево
+    private const int ENEMY_LAYER = ~(13 << 9);//ѕобитова€ маска 9, 11 и 12 слоев(5 - 1101) двигаем на 9 влево
     private float timeAfterPerformingAbility;
     RaycastHit2D hit;
     public float Damage => enemy.EnemyPreset.Damage;

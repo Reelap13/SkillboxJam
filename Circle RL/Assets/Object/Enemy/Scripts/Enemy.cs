@@ -95,6 +95,12 @@ public class EnemyParameters
             Health -= damage;
     }
 
+    public void KillEnemy()
+    {
+        Health = 0;
+        OnDieing.Invoke();
+    }
+
     public bool IsAlive()
     {
         return Health > 0;

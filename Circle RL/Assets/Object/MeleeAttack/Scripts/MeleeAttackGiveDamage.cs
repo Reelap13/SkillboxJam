@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MeleeAttackGiveDamage : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent OnGiveDamage = new UnityEvent();
     [field: SerializeField]
     public MeleeAttack MeleeAttack { get; private set; }
 
@@ -29,7 +31,7 @@ public class MeleeAttackGiveDamage : MonoBehaviour
     {
         foreach (Collider2D collider in aims)
             collider.GetComponent<IWeaponVisitor>()?.Visit(this);
-
+        OnGiveDamage.Invoke();
         Destroy(gameObject);
     }
 
