@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5356453597720687783}
   - component: {fileID: 8584164282505174977}
   - component: {fileID: 1012625021783496286}
+  - component: {fileID: -1763139898594305283}
   m_Layer: 11
   m_Name: PlayerSniperBullet
   m_TagString: Projectile
@@ -194,3 +195,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToDelete: 1
+--- !u!114 &-1763139898594305283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704843486721564047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce89644b27da204195f32237e6d9c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pref: {fileID: 4714898879218900808, guid: a21dab494bac76f4d9beb09c53c16c58, type: 3}

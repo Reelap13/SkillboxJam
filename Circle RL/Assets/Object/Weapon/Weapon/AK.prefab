@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4517409891412490979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4517409891412490976}
+  - component: {fileID: 4517409891412490977}
+  - component: {fileID: 4517409891412490978}
+  - component: {fileID: 4517409891412490983}
+  m_Layer: 0
+  m_Name: AK
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4517409891412490976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517409891412490979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4517409891412490977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517409891412490979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93280c99438e4c34f8ad3f5c604124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnChangeAmmo:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReloadAmmo:
+    m_PersistentCalls:
+      m_Calls: []
+  <WeaponPreset>k__BackingField:
+    ammoInClip: 30
+    shotCost: 1
+    damage: 6
+    Team: 1
+  <WeaponAttack>k__BackingField: {fileID: 4517409891412490978}
+  <WeaponReload>k__BackingField: {fileID: 4517409891412490983}
+--- !u!114 &4517409891412490978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517409891412490979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46173c0e1a60247439313edd5d3f9794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MouseButton>k__BackingField: 0
+  timeBetweenShoots: 0.1
+  <Weapon>k__BackingField: {fileID: 4517409891412490977}
+  OnAttackStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMakeAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackTick:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEmptyClip:
+    m_PersistentCalls:
+      m_Calls: []
+  projectile: {fileID: 4016331565663850041, guid: b1da1db60859be84baf37216597b19af, type: 3}
+  countOfShooting: 1
+  bulletAcceleration: 0
+  pushForce: 0
+  shootingPoint: {fileID: 0}
+  scatter: 0.05
+--- !u!114 &4517409891412490983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517409891412490979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e20a16b82f70446b76ae417c361709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Weapon>k__BackingField: {fileID: 4517409891412490977}
+  <ReloadTime>k__BackingField: 0
+  fastReload: 0
+  penaltyReload: 0

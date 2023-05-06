@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class WeaponSoundController : MonoBehaviour
 {
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
+    private Weapon weapon;
 
-    
+    private void Awake()
+    { 
+        weapon.GetComponent<Weapon>();
+
+        weapon.WeaponAttack.OnMakeAttack.AddListener(MakeSound);
+    }
+
+    public void MakeSound()
+    {
+        source.Play();
+    }
+
+
 }

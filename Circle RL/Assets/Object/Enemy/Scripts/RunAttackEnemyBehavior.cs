@@ -29,6 +29,7 @@ public class RunAttackEnemyBehavior : EnemyBehavior
     {
         if (hit = Physics2D.Raycast(rb.position, ((Vector2)movement.Target.position - rb.position).normalized, distanceForPerformingAbility, ENEMY_LAYER))
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.tag == Tag.getTag(TagEnum.PLAYER))
             {
                 if (timeAfterPerformingAbility >= timeBetweenPerformingAbility)

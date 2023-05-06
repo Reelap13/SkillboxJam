@@ -19,7 +19,6 @@ public class EnemyCounter : WinCondition
     {
         enemyCounter++;
         isWin = enemyCounter <= 0;
-        Debug.Log(enemyCounter);
     }
     private void OnEnemyDestroy()
     {

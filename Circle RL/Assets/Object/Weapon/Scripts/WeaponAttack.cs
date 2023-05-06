@@ -54,9 +54,9 @@ public abstract class WeaponAttack : MonoBehaviour
             timeAfterShoot = 0;
             attackInProcess = true;
             Weapon.SpendAmmo(ShotCost);
-            PerformAttack();
-            OnAttackStarted.Invoke();
             OnMakeAttack.Invoke();
+            OnAttackStarted.Invoke();
+            PerformAttack();
         }
         else
         {
@@ -81,8 +81,8 @@ public abstract class WeaponAttack : MonoBehaviour
                 attackInProcess = true;
                 timeAfterShoot = 0;
                 Weapon.SpendAmmo(ShotCost);
-                PerformAttack();
                 OnMakeAttack.Invoke();
+                PerformAttack();
             }
             else
             {
