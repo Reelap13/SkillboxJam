@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f74fad868caac47869e1467668c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Spawn 4 solder
+  description: Spawn 4 solder. Give you 20 score.
   objectToSpawn: {fileID: 5989856202687076776, guid: 4a0a02e76cc77ca49a952874db9be05b, type: 3}
+  score: 20

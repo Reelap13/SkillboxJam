@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f74fad868caac47869e1467668c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Spawn Spawner and 2 sniper
+  description: Spawn Spawner and 2 sniper. Give you 15 score.
   objectToSpawn: {fileID: 5989856202687076776, guid: 8c94200f6d933a4449ea1ef2593d4714, type: 3}
+  score: 15

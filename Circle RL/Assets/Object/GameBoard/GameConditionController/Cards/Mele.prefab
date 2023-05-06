@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f74fad868caac47869e1467668c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Spawn  4 mele and 1 bomber
+  description: Spawn  4 mele and 1 bomber. Give you 15 score.
   objectToSpawn: {fileID: 5989856202687076776, guid: ce8926548423f5046998ac8580a7b097, type: 3}
+  score: 15
