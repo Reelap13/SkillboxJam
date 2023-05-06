@@ -6,8 +6,8 @@ public class EnemyMeleeAbility : EnemyAbility
 {
     [SerializeField] private GameObject meleeAttackPref;
     [SerializeField] private float radius;
-    [SerializeField] private float slowdownCoefficient;
-    [SerializeField] private float slowdownTime;
+    [SerializeField] private float slowdownCoefficient = 1;
+    [SerializeField] private float slowdownTime = 0;
     [SerializeField] private float pushForce;
 
     private Transform tr;
