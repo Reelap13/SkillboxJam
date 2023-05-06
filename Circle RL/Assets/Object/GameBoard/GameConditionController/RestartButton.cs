@@ -13,7 +13,7 @@ public class RestartButton : MonoBehaviour
     {
         if (_ph.HitPoint <= 0)
         {
-            PlayerPrefs.SetInt("Score",max(PlayerPrefs.GetInt("Score", 0)), Card.globaleScore);
+            PlayerPrefs.SetInt("Score", Mathf.Max(PlayerPrefs.GetInt("Score", 0), Card.globaleScore));
             GetComponentInChildren<TextMeshProUGUI>().text = "Your score:" + Card.globaleScore + "\nRestart?";
             gameObject.SetActive(true);
         }
