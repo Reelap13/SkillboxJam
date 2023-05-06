@@ -13,7 +13,7 @@ public class SniperMode : WeaponAttack
 
     protected override void PerformAttack()
     {
-        //slow down time by timeDilation with decelerationFactor
+        StartCoroutine("TimeSlowdown");
 
         weapon.AddTemporaryProjectiles(new TemporaryProjectiles(temporaryProjectilesPref, temporaryProjectilesTime));
     }
@@ -25,6 +25,13 @@ public class SniperMode : WeaponAttack
 
     private void OnDisable()
     {
-        //comeback normal time
+        Time.timeScale = 1;
+    }
+
+    private IEnumerator TimeSlowdown()
+    {
+        Time.timeScale = decelerationFactor;
+        yield return new WaitForSeconds(timeDilation);
+        Time.timeScale = 1;
     }
 }
