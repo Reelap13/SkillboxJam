@@ -18,4 +18,9 @@ public class EnemyTakeDamage : MonoBehaviour, IWeaponVisitor
         rb.AddForce(direction * deal.PushForce);
         enemy.EnemyParameters.TakeDamage(deal.Damage);
     }
+
+    public void Visit(MeleeAttackGiveDamage deal)
+    {
+        //throw new System.NotImplementedException();
+    }
 }

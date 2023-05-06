@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IWeaponVisitor
 {
     public void Visit(ProjectileDealingDamageByTouch deal, Vector2 direction);
+    public void Visit(MeleeAttackGiveDamage deal);
 }
