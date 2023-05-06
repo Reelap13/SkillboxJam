@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RunAttackEnemyBehavior : EnemyBehavior
 {
-    [SerializeField] private Enemy enemy;
     [SerializeField] private float timeBetweenPerformingAbility;
     [SerializeField] private float distanceForPerformingAbility;
     private AIEnemyMovement movement;

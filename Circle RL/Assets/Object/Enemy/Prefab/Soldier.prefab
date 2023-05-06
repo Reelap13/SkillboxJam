@@ -137,6 +137,7 @@ MonoBehaviour:
   <EnemyAbility>k__BackingField: {fileID: 626750864324816009}
   <EnemyPreset>k__BackingField:
     StartHealth: 60
+    StartShield: 0
     Damage: 10
     Team: 0
 --- !u!114 &626750864324816008
@@ -209,7 +210,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

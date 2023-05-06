@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
         summonEnemy.Invoke();
     }
 
-
     private void Die()
     {
         destroyEnemy.Invoke();
@@ -88,7 +87,10 @@ public class EnemyParameters
         }
 
         if (damage >= Health)
+        {
             Health = 0;
+            OnDieing.Invoke();
+        }
         else
             Health -= damage;
     }

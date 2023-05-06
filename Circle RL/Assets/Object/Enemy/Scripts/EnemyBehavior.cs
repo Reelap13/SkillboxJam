@@ -4,4 +4,5 @@ using UnityEngine;
 
 public abstract class EnemyBehavior : MonoBehaviour
 {
+    [SerializeField] protected Enemy enemy;
 }
