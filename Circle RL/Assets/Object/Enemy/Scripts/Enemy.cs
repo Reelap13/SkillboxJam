@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     public EnemyPreset EnemyPreset { get; private set; }
 
     public EnemyParameters EnemyParameters { get; private set; }
+
+    bool areYouDead;
     void Start()
     {
         EnemyParameters = new EnemyParameters(EnemyPreset);
@@ -31,6 +33,11 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        if (areYouDead)
+        {
+            return;
+        }
+        areYouDead = true;
         destroyEnemy.Invoke();
         Destroy(gameObject);
     }
