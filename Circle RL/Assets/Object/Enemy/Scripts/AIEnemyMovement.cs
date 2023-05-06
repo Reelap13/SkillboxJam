@@ -14,6 +14,7 @@ public class AIEnemyMovement : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
     private Transform tr;
+    public float slowdown = 1;
 
     private Path path;
     private int currentWaypoint;
@@ -64,7 +65,7 @@ public class AIEnemyMovement : MonoBehaviour
         /*float angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         tr.rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);*/
 
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime * slowdown);
 
         float distant = Vector2.Distance(rb.position, nextWaypoint);
 

@@ -558,6 +558,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8762199915070747611, guid: 1bbb6ed126d5c8b41b720f334f468498, type: 3}
+      propertyPath: <WeaponPreset>k__BackingField.damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762199915070747611, guid: 1bbb6ed126d5c8b41b720f334f468498, type: 3}
       propertyPath: <WeaponPreset>k__BackingField.ammoInClip
       value: 12
       objectReference: {fileID: 0}

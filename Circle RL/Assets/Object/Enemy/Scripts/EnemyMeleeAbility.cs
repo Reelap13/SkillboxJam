@@ -6,6 +6,8 @@ public class EnemyMeleeAbility : EnemyAbility
 {
     [SerializeField] private GameObject meleeAttackPref;
     [SerializeField] private float radius;
+    [SerializeField] private float slowdownCoefficient;
+    [SerializeField] private float slowdownTime;
     [SerializeField] private float pushForce;
 
     private Transform tr;
@@ -22,5 +24,6 @@ public class EnemyMeleeAbility : EnemyAbility
         MeleeAttack meleeAttack = newMeleeAttack.GetComponent<MeleeAttack>();
         meleeAttack.SetPush(new Push2D(tr, pushForce));
         meleeAttack.SetParameters(new MeleeAttackParameters(Damage, tr, enemy.AIEnemyMovement.Target, radius));
+        new EnemySlow(slowdownCoefficient, slowdownTime, enemy.AIEnemyMovement);
     }
 }

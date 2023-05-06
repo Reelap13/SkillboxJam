@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 8598911695053767}
   meleeAttackPref: {fileID: 2623076505730544321, guid: 0962b8f3378a5d94d8d3c4f632bcacbf, type: 3}
+  slowdownCoefficient: 0.5
+  slowdownTime: 2
   pushForce: 100
 --- !u!114 &8598911695053764
 MonoBehaviour:
@@ -184,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   nextWayPointDistance: 1
+  slowdown: 1
 --- !u!114 &8598911695053819
 MonoBehaviour:
   m_ObjectHideFlags: 0
