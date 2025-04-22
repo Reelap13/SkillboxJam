@@ -27,7 +27,7 @@ public class ShootgunBulletMovement : ProjectileMovement
 
     private void Move()
     {
-        _rb.velocity = Direction.normalized * speed;
+        _rb.linearVelocity = Direction.normalized * speed;
     }
 
     public override void StartMovement()
