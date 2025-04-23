@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a12f3aae5bbfd644895878f53e8cb8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 6090508429224151810}
   meleeAttackPref: {fileID: 2623076505730544321, guid: 0962b8f3378a5d94d8d3c4f632bcacbf, type: 3}
   slowdownCoefficient: 0.5
   slowdownTime: 2
