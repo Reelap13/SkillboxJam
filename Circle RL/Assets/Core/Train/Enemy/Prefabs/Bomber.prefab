@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3056756955880317845}
   - component: {fileID: 7009968333488077524}
   - component: {fileID: 1085181751835181474}
+  - component: {fileID: 7593969635485353167}
+  - component: {fileID: 8228300373675005003}
   - component: {fileID: 7110104991630325201}
   - component: {fileID: 5807929760389750968}
-  - component: {fileID: 8228300373675005003}
   m_Layer: 9
   m_Name: Bomber
   m_TagString: Enemy
@@ -110,6 +111,7 @@ MonoBehaviour:
   <EnemyMovement>k__BackingField: {fileID: 3056756955880317845}
   <EnemyBehavior>k__BackingField: {fileID: 7598501937079452558}
   <EnemyAbility>k__BackingField: {fileID: 7009968333488077524}
+  <DataTaker>k__BackingField: {fileID: 7593969635485353167}
   <EnemyPreset>k__BackingField:
     Type: 0
     StartHealth: 100
@@ -128,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b07dade0ad943429571a7ee209d167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Enemy>k__BackingField: {fileID: 6090508429224151810}
+  _interval_to_attack: {x: 0, y: 100}
 --- !u!114 &3056756955880317845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0eb9e1130d3c41ba763ff1efaa3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Enemy>k__BackingField: {fileID: 6090508429224151810}
   _speed: 3
 --- !u!114 &7009968333488077524
 MonoBehaviour:
@@ -170,6 +175,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba25b8414a19544993700e2ec8371ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7593969635485353167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244456554922146864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0f2487d88d5ae408f554bb5d2daf53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 6090508429224151810}
+  _sensors_taker: {fileID: 8228300373675005003}
+--- !u!114 &8228300373675005003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244456554922146864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5abd9c794838042979db77ffa895be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 30
 --- !u!50 &7110104991630325201
 Rigidbody2D:
   serializedVersion: 5
@@ -233,16 +265,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &8228300373675005003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244456554922146864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5abd9c794838042979db77ffa895be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distance: 30

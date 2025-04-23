@@ -22,9 +22,9 @@ public class EnemyAbilityBomber : EnemyAbility
 
         MeleeAttack meleeAttack = newMeleeAttack.GetComponent<MeleeAttack>();
         meleeAttack.SetPush(new Push2D(tr, pushForce));
-        meleeAttack.SetParameters(new MeleeAttackParameters(Damage, tr, enemy.AIEnemyMovement.Target, 0));
+        meleeAttack.SetParameters(new MeleeAttackParameters(Damage, tr, enemy.ArenaController.PlayerSpawner.GetPlayer(), 0));
         meleeAttack.MeleeAttackGiveDamage.OnGiveDamage.AddListener(KillEnemy);
-        new EnemySlow(slowdownCoefficient, slowdownTime, enemy.AIEnemyMovement);
+        //new EnemySlow(slowdownCoefficient, slowdownTime, enemy.AIEnemyMovement);
         void KillEnemy()
         {
             enemy.EnemyParameters.KillEnemy();

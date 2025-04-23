@@ -12,6 +12,7 @@ namespace Game.Enemy
         {
             EnemyData data = new EnemyData();
 
+            data.EnemyType = _enemy.EnemyPreset.Type;
             data.Sensors = _sensors_taker.GetSensorsData();
             data.EnemyCoordinates = _enemy.ArenaController.Board.GetParsedPosition(transform.position);
             data.PlayerCoordinates = _enemy.ArenaController.Board.GetParsedPosition(_enemy.ArenaController.PlayerSpawner.GetPlayerPosition());

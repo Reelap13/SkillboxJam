@@ -52,5 +52,15 @@ namespace Train.Arena
 
             return data;
         }
+
+        public void ProcessCommand(EnemyCommand command)
+        {
+            foreach (var enemy in _alive_enemies)
+                if (enemy.EnemyPreset.Type == command.Type)
+                {
+                    enemy.EnemyBehavior.ProcessCommnad(command);
+                    break;
+                }
+        }
     }
 }

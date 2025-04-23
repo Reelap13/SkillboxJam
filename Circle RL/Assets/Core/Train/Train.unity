@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 7575738627367995990, guid: acc58c2d4228dbe4e860ed1e704fe103, type: 3}
     - target: {fileID: 8894963014286174362, guid: 6075176ef5508c442bed3dae1176b6ae, type: 3}
       propertyPath: _arena_area_size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
