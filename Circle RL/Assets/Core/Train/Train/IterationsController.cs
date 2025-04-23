@@ -51,7 +51,7 @@ namespace Train.Train
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Run algorithm").
-                SetProcessFunction((string response) => _is_population_active = true).
+                SetProcessFunction((string response) => { _is_population_active = true; Debug.Log("Run algorithm"); }).
                 SetData("[]").Build();
             NEAT.SendData(request_data);
         }

@@ -71,6 +71,8 @@ def get_unity_data():
             send_unity_outputs("out")
             return "new"
         elif parsed_json["command"] == "Process individuals data":
+            print("Process individuals data")
+            send_unity_outputs("out")
             return parsed_json["data"]
         else:
             print("Error: wrong command")
@@ -372,13 +374,14 @@ def waiting_for_commands():
             else:
                 print("Error: config is None")
                 exit(1)
-        elif parsed_json['command'] == 'Run Algorithm':
+        elif parsed_json['command'] == 'Run algorithm':
+            send_unity_outputs("out")
             for t in threads:
                 t.start()
             combined_output = []
             while any(thread.is_alive() for thread in threads):
                 for q in all_queues:
-                    outputs = q.get(timeout=0.1)
+                    outputs = q.get(timeout=10)
                     combined_output.extend(outputs)
                 send_unity_outputs(combined_output)
         else:

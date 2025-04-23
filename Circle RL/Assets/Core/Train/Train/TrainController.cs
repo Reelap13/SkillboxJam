@@ -23,11 +23,13 @@ namespace Train.Train
         {
             ArenasController.Initialize();
             ConnectingToNEAT.OnCreatingConnection.AddListener(StartTrain);
+            ConnectingToNEAT.CreateConnection();
+            
         }
 
         private void StartTrain()
         {
-
+            IterationsController.InitializeNeat();
         }
 
         private void CreatePopulation()
