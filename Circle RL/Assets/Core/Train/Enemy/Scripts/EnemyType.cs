@@ -5,6 +5,9 @@ namespace Game.Enemy
     public enum EnemyType
     {
         SOLDER,
-        SNIPER
+        SNIPER,
+        BOMBER,
+        MELEE_FIGHTER,
+        SPAWNER
     }
 }
