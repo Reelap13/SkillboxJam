@@ -16,6 +16,7 @@ namespace Train.Train
         [SerializeField] private PlayersAIConnector _players_connector;
         [SerializeField] private EnemiesAIConnector _enemies_connector;
         [SerializeField] private float _iterations_number_per_second = 1f;
+        [SerializeField] private float _population_changed_time = 10f;
 
         private float _sending_data_time, _time_between_sending_data;
 
@@ -88,9 +89,14 @@ namespace Train.Train
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Run algorithm").
-                SetProcessFunction((string response) => { _is_population_active = true; Debug.Log("Run algorithm"); }).
+                SetProcessFunction((string response) => { _is_population_active = true; }).
                 SetData("[]").Build();
             NEAT.SendData(request_data);
+        }
+
+        private void FinishPopulation()
+        {
+
         }
 
         private void Update()
@@ -109,7 +115,7 @@ namespace Train.Train
 
             _sending_data_time = 0;
 
-            _players_connector.SendData();
+            //_players_connector.SendData();
             _enemies_connector.SendData();
         }
 

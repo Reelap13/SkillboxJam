@@ -89,13 +89,13 @@ namespace Train.Train
     {
         public static EnemiesCommands Parse(string json, int size)
         {
-            var data = JsonUtility.FromJson<FloatArrayWrapper>("{\"Items\":" + json + "}").Items;
+            var data = JsonUtility.FromJson<Float3ArrayWrapper>("{\"Items\":" + json + "}").Items;
 
             EnemiesCommands commands = new EnemiesCommands();
 
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                var item = data[i];
+                var item = data[i].values;
 
                 EnemyCommand command = new EnemyCommand
                 {
@@ -128,9 +128,15 @@ namespace Train.Train
         }
 
         [Serializable]
-        private class FloatArrayWrapper
+        public class Float3
         {
-            public List<List<float>> Items;
+            public float[] values;
+        }
+
+        [Serializable]
+        public class Float3ArrayWrapper
+        {
+            public Float3[] Items;
         }
 
         private static EnemyType GetEnemyType(int i, int size)
