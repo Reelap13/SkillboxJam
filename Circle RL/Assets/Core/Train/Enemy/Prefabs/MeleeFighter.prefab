@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8999347006443239453}
   - component: {fileID: 2659684728634918852}
   - component: {fileID: 1493994374629240749}
+  - component: {fileID: 4749942773317726772}
   - component: {fileID: 3528945524958386813}
   - component: {fileID: 3995856506079226710}
   m_Layer: 9
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 5388283980036735094}
   _sensors_taker: {fileID: 1493994374629240749}
+  _fitness_function: {fileID: 4749942773317726772}
 --- !u!114 &1493994374629240749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distance: 30
+--- !u!114 &4749942773317726772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320065797992553684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d5c57a21501af4d837737abbb9b5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Enemy>k__BackingField: {fileID: 5388283980036735094}
 --- !u!50 &3528945524958386813
 Rigidbody2D:
   serializedVersion: 5

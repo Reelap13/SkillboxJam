@@ -13,7 +13,8 @@ namespace Train.Train
 
         [field: SerializeField]
         public TrainController Controller{ get; private set; }
-
+        [SerializeField] private PlayersAIConnector _players_connector;
+        [SerializeField] private EnemiesAIConnector _enemies_connector;
         [SerializeField] private float _iterations_number_per_second = 1f;
 
         private float _sending_data_time, _time_between_sending_data;
@@ -71,26 +72,10 @@ namespace Train.Train
                 return;
 
             _sending_data_time = 0;
-            SendData();
+
+            _players_connector.SendData();
+            _enemies_connector.SendData();
         }
 
-        private void SendData()
-        {
-            string data = ArenasController.GetEnemiesData();
-
-            RequestData request_data = RequestData.GetBuilder().
-                SetCommand("Process individuals data").
-                SetData(data).
-                SetProcessFunction((string data) =>
-                {
-                    ProcessEnemiesInput(data);
-                }).Build();
-            NEAT.SendData(request_data);
-        }
-
-        private void ProcessEnemiesInput(string data)
-        {
-            print(data);
-        }
     }
 }

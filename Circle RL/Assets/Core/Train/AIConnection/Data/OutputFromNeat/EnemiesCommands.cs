@@ -7,5 +7,8 @@ namespace Train.AIConnection.Data
     {
         public List<EnemyCommand> Solders;
         public List<EnemyCommand> Snipers;
+        public List<EnemyCommand> Bombers;
+        public List<EnemyCommand> MeleeFighters;
+        public List<EnemyCommand> Spawners;
     }
 }

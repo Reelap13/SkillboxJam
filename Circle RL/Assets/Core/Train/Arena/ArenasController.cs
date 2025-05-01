@@ -14,17 +14,6 @@ namespace Train
 
         private List<ArenaController> _arenas;
 
-        private void Awake()
-        {
-            StartCoroutine(test());
-        }
-
-        private IEnumerator test()
-        {
-            yield return new WaitForSeconds(2);
-            GetEnemiesData();
-        }
-
         public void Initialize()
         {
             _arenas = new List<ArenaController>();
@@ -40,39 +29,6 @@ namespace Train
             }
         }
         
-        public string GetEnemiesData()
-        {
-            List<EnemyData> solders_data = new List<EnemyData>();
-            List<EnemyData> snipers_data = new List<EnemyData>();
-            foreach (var arena in _arenas)
-                foreach (var enemy_data in arena.EnemySpawner.GetEnemyData())
-                    switch (enemy_data.EnemyType)
-                    {
-                        case Game.Enemy.EnemyType.SOLDER: 
-                            solders_data.Add(enemy_data);
-                            break;
-                        case Game.Enemy.EnemyType.SNIPER: 
-                            solders_data.Add(enemy_data);
-                            break;
-                    }
-
-            EnemiesData data = new EnemiesData();
-            data.Solders = solders_data.ToArray();
-            data.Snipers = snipers_data.ToArray();
-
-            Debug.Log(JsonUtility.ToJson(data));
-            return JsonUtility.ToJson(data);
-        }
-
-        public void ProcessEnemyCommand(EnemiesCommands commands)
-        {
-            for (int i = 0; i < _arenas.Count; ++i)
-            {
-                EnemySpawner enemies = _arenas[i].EnemySpawner;
-                enemies.ProcessCommand(commands.Solders[i]);
-                //enemies.ProcessCommand(commands.Snipers[i]);
-            }
-            
-        }
+        public List<ArenaController> Arenas { get { return _arenas; } }
     }
 }

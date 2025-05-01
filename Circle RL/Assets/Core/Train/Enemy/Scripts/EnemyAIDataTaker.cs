@@ -1,3 +1,4 @@
+using Game.Enemy.Fitness;
 using Train.AIConnection.Data;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Game.Enemy
     {
         [SerializeField] private AIEnemy _enemy;
         [SerializeField] private SensorsTaker _sensors_taker;
+        [SerializeField] private FitnessFunction _fitness_function;
 
         public EnemyData GetData()
         {
@@ -19,6 +21,8 @@ namespace Game.Enemy
             data.HP = _enemy.EnemyParameters.Health;
             data.PlayerInputPredict = _enemy.ArenaController.PlayerSpawner.GetPlayerPredictedInput();
             data.PlayerWeaponType = _enemy.ArenaController.PlayerSpawner.GetPlayerWeaponType();
+            data.MaxScore = _fitness_function.MaxFitness;
+            data.CurrentScore = _fitness_function.CurrentFitness;
 
             return data;
         }
