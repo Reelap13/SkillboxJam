@@ -10,5 +10,14 @@ namespace Train.AIConnection.Data
         public List<EnemyCommand> Bombers;
         public List<EnemyCommand> MeleeFighters;
         public List<EnemyCommand> Spawners;
+
+        public EnemiesCommands()
+        {
+            Solders = new List<EnemyCommand>();
+            Snipers = new List<EnemyCommand>();
+            Bombers = new List<EnemyCommand>();
+            MeleeFighters = new List<EnemyCommand>();
+            Spawners = new List<EnemyCommand>();
+        }
     }
 }

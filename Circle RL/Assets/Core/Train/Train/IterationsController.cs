@@ -34,15 +34,51 @@ namespace Train.Train
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Initialize algorithm").
-                SetProcessFunction((string response) => CreatePopulations()).
+                SetProcessFunction((string response) => CreateSoldersPopulations()).
                 SetData("[]").Build();
             NEAT.SendData(request_data);
         }
 
-        private void CreatePopulations()
+        private void CreateSoldersPopulations()
+        {
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Create squares").
+                SetProcessFunction((string response) => CreateSnipersPopulations()).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
+        }
+
+        private void CreateSnipersPopulations()
+        {
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Create triangles").
+                SetProcessFunction((string response) => CreateBombersPopulations()).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
+        }
+
+        private void CreateBombersPopulations()
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Create circles").
+                SetProcessFunction((string response) => CreateMeleeFightersPopulations()).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
+        }
+
+        private void CreateMeleeFightersPopulations()
+        {
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Create hexagons").
+                SetProcessFunction((string response) => CreateSpawnersPopulations()).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
+        }
+
+        private void CreateSpawnersPopulations()
+        {
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Create rectangles").
                 SetProcessFunction((string response) => StartNextIteration()).
                 SetData("[]").Build();
             NEAT.SendData(request_data);

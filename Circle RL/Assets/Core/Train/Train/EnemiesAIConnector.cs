@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Game.Enemy;
 using Train.AIConnection.Data;
 using Train.Arena;
 using UnityEngine;
@@ -28,7 +30,7 @@ namespace Train.Train
 
         private void ProcessEnemiesInput(string data)
         {
-            print(data);
+            ProcessEnemyCommand(EnemyCommandParser.Parse(data, 4));
         }
 
         private string GetParsedEnemiesData()
@@ -46,7 +48,7 @@ namespace Train.Train
                             solders_data.Add(enemy_data);
                             break;
                         case Game.Enemy.EnemyType.SNIPER:
-                            solders_data.Add(enemy_data);
+                            snipers_data.Add(enemy_data);
                             break;
                         case Game.Enemy.EnemyType.BOMBER:
                             bombers_data.Add(enemy_data);
@@ -81,6 +83,67 @@ namespace Train.Train
                 enemies.ProcessCommand(commands.MeleeFighters[i]);
                 enemies.ProcessCommand(commands.Spawners[i]);
             }
+        }
+    }
+    public static class EnemyCommandParser
+    {
+        public static EnemiesCommands Parse(string json, int size)
+        {
+            var data = JsonUtility.FromJson<FloatArrayWrapper>("{\"Items\":" + json + "}").Items;
+
+            EnemiesCommands commands = new EnemiesCommands();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                var item = data[i];
+
+                EnemyCommand command = new EnemyCommand
+                {
+                    Type = GetEnemyType(i, size),
+                    Direction = new Coordinates(item[0], item[1]),
+                    IsAttack = item[2] != 0
+                };
+
+                switch (command.Type)
+                {
+                    case Game.Enemy.EnemyType.SOLDER:
+                        commands.Solders.Add(command);
+                        break;
+                    case Game.Enemy.EnemyType.SNIPER:
+                        commands.Snipers.Add(command);
+                        break;
+                    case Game.Enemy.EnemyType.BOMBER:
+                        commands.Bombers.Add(command);
+                        break;
+                    case Game.Enemy.EnemyType.MELEE_FIGHTER:
+                        commands.MeleeFighters.Add(command);
+                        break;
+                    case Game.Enemy.EnemyType.SPAWNER:
+                        commands.Spawners.Add(command);
+                        break;
+                }
+            }
+
+            return commands;
+        }
+
+        [Serializable]
+        private class FloatArrayWrapper
+        {
+            public List<List<float>> Items;
+        }
+
+        private static EnemyType GetEnemyType(int i, int size)
+        {
+            if (i < size)
+                return EnemyType.SOLDER;
+            if (i < size * 2)
+                return EnemyType.SNIPER;
+            if (i < size * 3)
+                return EnemyType.BOMBER;
+            if (i < size * 4)
+                return EnemyType.MELEE_FIGHTER;
+            else return EnemyType.SPAWNER;
         }
     }
 }
