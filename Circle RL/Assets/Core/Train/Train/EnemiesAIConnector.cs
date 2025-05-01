@@ -87,25 +87,25 @@ namespace Train.Train
     }
     public static class EnemyCommandParser
     {
+
         public static EnemiesCommands Parse(string json, int size)
         {
-            var data = JsonUtility.FromJson<Float3ArrayWrapper>("{\"Items\":" + json + "}").Items;
-
-            Debug.Log(json);
-            Debug.Log("{\"Items\":" + json + "}");
-            Debug.Log(data);
+            json = json.Replace("[", "").Replace("]", "");
+            string[] data = json.Split(',');
 
             EnemiesCommands commands = new EnemiesCommands();
 
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < size * 5; i++)
             {
-                var item = data[i].values;
+                float x = float.Parse(data[i * 3].Replace(".", ","));
+                float y = float.Parse(data[i * 3 + 1].Replace(".", ","));
+                float is_attack = float.Parse(data[i * 3 + 2].Replace(".", ","));
 
                 EnemyCommand command = new EnemyCommand
                 {
                     Type = GetEnemyType(i, size),
-                    Direction = new Coordinates(item[0], item[1]),
-                    IsAttack = item[2] != 0
+                    Direction = new Coordinates(x, y),
+                    IsAttack = is_attack != 0
                 };
 
                 switch (command.Type)
@@ -130,6 +130,7 @@ namespace Train.Train
 
             return commands;
         }
+
 
         [Serializable]
         public class Float3

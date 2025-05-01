@@ -402,7 +402,8 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 566068544}
   _players_connector: {fileID: 1995482252}
   _enemies_connector: {fileID: 1995482251}
-  _iterations_number_per_second: 10
+  _iterations_number_per_second: 2
+  _population_changed_time: 10
 --- !u!4 &1995482250
 Transform:
   m_ObjectHideFlags: 0

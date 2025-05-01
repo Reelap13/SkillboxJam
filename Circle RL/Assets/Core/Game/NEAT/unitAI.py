@@ -158,7 +158,7 @@ def create_population(config):
 
 
 def eval_genomes_enemies(genomes, config):
-    global all_queues
+    global all_queues, agent_data
     nets = []
     agents = []
     ge = []
@@ -187,7 +187,9 @@ def eval_genomes_enemies(genomes, config):
 
     run = True
     while run:
-        data = get_unity_data()
+        data = None
+        while data is None:
+            data = agent_data
         if data == "new":
             break
         agents = parse_unity_data(data, name)
@@ -237,6 +239,7 @@ def eval_genomes_enemies(genomes, config):
 
 
 def eval_genomes_player_agents(genomes, config):
+    global agent_data, all_queues
     nets = []
     agents = []
     ge = []
@@ -249,7 +252,7 @@ def eval_genomes_player_agents(genomes, config):
 
     run = True
     while run:
-        data = get_unity_data()
+        data = agent_data
         if(data == "new"):
             break
         agents = parse_unity_data(data, 'Players')
@@ -349,7 +352,7 @@ def waiting_for_commands():
     global config_triangles, config_rectangles, config_player_agents
     global population_hexagons, population_circles, population_squares
     global population_triangles, population_rectangles, population_player_agents
-    global all_queues
+    global all_queues, agent_data
     threads = []
     while True:
         data = client_socket.recv(4096 * 4).decode()
@@ -451,6 +454,7 @@ def waiting_for_commands():
             for t in threads:
                 t.start()
             while any(thread.is_alive() for thread in threads):
+                agent_data = get_unity_data()
                 combined_output = []
                 for q in all_queues:
                     if q is not None:
@@ -465,6 +469,7 @@ def waiting_for_commands():
             exit(1)
 
 
+agent_data = None
 all_queues = []
 for i in range(6):
     all_queues.append(None)
