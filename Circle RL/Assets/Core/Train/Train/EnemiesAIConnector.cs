@@ -91,6 +91,10 @@ namespace Train.Train
         {
             var data = JsonUtility.FromJson<Float3ArrayWrapper>("{\"Items\":" + json + "}").Items;
 
+            Debug.Log(json);
+            Debug.Log("{\"Items\":" + json + "}");
+            Debug.Log(data);
+
             EnemiesCommands commands = new EnemiesCommands();
 
             for (int i = 0; i < data.Length; i++)

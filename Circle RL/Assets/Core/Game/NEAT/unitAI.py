@@ -5,7 +5,6 @@ import json
 import queue
 import threading
 
-
 ACTIVATION_THRESHOLD = 0.5
 
 config_hexagons = None
@@ -24,10 +23,10 @@ population_player_agents = None
 
 
 class Enemy:
-    def __init__(self, sensors: list, position: list,
-                 health, target_position: list, is_alive,
+    def __init__(self, sensors, position,
+                 health, target_position, is_alive,
                  max_score, current_score,
-                 predicted_input: list, current_player_weapon: list):
+                 predicted_input, current_player_weapon):
         self.sensors = sensors
         self.position = position
         self.health = health
@@ -72,7 +71,6 @@ def get_unity_data():
             return "new"
         elif parsed_json["command"] == "Process individuals data":
             print("Process individuals data")
-            send_unity_outputs("out")
             return parsed_json["data"]
         else:
             print("Error: wrong command")
@@ -88,20 +86,39 @@ def parse_unity_data(data, name):
         return agents
 
     for item in agents_data:
+        sensors = []
+        position = []
+        health = []
+        is_alive = False
+        max_score = 0
+        current_score = 0
+        target_position = []
+        weapon = []
+        predicted_input = []
+
+        sensors = [float(item['Sensors']['D']), float(item['Sensors']['DL']),
+                   float(item['Sensors']['L']), float(item['Sensors']['UL']),
+                   float(item['Sensors']['U']), float(item['Sensors']['UR']),
+                   float(item['Sensors']['R']), float(item['Sensors']['DR'])]
+        position = [float(item['EnemyCoordinates']['X']),
+                    float(item['EnemyCoordinates']['Y'])]
+        health = float(item['HP'])
+        is_alive = True
+        max_score = float(item['MaxScore'])
+        current_score = float(item['CurrentScore'])
+        target_position = [float(item['PlayerCoordinates']['X']),
+                           float(item['PlayerCoordinates']['Y'])]
+
         if name == 'Player':
-            agent = PlayerAgent()
-            agent.current_weapon = item['CurrentWeapon']
+            weapon = int(item['CurrentWeapon'])
+            agent = PlayerAgent(sensors, position, health, target_position,
+                                is_alive, max_score, current_score, weapon)
         else:
-            agent = Enemy()
-            agent.predicted_input = item['PredictedInput']
-            agent.current_player_weapon = item["CurrentPlayerWeapon"]
-        agent.sensors = item['Sensors']
-        agent.position = item['Position']
-        agent.health = item['Health']
-        agent.is_alive = item['IsAlive']
-        agent.max_score = item['MaxScore']
-        agent.current_score = item['CurrentScore']
-        agent.target_position = item['TargetPosition']
+            predicted_input = [float(item['PlayerInputPredict']),
+                               float(item['PlayerInputPredict'])]
+            weapon = int(item["PlayerWeaponType"])
+            agent = Enemy(sensors, position, health, target_position, is_alive,
+                          max_score, current_score, predicted_input, weapon)
         agents.append(agent)
     return agents
 
@@ -141,29 +158,45 @@ def create_population(config):
 
 
 def eval_genomes_enemies(genomes, config):
-
+    global all_queues
     nets = []
     agents = []
     ge = []
+    name = ''
+
+    config_id = int(config.__getattribute__('fitness_threshold'))
+
+    if(config_id % 10 == 1):
+        name = 'Bombers'
+    elif(config_id % 10 == 2):
+        name = 'MeleeFighters'
+    elif(config_id % 10 == 3):
+        name = 'Spawners'
+    elif(config_id % 10 == 4):
+        name = 'Solders'
+    elif(config_id % 10 == 5):
+        name = 'Snipers'
 
     for genome_id, genome in genomes:
         genome.fitness = 0
         net = neat.nn.FeedForwardNetwork.create(genome, config)
+        with open("D:/Unity/Projects/Circle RL/SkillboxJam/Circle RL/Assets/Core/Game/NEAT/" + name + ".txt", 'w') as f:
+            f.writelines(genome.__str__())
         nets.append(net)
         ge.append(genome)
 
     run = True
     while run:
         data = get_unity_data()
-        if(data == "new"):
+        if data == "new":
             break
-        agents = parse_unity_data(data, "enemy")
+        agents = parse_unity_data(data, name)
 
         unity_outputs = []
 
         for x, agent in enumerate(agents):
             if not(agent.is_alive):
-                unity_outputs.append([False, False])
+                unity_outputs.append([0, 0, 0])
                 continue
 
             ge[x].fitness = agent.current_score
@@ -184,29 +217,23 @@ def eval_genomes_enemies(genomes, config):
                 agent.target_position[1],
                 agent.predicted_input[0],
                 agent.predicted_input[1],
-                agent.predicted_input[2],
-                agent.predicted_input[3],
-                agent.predicted_input[4],
-                agent.predicted_input[5],
-                agent.predicted_input[6],
-                agent.predicted_input[7],
-                agent.current_player_weapon[0],
-                agent.current_player_weapon[1],
-                agent.current_player_weapon[2]])
+                agent.current_player_weapon == 0,
+                agent.current_player_weapon == 1,
+                agent.current_player_weapon == 2])
 
             unity_output = []
 
             for i in range(3):
                 if i == 2:
                     if output[i] > ACTIVATION_THRESHOLD:
-                        unity_output.append(True)
+                        unity_output.append(1)
                     else:
-                        unity_output.append(False)
+                        unity_output.append(0)
                 else:
                     unity_output.append(output[i])
 
             unity_outputs.append(unity_output.copy())
-        all_queues[0].put(unity_outputs)
+        all_queues[config_id % 10 - 1].put(unity_outputs)
 
 
 def eval_genomes_player_agents(genomes, config):
@@ -225,13 +252,13 @@ def eval_genomes_player_agents(genomes, config):
         data = get_unity_data()
         if(data == "new"):
             break
-        agents = parse_unity_data(data)
+        agents = parse_unity_data(data, 'Players')
 
         unity_outputs = []
 
         for x, agent in enumerate(agents):
             if not(agent.is_alive):
-                unity_outputs.append([False, False])
+                unity_outputs.append([0, 0, 0, 0, 0, 0])
                 continue
 
             ge[x].fitness = agent.current_score
@@ -250,28 +277,71 @@ def eval_genomes_player_agents(genomes, config):
                 agent.health,
                 agent.target_position[0],
                 agent.target_position[1],
-                agent.current_weapon[0],
-                agent.current_weapon[1],
-                agent.current_weapon[2]])
+                agent.current_weapon == 0,
+                agent.current_weapon == 1,
+                agent.current_weapon == 2])
 
             unity_output = []
-            for i in range(8):
-                unity_output.append(False)
+
+            for i in range(2):
+                if output[i] > 0.6:
+                    unity_output.append(1)
+                elif output[i] < 0.4:
+                    unity_output.append(-1)
+                else:
+                    unity_output.append(0)
+            if output[2] > ACTIVATION_THRESHOLD:
+                unity_output.append(1)
+            else:
+                unity_output.append(0)
+
+            for i in range(3):
+                unity_output.append(0)
 
             max_value = 0
             max_value_idx = 0
 
-            for i in range(len(output)):
+            for i in range(3, len(output)):
                 if output[i] > max_value:
                     max_value = output[i]
                     max_value_idx = i
-            unity_output[max_value_idx] = True
+            unity_output[max_value_idx] = 1
             unity_outputs.append(unity_output.copy())
-        all_queues[1].put(unity_outputs)
+        all_queues[5].put(unity_outputs)
 
 
 def run_population(population, eval_genomes_func, generations):
     population.run(eval_genomes_func, generations)
+
+
+def export_neat_network(net, filename):
+    """Exports a NEAT network to a JSON file."""
+    nodes = {}
+    for node_key, node in net.nodes.items():
+        nodes[node_key] = {
+            'bias': node.bias,
+            'activation': node.activation,
+            'response': node.response,  # Add response
+            'aggregation': node.aggregation
+            # Add other relevant node properties if needed
+        }
+    connections = []
+    for connection in net.connections.values():  # Iterate over connections
+        connections.append({
+            'in_node': connection.key[0],
+            'out_node': connection.key[1],
+            'weight': connection.weight,
+            'enabled': connection.enabled
+        })
+    network_data = {
+        'nodes': nodes,
+        'connections': connections,
+        'inputs': net.input_nodes,
+        'outputs': net.output_nodes
+    }
+
+    with open(filename, 'w') as f:
+        json.dump(network_data, f, indent=4)
 
 
 def waiting_for_commands():
@@ -279,9 +349,11 @@ def waiting_for_commands():
     global config_triangles, config_rectangles, config_player_agents
     global population_hexagons, population_circles, population_squares
     global population_triangles, population_rectangles, population_player_agents
+    global all_queues
     threads = []
     while True:
         data = client_socket.recv(4096 * 4).decode()
+        print(data)
 
         parsed_json = json.loads(data)
 
@@ -308,8 +380,8 @@ def waiting_for_commands():
                     population_hexagons = create_population(config_hexagons)
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_hexagons, eval_genomes_enemies, 1))
+                all_queues[1] = queue.Queue()
                 threads.append(t)
-                all_queues.append(queue.Queue())
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -321,7 +393,7 @@ def waiting_for_commands():
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_circles, eval_genomes_enemies, 1))
                 threads.append(t)
-                all_queues.append(queue.Queue())
+                all_queues[0] = queue.Queue()
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -333,7 +405,7 @@ def waiting_for_commands():
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_squares, eval_genomes_enemies, 1))
                 threads.append(t)
-                all_queues.append(queue.Queue())
+                all_queues[3] = queue.Queue()
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -345,7 +417,7 @@ def waiting_for_commands():
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_triangles, eval_genomes_enemies, 1))
                 threads.append(t)
-                all_queues.append(queue.Queue())
+                all_queues[4] = queue.Queue()
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -357,7 +429,7 @@ def waiting_for_commands():
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_rectangles, eval_genomes_enemies, 1))
                 threads.append(t)
-                all_queues.append(queue.Queue())
+                all_queues[2] = queue.Queue()
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -369,7 +441,7 @@ def waiting_for_commands():
                     print("population created")
                 t = threading.Thread(target=run_population, args=(population_player_agents, eval_genomes_player_agents, 1))
                 threads.append(t)
-                all_queues.append(queue.Queue())
+                all_queues[5] = queue.Queue()
                 send_unity_outputs("out")
             else:
                 print("Error: config is None")
@@ -378,18 +450,24 @@ def waiting_for_commands():
             send_unity_outputs("out")
             for t in threads:
                 t.start()
-            combined_output = []
             while any(thread.is_alive() for thread in threads):
+                combined_output = []
                 for q in all_queues:
-                    outputs = q.get(timeout=10)
-                    combined_output.extend(outputs)
-                send_unity_outputs(combined_output)
+                    if q is not None:
+                        outputs = q.get(timeout=10)
+                        combined_output.extend(outputs)
+                send_unity_outputs(str(combined_output))
+                print("send data")
+        elif parsed_json['command'] == 'Save Networks':
+            population_hexagons
         else:
             print("Error: wrong command")
             exit(1)
 
 
 all_queues = []
+for i in range(6):
+    all_queues.append(None)
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
