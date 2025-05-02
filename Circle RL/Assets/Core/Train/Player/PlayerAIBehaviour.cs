@@ -12,6 +12,8 @@ namespace Train.Player
         public void ProcessCommand(PlayerCommand command)
         {
             Player.Movement.SetDirection(command.Direction);
+            if (command.IsAttack)
+                Player.Weapon.PerformAttack();
         }
     }
 }

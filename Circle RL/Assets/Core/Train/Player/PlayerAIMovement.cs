@@ -33,5 +33,10 @@ namespace Train.Player
         {
             _direction = direction.normalized;
         }
+
+        public Vector2 GetDirectionToClosestEnemy()
+        {
+            return (Player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(transform.position).position - transform.position).normalized;
+        }
     }
 }
