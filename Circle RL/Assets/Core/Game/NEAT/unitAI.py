@@ -67,7 +67,6 @@ def get_unity_data():
             send_unity_outputs("out")
             exit(1)
         elif parsed_json["command"] == "Evaluate population":
-            send_unity_outputs("out")
             return "new"
         elif parsed_json["command"] == "Process individuals data":
             print("Process individuals data")
@@ -100,16 +99,16 @@ def parse_unity_data(data, name):
                    float(item['Sensors']['L']), float(item['Sensors']['UL']),
                    float(item['Sensors']['U']), float(item['Sensors']['UR']),
                    float(item['Sensors']['R']), float(item['Sensors']['DR'])]
-        position = [float(item['EnemyCoordinates']['X']),
-                    float(item['EnemyCoordinates']['Y'])]
+        position = [float(item['Position']['X']),
+                    float(item['Position']['Y'])]
         health = float(item['HP'])
         is_alive = True
         max_score = float(item['MaxScore'])
         current_score = float(item['CurrentScore'])
-        target_position = [float(item['PlayerCoordinates']['X']),
-                           float(item['PlayerCoordinates']['Y'])]
+        target_position = [float(item['TargetPosition']['X']),
+                           float(item['TargetPosition']['Y'])]
 
-        if name == 'Player':
+        if name == 'Players':
             weapon = int(item['CurrentWeapon'])
             agent = PlayerAgent(sensors, position, health, target_position,
                                 is_alive, max_score, current_score, weapon)
@@ -192,6 +191,7 @@ def eval_genomes_enemies(genomes, config):
             continue
         data = agent_data
         if data == "new":
+            print("exit")
             current_directory = os.getcwd()
             file_path = os.path.join(current_directory, name + ".txt")
 
@@ -478,14 +478,27 @@ def waiting_for_commands():
             while any(thread.is_alive() for thread in threads):
                 agent_data = get_unity_data()
                 data_updated = True
+                if(agent_data == "new"):
+                    for t in threads:
+                        t.join()
+                    for i in range(len(threads)):
+                        threads[i] = None
+                    threads = []
+                    data_updated = False
+                    send_unity_outputs("out")
+                    break
                 combined_output = []
                 for q in all_queues:
                     if q is not None:
-                        outputs = q.get(timeout=2)
+                        outputs = q.get(timeout=10)
                         combined_output.extend(outputs)
                 send_unity_outputs(str(combined_output))
                 data_updated = False
                 print("send data")
+        elif parsed_json['command'] == "Evaluate population":
+            send_unity_outputs("out")
+            agent_data = get_unity_data()
+            data_updated = True
         else:
             print("Error: wrong command")
             exit(1)
