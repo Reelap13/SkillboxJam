@@ -21,6 +21,8 @@ namespace Train.Player
                 _player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(_player.transform.position).position);
             data.HP = _player.Health.HitPoint;
             data.WeaponType = _player.Weapon.Type;
+
+            _fitness_function.CalculateFitness();
             data.MaxScore = _fitness_function.MaxFitness;
             data.CurrentScore = _fitness_function.CurrentFitness;
 
