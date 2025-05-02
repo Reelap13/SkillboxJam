@@ -30,7 +30,7 @@ namespace Train.Train
 
         private void ProcessEnemiesInput(string data)
         {
-            Tuple<EnemiesCommands, PlayerCommand[]> commands = EnemyCommandParser.Parse(data, 4);
+            Tuple<EnemiesCommands, PlayerCommand[]> commands = EnemyCommandParser.Parse(data, Arenas.Count);
             ProcessEnemyCommand(commands.Item1);
             ProcessPlayersCommand(commands.Item2);
         }
@@ -144,14 +144,15 @@ namespace Train.Train
             }
 
             PlayerCommand[] player_commands = new PlayerCommand[size];
-            for (int i = size * 5; i < size * 6; ++i)
+            for (int i = 0; i < size; ++i)
             {
-                float x = float.Parse(data[i * 3].Replace(".", ","));
-                float y = float.Parse(data[i * 3 + 1].Replace(".", ","));
-                float is_attack = float.Parse(data[i * 3 + 2].Replace(".", ","));
-                float w1 = float.Parse(data[i * 3 + 3].Replace(".", ","));
-                float w2 = float.Parse(data[i * 3 + 4].Replace(".", ","));
-                float w3 = float.Parse(data[i * 3 + 5].Replace(".", ","));
+                int index = size * 5 + i;
+                float x = float.Parse(data[index * 3].Replace(".", ","));
+                float y = float.Parse(data[index * 3 + 1].Replace(".", ","));
+                float is_attack = float.Parse(data[index * 3 + 2].Replace(".", ","));
+                float w1 = float.Parse(data[index * 3 + 3].Replace(".", ","));
+                float w2 = float.Parse(data[index * 3 + 4].Replace(".", ","));
+                float w3 = float.Parse(data[index * 3 + 5].Replace(".", ","));
 
                 PlayerCommand command = new PlayerCommand
                 {
