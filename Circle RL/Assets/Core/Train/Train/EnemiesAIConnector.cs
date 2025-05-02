@@ -61,12 +61,17 @@ namespace Train.Train
                             break;
                     }
 
-            EnemiesData data = new EnemiesData();
+            AIData data = new AIData();
             data.Solders = solders_data.ToArray();
             data.Snipers = snipers_data.ToArray();
             data.Bombers = bombers_data.ToArray();
             data.MeleeFighters = melee_fighters_data.ToArray();
             data.Spawners = spawners_data.ToArray();
+
+            PlayerData[] players_data = new PlayerData[Arenas.Count];
+            for (int i = 0; i < Arenas.Count; ++i)
+                players_data[i] = Arenas[i].PlayerSpawner.GetPlayerData();
+            data.Players = players_data;
 
             Debug.Log(JsonUtility.ToJson(data));
             return JsonUtility.ToJson(data);

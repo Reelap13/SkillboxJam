@@ -13,7 +13,6 @@ namespace Train.Train
 
         [field: SerializeField]
         public TrainController Controller{ get; private set; }
-        [SerializeField] private PlayersAIConnector _players_connector;
         [SerializeField] private EnemiesAIConnector _enemies_connector;
         [SerializeField] private float _sending_data_number_per_second = 1f;
         [SerializeField] private float _population_changed_time = 10f;
@@ -81,6 +80,15 @@ namespace Train.Train
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Create rectangles").
+                SetProcessFunction((string response) => CreatePlayersPopulations()).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
+        }
+
+        private void CreatePlayersPopulations()
+        {
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Create players").
                 SetProcessFunction((string response) => StartNextIteration()).
                 SetData("[]").Build();
             NEAT.SendData(request_data);
@@ -113,7 +121,6 @@ namespace Train.Train
             _population_time += Time.deltaTime;
             TryUpdatePopulation();
             TrySendData();
-            
         }
 
         private void TrySendData()
@@ -123,7 +130,6 @@ namespace Train.Train
 
             _sending_data_time = 0;
 
-            //_players_connector.SendData();
             _enemies_connector.SendData();
         }
 

@@ -21,6 +21,8 @@ namespace Game.Enemy
             data.HP = _enemy.EnemyParameters.Health;
             data.PlayerInputPredict = _enemy.ArenaController.PlayerSpawner.GetPlayerPredictedInput();
             data.PlayerWeaponType = _enemy.ArenaController.PlayerSpawner.GetPlayerWeaponType();
+
+            _fitness_function.CalculateFitness();
             data.MaxScore = _fitness_function.MaxFitness;
             data.CurrentScore = _fitness_function.CurrentFitness;
 

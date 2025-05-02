@@ -15,7 +15,7 @@ namespace Train.Player
         {
             _player = Instantiate(_player_prefab);
             _player.transform.parent = transform;
-            _player.transform.position = _controller.Board.GetMiddleOfBoard();
+            _player.transform.position = _controller.Board.GetRandomPoint();
             _player.Health.OnDie.AddListener(ProcessPlayerDie);
         }
 
