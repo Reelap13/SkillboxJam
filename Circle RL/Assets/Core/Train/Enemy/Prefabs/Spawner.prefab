@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4157060755374690972}
   - component: {fileID: 4250090723791775717}
   - component: {fileID: 8142731909294469257}
-  - component: {fileID: 7669814380604608686}
   - component: {fileID: 447371464050880974}
+  - component: {fileID: 6318347181133819524}
   - component: {fileID: 199731917977398345}
   - component: {fileID: 2904328847538950964}
   - component: {fileID: 2342234572129895509}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyMovement>k__BackingField: {fileID: 8142731909294469257}
   <EnemyBehavior>k__BackingField: {fileID: 4250090723791775717}
-  <EnemyAbility>k__BackingField: {fileID: 7669814380604608686}
+  <EnemyAbility>k__BackingField: {fileID: 6318347181133819524}
   <DataTaker>k__BackingField: {fileID: 199731917977398345}
   <EnemyPreset>k__BackingField:
     Type: 4
@@ -147,23 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Enemy>k__BackingField: {fileID: 4157060755374690972}
   _speed: 3
---- !u!114 &7669814380604608686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745905492874040608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a12f3aae5bbfd644895878f53e8cb8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 4157060755374690972}
-  meleeAttackPref: {fileID: 2623076505730544321, guid: 0962b8f3378a5d94d8d3c4f632bcacbf, type: 3}
-  slowdownCoefficient: 0.5
-  slowdownTime: 2
-  pushForce: 100
 --- !u!114 &447371464050880974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +159,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba25b8414a19544993700e2ec8371ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6318347181133819524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745905492874040608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e18103d473cdc54db7a42e90ed15d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4157060755374690972}
+  enemyPref: {fileID: 626750864324816022, guid: 985b7db8f79e1eb4dac2d8ee9d573aea, type: 3}
 --- !u!114 &199731917977398345
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,16 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 626750864324816012}
   - component: {fileID: 626750864324816013}
-  - component: {fileID: 626750864324816014}
-  - component: {fileID: 626750864324816015}
+  - component: {fileID: 7955963675858157411}
   - component: {fileID: 626750864324816008}
   - component: {fileID: 626750864324816009}
-  - component: {fileID: 626750864324816010}
   - component: {fileID: 626750864324816011}
   - component: {fileID: 626750864324816020}
   - component: {fileID: 626750864324816021}
   m_Layer: 9
-  m_Name: Soldier
+  m_Name: SpawnSoldier
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626750864324816022}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.796, y: -5.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &626750864324816013
 SpriteRenderer:
@@ -57,6 +55,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -92,7 +93,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &626750864324816014
+--- !u!114 &7955963675858157411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,44 +102,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 626750864324816022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Script: {fileID: 11500000, guid: c0eb648739513eb438f385419f12007a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
---- !u!114 &626750864324816015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626750864324816022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bce325f4e4998cb4c9fb72f51cc31290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <AIEnemyMovement>k__BackingField: {fileID: 626750864324816010}
+  <AIEnemyMovement>k__BackingField: {fileID: 0}
   <EnemyBehavior>k__BackingField: {fileID: 626750864324816008}
   <EnemyAbility>k__BackingField: {fileID: 626750864324816009}
   <EnemyPreset>k__BackingField:
-    StartHealth: 40
+    Type: 0
+    StartHealth: 0
     StartShield: 0
-    Damage: 1
+    Damage: 0
     Team: 0
 --- !u!114 &626750864324816008
 MonoBehaviour:
@@ -152,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079b0683d1bb25c4ebbfcc17b64658fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 626750864324816015}
+  enemy: {fileID: 7955963675858157411}
   timeBetweenPerformingAbility: 1
   distanceForPerformingAbility: 9
 --- !u!114 &626750864324816009
@@ -167,25 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1765044d6057b9145badcbb35f2b143e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 626750864324816015}
+  enemy: {fileID: 0}
   projectile: {fileID: 4016331565663850041, guid: 9adc0099516300947a98470f5dec3b5d, type: 3}
   countOfShooting: 1
   scatter: 1.8
---- !u!114 &626750864324816010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626750864324816022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e0aaa50e9c049544a6ae21503a3b1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  nextWayPointDistance: 1
-  slowdown: 1
 --- !u!114 &626750864324816011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!50 &626750864324816020
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -211,10 +170,16 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_LinearDamping: 1
+  m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -227,11 +192,32 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626750864324816022}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,6 +228,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

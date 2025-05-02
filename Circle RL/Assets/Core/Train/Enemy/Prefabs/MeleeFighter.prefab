@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5388283980036735094}
   - component: {fileID: 3015907982008305219}
   - component: {fileID: 6113346206773463584}
+  - component: {fileID: 3853465349505044361}
   - component: {fileID: 5751760874799789933}
   - component: {fileID: 8999347006443239453}
   - component: {fileID: 2659684728634918852}
@@ -147,6 +148,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Enemy>k__BackingField: {fileID: 5388283980036735094}
   _speed: 3
+--- !u!114 &3853465349505044361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320065797992553684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93bb8d9219570d4092750b4f7e8f67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 5388283980036735094}
+  meleeAttackPref: {fileID: 814389669015846568, guid: 3f4c465050031694ea37243c3b467b11, type: 3}
+  radius: 0
+  slowdownCoefficient: 1
+  slowdownTime: 0
+  pushForce: 0
 --- !u!114 &5751760874799789933
 MonoBehaviour:
   m_ObjectHideFlags: 0

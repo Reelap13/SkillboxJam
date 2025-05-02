@@ -31,8 +31,16 @@ namespace Train.Arena
         {
             enemy.OnDie.RemoveListener(OnEnemyDie);
             _alive_enemies.Remove(enemy);
-            if (_alive_enemies.Count == 0)
-                OnAllEnemiesDie.Invoke();
+
+            foreach (var enemy_prefab in _enemies_prefab)
+                if (enemy_prefab.EnemyPreset.Type == enemy.EnemyPreset.Type)
+                {
+                    AIEnemy ai_enemy = SpawnEnemy(enemy_prefab);
+                    _alive_enemies.Add(ai_enemy);
+                    ai_enemy.OnDie.AddListener(OnEnemyDie);
+                    ai_enemy.Initialize(_controller);
+                    break;
+                }
         }
 
         private AIEnemy SpawnEnemy(AIEnemy enemy_prefab)
@@ -42,6 +50,23 @@ namespace Train.Arena
             enemy.transform.position = _controller.Board.GetRandomPoint();
 
             return enemy;
+        }
+
+        public Transform GetClosestEnemyToPoint(Vector2 position)
+        {
+            float min_distance = float.MaxValue;
+            Transform closest_enemy = null;
+            foreach (var enemy in _alive_enemies)
+            {
+                float distance = Vector2.Distance(position, enemy.transform.position);
+                if (distance < min_distance)
+                {
+                    min_distance = distance;
+                    closest_enemy = enemy.transform;
+                }
+            }
+
+            return closest_enemy;
         }
 
         public List<EnemyData> GetEnemyData()

@@ -7,15 +7,33 @@ namespace Train.Player
     public class PlayerSpawner : MonoBehaviour
     {
         [SerializeField] private ArenaController _controller;
-        [SerializeField] private GameObject _player_prefab;
+        [SerializeField] private PlayerAI _player_prefab;
 
-        private GameObject _player;
+        private PlayerAI _player;
 
         public void SpawnPlayer()
         {
             _player = Instantiate(_player_prefab);
             _player.transform.parent = transform;
             _player.transform.position = _controller.Board.GetMiddleOfBoard();
+            _player.Health.OnDie.AddListener(ProcessPlayerDie);
+        }
+
+        private void ProcessPlayerDie()
+        { 
+            _player.Health.OnDie.RemoveListener(ProcessPlayerDie);
+            _player = null;
+            SpawnPlayer();
+        }
+
+        public PlayerData GetPlayerData()
+        {
+            return _player.DataTaker.GetData();
+        }
+
+        public void ProcessCommand(PlayerCommand command)
+        {
+            _player.Behaviour.ProcessCommand(command);
         }
 
         public Transform GetPlayer()

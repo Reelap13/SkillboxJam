@@ -4,8 +4,6 @@ namespace Game.Enemy.Fitness
 {
     public abstract class FitnessFunction : MonoBehaviour
     {
-        [field: SerializeField]
-        public AIEnemy Enemy { get; private set; }
 
         private float _max_fitness = 0f;
         private float _current_fitness = 0f;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 630374292357531797}
   - component: {fileID: 3255294649593892445}
   - component: {fileID: 8673329161608295317}
-  - component: {fileID: 1572350412799528031}
+  - component: {fileID: 5559558179430323437}
   - component: {fileID: 4559561599432434491}
   - component: {fileID: 8942847845700756308}
   - component: {fileID: 764367407713114376}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyMovement>k__BackingField: {fileID: 8673329161608295317}
   <EnemyBehavior>k__BackingField: {fileID: 3255294649593892445}
-  <EnemyAbility>k__BackingField: {fileID: 1572350412799528031}
+  <EnemyAbility>k__BackingField: {fileID: 5559558179430323437}
   <DataTaker>k__BackingField: {fileID: 8942847845700756308}
   <EnemyPreset>k__BackingField:
     Type: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Enemy>k__BackingField: {fileID: 630374292357531797}
   _speed: 3
---- !u!114 &1572350412799528031
+--- !u!114 &5559558179430323437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,14 +156,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 846814977275349648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a12f3aae5bbfd644895878f53e8cb8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1765044d6057b9145badcbb35f2b143e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 630374292357531797}
-  meleeAttackPref: {fileID: 2623076505730544321, guid: 0962b8f3378a5d94d8d3c4f632bcacbf, type: 3}
-  slowdownCoefficient: 0.5
-  slowdownTime: 2
-  pushForce: 100
+  projectile: {fileID: 4016331565663850041, guid: 9adc0099516300947a98470f5dec3b5d, type: 3}
+  countOfShooting: 1
+  scatter: 1.8
 --- !u!114 &4559561599432434491
 MonoBehaviour:
   m_ObjectHideFlags: 0
