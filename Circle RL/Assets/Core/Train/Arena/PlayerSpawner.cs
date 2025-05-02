@@ -17,6 +17,7 @@ namespace Train.Player
             _player.transform.parent = transform;
             _player.transform.position = _controller.Board.GetRandomPoint();
             _player.Health.OnDie.AddListener(ProcessPlayerDie);
+            _player.Initialize(_controller);
         }
 
         private void ProcessPlayerDie()
