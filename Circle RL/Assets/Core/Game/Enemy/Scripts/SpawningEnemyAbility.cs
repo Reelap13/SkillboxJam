@@ -14,6 +14,7 @@ public class SpawningEnemyAbility : EnemyAbility
 
     public override void PerformAbility(Vector2 direction)
     {
+        return;
         GameObject newEnemy = Instantiate(enemyPref) as GameObject;
         newEnemy.transform.position = tr.position;
     }

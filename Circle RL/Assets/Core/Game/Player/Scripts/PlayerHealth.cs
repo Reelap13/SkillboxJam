@@ -51,9 +51,10 @@ public class PlayerHealth : MonoBehaviour
             }
             hitPoint = value;
             hitPoint = Mathf.Min(maxHitPoint, hitPoint);
-            loseHitPoint?.Invoke();
+            loseHitPoint.Invoke();
             if (hitPoint <= 0)
             {
+                OnDie.Invoke();
                 Destroy(gameObject);
                 Debug.Log("DEATH");
             }
