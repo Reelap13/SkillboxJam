@@ -8,8 +8,8 @@ namespace Train.AIConnection.Data
     {
         public EnemyType EnemyType;
         public Sensors Sensors;
-        public Coordinates EnemyCoordinates;
-        public Coordinates PlayerCoordinates;
+        public Coordinates Position;
+        public Coordinates TargetPosition;
         public float HP;
         public PlayerInputType PlayerInputPredict;
         public PlayerWeaponType PlayerWeaponType;

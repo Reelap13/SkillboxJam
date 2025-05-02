@@ -7,10 +7,10 @@ namespace Train.AIConnection.Data
     {
 
         public Sensors Sensors;
-        public Coordinates PlayerCoordinates;
-        public Coordinates ClosestEnemyCoordinates;
+        public Coordinates Position;
+        public Coordinates TargetPosition;
         public float HP;
-        public PlayerWeaponType WeaponType;
+        public PlayerWeaponType CurrentWeapon;
         public float CurrentScore;
         public float MaxScore;
     }

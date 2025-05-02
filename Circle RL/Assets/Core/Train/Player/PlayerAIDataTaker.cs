@@ -16,11 +16,11 @@ namespace Train.Player
             PlayerData data = new PlayerData();
 
             data.Sensors = _sensors_taker.GetSensorsData();
-            data.PlayerCoordinates = _player.ArenaController.Board.GetParsedPosition(_player.transform.position);
-            data.ClosestEnemyCoordinates = _player.ArenaController.Board.GetParsedPosition(
+            data.Position = _player.ArenaController.Board.GetParsedPosition(_player.transform.position);
+            data.TargetPosition = _player.ArenaController.Board.GetParsedPosition(
                 _player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(_player.transform.position).position);
             data.HP = _player.Health.HitPoint;
-            data.WeaponType = _player.Weapon.Type;
+            data.CurrentWeapon = _player.Weapon.Type;
 
             _fitness_function.CalculateFitness();
             data.MaxScore = _fitness_function.MaxFitness;
