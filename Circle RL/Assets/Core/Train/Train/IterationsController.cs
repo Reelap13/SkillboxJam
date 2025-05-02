@@ -107,7 +107,7 @@ namespace Train.Train
         {
             RequestData request_data = RequestData.GetBuilder().
                 SetCommand("Evaluate population").
-                SetProcessFunction((string response) => { CreateSoldersPopulations(); }).
+                SetProcessFunction((string response) => { CreateSoldersPopulations(); ArenasController.RecreateArenas(); }).
                 SetData("[]").Build();
             NEAT.SendData(request_data);
         }

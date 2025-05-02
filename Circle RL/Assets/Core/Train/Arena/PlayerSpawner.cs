@@ -20,6 +20,11 @@ namespace Train.Player
             _player.Initialize(_controller);
         }
 
+        public void RecreatePlayer()
+        {
+            ProcessPlayerDie();
+        }
+
         private void ProcessPlayerDie()
         { 
             _player.Health.OnDie.RemoveListener(ProcessPlayerDie);
