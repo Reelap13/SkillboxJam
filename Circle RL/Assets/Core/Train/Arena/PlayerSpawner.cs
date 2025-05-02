@@ -22,7 +22,9 @@ namespace Train.Player
 
         public void RecreatePlayer()
         {
+            PlayerAI player = _player;
             ProcessPlayerDie();
+            Destroy(player.gameObject);
         }
 
         private void ProcessPlayerDie()
