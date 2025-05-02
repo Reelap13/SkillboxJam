@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ public abstract class WeaponAttack : MonoBehaviour
     [HideInInspector] public UnityEvent OnAttackTick = new UnityEvent();
     [HideInInspector] public UnityEvent OnEmptyClip = new UnityEvent();
 
-
+    public bool IsInputBlock { get; set; }
 
     private bool AccessToAttack => Weapon.IsAccessToAttack;
     protected int ShotCost => Weapon.WeaponPreset.shotCost;
@@ -34,14 +35,20 @@ public abstract class WeaponAttack : MonoBehaviour
     {
         timeAfterShoot += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown((int)MouseButton) && AccessToAttack)
+        if (IsInputBlock && Input.GetMouseButtonDown((int)MouseButton) && AccessToAttack)
             StartAttack();
 
-        if (Input.GetMouseButtonUp((int)MouseButton) && attackInProcess)
+        if (IsInputBlock && Input.GetMouseButtonUp((int)MouseButton) && attackInProcess)
             EndAttack();
 
         if (Input.GetMouseButton((int)MouseButton))
             InAttackTick();
+    }
+
+    public void ImmitateAttack()
+    {
+        StartAttack();
+        EndAttack();
     }
 
     private void StartAttack()

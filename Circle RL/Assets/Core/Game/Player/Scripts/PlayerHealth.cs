@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public UnityEvent loseHitPoint;
+    public UnityEvent loseHitPoint = new();
+    public UnityEvent OnDie = new();
     [SerializeField] int maxHitPoint;
     float hitPoint;
     int invincibles;

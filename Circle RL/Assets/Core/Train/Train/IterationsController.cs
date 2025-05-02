@@ -15,10 +15,10 @@ namespace Train.Train
         public TrainController Controller{ get; private set; }
         [SerializeField] private PlayersAIConnector _players_connector;
         [SerializeField] private EnemiesAIConnector _enemies_connector;
-        [SerializeField] private float _iterations_number_per_second = 1f;
+        [SerializeField] private float _sending_data_number_per_second = 1f;
         [SerializeField] private float _population_changed_time = 10f;
 
-        private float _sending_data_time, _time_between_sending_data;
+        private float _sending_data_time, _population_time, _time_between_sending_data;
 
         public ConnectingToNEAT NEAT=> Controller.ConnectingToNEAT;
         public ArenasController ArenasController => Controller.ArenasController;
@@ -28,7 +28,8 @@ namespace Train.Train
         private void Awake()
         {
             _sending_data_time = 0;
-            _time_between_sending_data = 1 / _iterations_number_per_second;
+            _population_time = 0;
+            _time_between_sending_data = 1 / _sending_data_number_per_second;
         }
 
         public void InitializeNeat()
@@ -94,9 +95,13 @@ namespace Train.Train
             NEAT.SendData(request_data);
         }
 
-        private void FinishPopulation()
+        private void EvaluatePopulation()
         {
-
+            RequestData request_data = RequestData.GetBuilder().
+                SetCommand("Evaluate population").
+                SetProcessFunction((string response) => { StartNextIteration(); }).
+                SetData("[]").Build();
+            NEAT.SendData(request_data);
         }
 
         private void Update()
@@ -105,7 +110,10 @@ namespace Train.Train
                 return;
 
             _sending_data_time += Time.deltaTime;
+            _population_time += Time.deltaTime;
+            TryUpdatePopulation();
             TrySendData();
+            
         }
 
         private void TrySendData()
@@ -119,5 +127,15 @@ namespace Train.Train
             _enemies_connector.SendData();
         }
 
+        private void TryUpdatePopulation()
+        {
+            if (_population_time < _population_changed_time)
+                return;
+
+            _is_population_active = false;
+            _population_time = 0;
+            _sending_data_number_per_second = 0;
+            EvaluatePopulation();
+        }
     }
 }

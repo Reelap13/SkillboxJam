@@ -43,5 +43,7 @@ namespace Game.Enemy
         {
             return (Enemy.ArenaController.PlayerSpawner.GetPlayerPosition() - _rb.position).normalized;
         }
+        
+        public Transform Player {  get { return Enemy.ArenaController.PlayerSpawner.GetPlayer(); } }
     }
 }

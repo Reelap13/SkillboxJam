@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Enemy.Fitness
 {
-    public class Example : FitnessFunction
+    public class ExampleEnemy : EnemyFitnessFunction
     {
         protected override float CalculateFitnessFuction()
         {
