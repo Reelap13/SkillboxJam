@@ -1,16 +1,16 @@
 Key: 10
 Fitness: 0
 Nodes:
-	0 DefaultNodeGene(key=0, bias=-0.8425800329465667, response=1.0, activation=tanh, aggregation=sum)
-	1 DefaultNodeGene(key=1, bias=-1.2149970577688503, response=1.0, activation=tanh, aggregation=sum)
-	2 DefaultNodeGene(key=2, bias=1.2512032946537153, response=1.0, activation=tanh, aggregation=sum)
-	66 DefaultNodeGene(key=66, bias=-0.537418395847367, response=1.0, activation=tanh, aggregation=sum)
-	67 DefaultNodeGene(key=67, bias=-0.3804273018922334, response=1.0, activation=tanh, aggregation=sum)
-	68 DefaultNodeGene(key=68, bias=-0.569904333686771, response=1.0, activation=tanh, aggregation=sum)
-	69 DefaultNodeGene(key=69, bias=-1.06264875459076, response=1.0, activation=tanh, aggregation=sum)
-	70 DefaultNodeGene(key=70, bias=-1.9106144876747249, response=1.0, activation=tanh, aggregation=sum)
-	71 DefaultNodeGene(key=71, bias=0.07019233180404742, response=1.0, activation=tanh, aggregation=sum)
-	72 DefaultNodeGene(key=72, bias=0.6021790678215215, response=1.0, activation=tanh, aggregation=sum)
+	0 DefaultNodeGene(key=0, bias=-0.8425800329465667, response=1.0, activation=sigmoid, aggregation=sum)
+	1 DefaultNodeGene(key=1, bias=-1.2149970577688503, response=1.0, activation=sigmoid, aggregation=sum)
+	2 DefaultNodeGene(key=2, bias=1.2512032946537153, response=1.0, activation=sigmoid, aggregation=sum)
+	66 DefaultNodeGene(key=66, bias=-0.537418395847367, response=1.0, activation=sigmoid, aggregation=sum)
+	67 DefaultNodeGene(key=67, bias=-0.3804273018922334, response=1.0, activation=sigmoid, aggregation=sum)
+	68 DefaultNodeGene(key=68, bias=-0.569904333686771, response=1.0, activation=sigmoid, aggregation=sum)
+	69 DefaultNodeGene(key=69, bias=-1.06264875459076, response=1.0, activation=sigmoid, aggregation=sum)
+	70 DefaultNodeGene(key=70, bias=-1.9106144876747249, response=1.0, activation=sigmoid, aggregation=sum)
+	71 DefaultNodeGene(key=71, bias=0.07019233180404742, response=1.0, activation=sigmoid, aggregation=sum)
+	72 DefaultNodeGene(key=72, bias=0.6021790678215215, response=1.0, activation=sigmoid, aggregation=sum)
 Connections:
 	DefaultConnectionGene(key=(-18, 0), weight=1.9064017984611936, enabled=True)
 	DefaultConnectionGene(key=(-18, 1), weight=-0.7374150619767619, enabled=True)

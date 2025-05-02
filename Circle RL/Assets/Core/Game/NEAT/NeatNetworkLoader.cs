@@ -9,6 +9,7 @@ public class NeatNetworkLoader : MonoBehaviour
     public string filePath = "neat_network.txt"; // Replace with your file path
 
     private NeuralNetwork network;
+    Dictionary<int, int> nodeToIndexMap = new();
 
     [System.Serializable]
     public class NodeData
@@ -253,16 +254,39 @@ public class NeatNetworkLoader : MonoBehaviour
 
     void InitializeMatrices()
     {
-        int maxNodeId = network.nodes.Keys.Max();
-        int numNodes = maxNodeId + 1;
+        int minNodeIndex = 0;
+
+        foreach (var item in network.connections)
+        {
+            if (item.inNode < minNodeIndex)
+            {
+                minNodeIndex = item.inNode;
+            }
+        }
+        int inputNodes = Mathf.Abs(minNodeIndex);
+
+        for (int i = minNodeIndex; i < 0; i++)
+        {
+            nodeToIndexMap.Add(i, i + inputNodes);
+        }
+        int idx = 0;
+        foreach (var item in network.nodes)
+        {
+            nodeToIndexMap.Add(item.Key, idx + inputNodes);
+            idx++;
+        }
+
+        int numNodes = network.nodes.Keys.Count + inputNodes;
 
         network.weights = new Matrix<float>(numNodes, numNodes);
         network.biases = new Vector<float>(numNodes);
 
+
+
         // Initialize biases
         foreach (var node in network.nodes)
         {
-            network.biases[node.Key] = node.Value.bias;
+            network.biases[nodeToIndexMap[node.Key]] = node.Value.bias;
         }
 
         // Initialize weights based on enabled connections
@@ -270,7 +294,7 @@ public class NeatNetworkLoader : MonoBehaviour
         {
             if (connection.enabled)
             {
-                network.weights[connection.outNode, connection.inNode] = connection.weight;
+                network.weights[nodeToIndexMap[connection.outNode], nodeToIndexMap[connection.inNode]] = connection.weight;
             }
         }
     }
@@ -280,17 +304,11 @@ public class NeatNetworkLoader : MonoBehaviour
         //Create node values vector
         Vector<float> nodeValues = new Vector<float>(network.weights.Rows);
 
-        //Ensure input vector size matches input node count
-        if (input.Length != network.inputNodes.Count)
-        {
-            Debug.LogError("Input vector size does not match the number of input nodes.");
-            return new Vector<float>(0);
-        }
 
         //Initialize input nodes with the provided input values
-        for (int i = 0; i < network.inputNodes.Count; i++)
+        for (int i = 0; i < Mathf.Abs(nodeToIndexMap.Keys.Min()); i++)
         {
-            nodeValues[network.inputNodes[i]] = input[i];
+            nodeValues[i] = input[i];
         }
 
         //Go through each node of the network and caclulate their value
@@ -303,11 +321,19 @@ public class NeatNetworkLoader : MonoBehaviour
             {
                 sum += nodeValues[j] * network.weights[i, j];
             }
+            int key = -1;
+            foreach (var item in nodeToIndexMap)
+            {
+                if(item.Value == i)
+                {
+                    key = item.Key;
+                }
+            }
 
             //Apply the activation function
-            if (network.nodes.ContainsKey(i))
+            if (key != -1 && network.nodes.ContainsKey(key))
             {
-                nodeValues[i] = ApplyActivationFunction(sum, network.nodes[i].activation, network.nodes[i].response);
+                nodeValues[i] = ApplyActivationFunction(sum, network.nodes[key].activation, network.nodes[key].response);
             }
         }
 
@@ -315,7 +341,18 @@ public class NeatNetworkLoader : MonoBehaviour
         Vector<float> output = new Vector<float>(network.outputNodes.Count);
         for (int i = 0; i < network.outputNodes.Count; i++)
         {
-            output[i] = nodeValues[network.outputNodes[i]];
+            output[i] = nodeValues[nodeToIndexMap[network.outputNodes[i]]];
+        }
+
+        for (int i = 0; i < network.weights.Columns; i++)
+        {
+            string s = "";
+            for (int j = 0; j < network.weights.Rows; j++)
+            {
+                s += network.weights[j, i].ToString();
+                s += " ";
+            }
+            Debug.Log(s);
         }
 
         return output;
@@ -340,7 +377,7 @@ public class NeatNetworkLoader : MonoBehaviour
     void TestNetwork()
     {
         //Example Usage: Test Network
-        Vector<float> testInput = new Vector<float>(network.inputNodes.Count);
+        Vector<float> testInput = new Vector<float>(Mathf.Abs(nodeToIndexMap.Keys.Min()));
         testInput[0] = 0.5f;  // Set some input values
         testInput[1] = 0.2f;
         testInput[2] = 0.8f;
