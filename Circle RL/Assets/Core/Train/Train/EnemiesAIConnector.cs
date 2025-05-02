@@ -30,7 +30,9 @@ namespace Train.Train
 
         private void ProcessEnemiesInput(string data)
         {
-            ProcessEnemyCommand(EnemyCommandParser.Parse(data, 4));
+            Tuple<EnemiesCommands, PlayerCommand[]> commands = EnemyCommandParser.Parse(data, 4);
+            ProcessEnemyCommand(commands.Item1);
+            ProcessPlayersCommand(commands.Item2);
         }
 
         private string GetParsedEnemiesData()
@@ -89,16 +91,24 @@ namespace Train.Train
                 enemies.ProcessCommand(commands.Spawners[i]);
             }
         }
+
+        public void ProcessPlayersCommand(PlayerCommand[] commands)
+        {
+            for (int i = 0; i < Arenas.Count; ++i)
+            {
+                Arenas[i].PlayerSpawner.ProcessCommand(commands[i]);
+            }
+        }
     }
     public static class EnemyCommandParser
     {
 
-        public static EnemiesCommands Parse(string json, int size)
+        public static Tuple<EnemiesCommands, PlayerCommand[]> Parse(string json, int size)
         {
             json = json.Replace("[", "").Replace("]", "");
             string[] data = json.Split(',');
 
-            EnemiesCommands commands = new EnemiesCommands();
+            EnemiesCommands enemy_commands = new EnemiesCommands();
 
             for (int i = 0; i < size * 5; i++)
             {
@@ -116,24 +126,48 @@ namespace Train.Train
                 switch (command.Type)
                 {
                     case Game.Enemy.EnemyType.SOLDER:
-                        commands.Solders.Add(command);
+                        enemy_commands.Solders.Add(command);
                         break;
                     case Game.Enemy.EnemyType.SNIPER:
-                        commands.Snipers.Add(command);
+                        enemy_commands.Snipers.Add(command);
                         break;
                     case Game.Enemy.EnemyType.BOMBER:
-                        commands.Bombers.Add(command);
+                        enemy_commands.Bombers.Add(command);
                         break;
                     case Game.Enemy.EnemyType.MELEE_FIGHTER:
-                        commands.MeleeFighters.Add(command);
+                        enemy_commands.MeleeFighters.Add(command);
                         break;
                     case Game.Enemy.EnemyType.SPAWNER:
-                        commands.Spawners.Add(command);
+                        enemy_commands.Spawners.Add(command);
                         break;
                 }
             }
 
-            return commands;
+            PlayerCommand[] player_commands = new PlayerCommand[size];
+            for (int i = size * 5; i < size * 6; ++i)
+            {
+                float x = float.Parse(data[i * 3].Replace(".", ","));
+                float y = float.Parse(data[i * 3 + 1].Replace(".", ","));
+                float is_attack = float.Parse(data[i * 3 + 2].Replace(".", ","));
+                float w1 = float.Parse(data[i * 3 + 3].Replace(".", ","));
+                float w2 = float.Parse(data[i * 3 + 4].Replace(".", ","));
+                float w3 = float.Parse(data[i * 3 + 5].Replace(".", ","));
+
+                PlayerCommand command = new PlayerCommand
+                {
+                    Direction = new Coordinates(x, y),
+                    IsAttack = is_attack != 0,
+                    W1 = is_attack != 0,
+                    W2 = is_attack != 0,
+                    W3 = is_attack != 0
+                };
+
+                player_commands[i] = command;
+            }
+
+
+
+            return new(enemy_commands, player_commands);
         }
 
 
