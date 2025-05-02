@@ -28,6 +28,12 @@ namespace Train
                 }
             }
         }
+
+        public void RecreateArenas()
+        {
+            foreach (var arena in _arenas)
+                arena.RecreateArena();
+        }
         
         public List<ArenaController> Arenas { get { return _arenas; } }
     }

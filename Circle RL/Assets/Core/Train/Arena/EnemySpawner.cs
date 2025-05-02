@@ -26,6 +26,14 @@ namespace Train.Arena
                 enemy.Initialize(_controller);
             }
         }
+        
+        public void RecreateEnemies()
+        {
+            foreach (var enemy in _alive_enemies)
+                Destroy(enemy.gameObject);
+            _alive_enemies.Clear();
+            SpawnEnemies();
+        }
 
         private void OnEnemyDie(AIEnemy enemy)
         {

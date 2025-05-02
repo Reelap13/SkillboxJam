@@ -23,5 +23,11 @@ namespace Train.Arena
             PlayerSpawner.SpawnPlayer();
             EnemySpawner.SpawnEnemies();
         }
+
+        public void RecreateArena()
+        {
+            EnemySpawner.RecreateEnemies();
+            PlayerSpawner.RecreatePlayer();
+        }
     }
 }
