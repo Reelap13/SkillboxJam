@@ -69,6 +69,7 @@ public struct EnemyPreset
 public class EnemyParameters
 {
     public UnityEvent OnDieing = new UnityEvent();
+    public UnityEvent<float> OnLosedHealth = new UnityEvent<float>();
     public UnityEvent OnBrokingShield = new UnityEvent();
 
     public float Health;
@@ -93,6 +94,7 @@ public class EnemyParameters
             return;
         }
 
+        OnLosedHealth.Invoke(MathF.Min(Health, damage));    
         if (damage >= Health)
         {
             Health = 0;

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public UnityEvent loseHitPoint = new();
+    public UnityEvent<float> loseHitPoint = new();
     public UnityEvent OnDie = new();
     [SerializeField] int maxHitPoint;
     float hitPoint;
@@ -49,9 +49,9 @@ public class PlayerHealth : MonoBehaviour
                 }
                 return;
             }
+            loseHitPoint.Invoke(hitPoint - value);
             hitPoint = value;
             hitPoint = Mathf.Min(maxHitPoint, hitPoint);
-            loseHitPoint.Invoke();
             if (hitPoint <= 0)
             {
                 OnDie.Invoke();

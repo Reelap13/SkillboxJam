@@ -10,6 +10,12 @@ namespace Train.Player
         [SerializeField] private PlayerAI _player_prefab;
 
         private PlayerAI _player;
+        private PlayerStats _player_stats;
+
+        private void Update()
+        {
+            _player_stats.UpdatePlayerData();
+        }
 
         public void SpawnPlayer()
         {
@@ -17,6 +23,10 @@ namespace Train.Player
             _player.transform.parent = transform;
             _player.transform.position = _controller.Board.GetRandomPoint();
             _player.Health.OnDie.AddListener(ProcessPlayerDie);
+
+            _player_stats = new();
+            _player_stats.InitializePlayer(_player);
+
             _player.Initialize(_controller);
         }
 

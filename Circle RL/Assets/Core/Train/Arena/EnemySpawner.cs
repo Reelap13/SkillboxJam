@@ -15,15 +15,30 @@ namespace Train.Arena
         [SerializeField] private List<AIEnemy> _enemies_prefab;
 
         private HashSet<AIEnemy> _alive_enemies = new();
+        private Dictionary<EnemyType, EnemyStats> _enemy_stats = new();
+
+        private void Update()
+        {
+            foreach (var enemy in _alive_enemies)
+            {
+                GetEnemyStats(enemy).UpdateEnemyData();
+            }
+        }
 
         public void SpawnEnemies()
         {
+            _alive_enemies.Clear();
+            _enemy_stats.Clear();
             foreach (var enemy_prefab in _enemies_prefab)
             {
                 AIEnemy enemy = SpawnEnemy(enemy_prefab);
                 _alive_enemies.Add(enemy);
                 enemy.OnDie.AddListener(OnEnemyDie);
                 enemy.Initialize(_controller);
+
+                EnemyStats stats = new();
+                stats.InitializeEnemy(enemy);
+                _enemy_stats.Add(enemy.EnemyPreset.Type, stats);
             }
         }
         
@@ -31,7 +46,6 @@ namespace Train.Arena
         {
             foreach (var enemy in _alive_enemies)
                 Destroy(enemy.gameObject);
-            _alive_enemies.Clear();
             SpawnEnemies();
         }
 
@@ -94,6 +108,11 @@ namespace Train.Arena
                     enemy.EnemyBehavior.ProcessCommnad(command);
                     break;
                 }
+        }
+
+        public EnemyStats GetEnemyStats(AIEnemy enemy)
+        {
+            return _enemy_stats[enemy.EnemyPreset.Type];
         }
     }
 }

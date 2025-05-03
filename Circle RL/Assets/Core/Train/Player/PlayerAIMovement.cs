@@ -38,5 +38,9 @@ namespace Train.Player
         {
             return (Player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(transform.position).position - transform.position).normalized;
         }
+        public float GetDistanceToClosestEnemy()
+        {
+            return (Player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(transform.position).position - transform.position).magnitude;
+        }
     }
 }
