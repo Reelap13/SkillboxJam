@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 5981916822939058541}
   - component: {fileID: 7593969635485353167}
   - component: {fileID: 8228300373675005003}
-  - component: {fileID: 8720841062424208246}
   - component: {fileID: 7110104991630325201}
   - component: {fileID: 5807929760389750968}
+  - component: {fileID: 1735857358804047526}
   m_Layer: 9
   m_Name: Bomber
   m_TagString: Enemy
@@ -117,7 +117,7 @@ MonoBehaviour:
     Type: 2
     StartHealth: 100
     StartShield: 0
-    Damage: 50
+    Damage: 30
     Team: 0
 --- !u!114 &7598501937079452558
 MonoBehaviour:
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 6090508429224151810}
   _sensors_taker: {fileID: 8228300373675005003}
-  _fitness_function: {fileID: 8720841062424208246}
+  _fitness_function: {fileID: 1735857358804047526}
 --- !u!114 &8228300373675005003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,19 +205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distance: 30
---- !u!114 &8720841062424208246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244456554922146864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d5c57a21501af4d837737abbb9b5d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Enemy>k__BackingField: {fileID: 6090508429224151810}
 --- !u!50 &7110104991630325201
 Rigidbody2D:
   serializedVersion: 5
@@ -281,3 +268,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1735857358804047526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244456554922146864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca95cb07e150ab140addc40a3e2a86bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Enemy>k__BackingField: {fileID: 6090508429224151810}

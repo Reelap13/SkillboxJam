@@ -23,6 +23,7 @@ namespace Train.Arena
                 return;
             foreach (var enemy in _alive_enemies)
             {
+                if (enemy.gameObject == null) continue;
                 GetEnemyStats(enemy).UpdateEnemyData();
             }
         }
@@ -115,7 +116,6 @@ namespace Train.Arena
 
         public EnemyStats GetEnemyStats(AIEnemy enemy)
         {
-            Debug.Log($"{_alive_enemies.Count} {_enemy_stats.Count}");
             return _enemy_stats[enemy.EnemyPreset.Type];
         }
     }
