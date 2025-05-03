@@ -28,6 +28,7 @@ public class SceneController : MonoBehaviour
     {
         foreach (var obj in resetables)
         {
+            Debug.Log(obj.name);   
             foreach (var toReset in obj.GetComponents<IResetable>())
             {
                 if (toReset != null)

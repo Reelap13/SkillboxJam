@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3015907982008305219}
   - component: {fileID: 6113346206773463584}
   - component: {fileID: 3853465349505044361}
-  - component: {fileID: 8999347006443239453}
+  - component: {fileID: 4666649026644151833}
   - component: {fileID: 2659684728634918852}
   - component: {fileID: 1493994374629240749}
   - component: {fileID: 4749942773317726772}
@@ -165,7 +165,7 @@ MonoBehaviour:
   slowdownCoefficient: 1
   slowdownTime: 0
   pushForce: 0
---- !u!114 &8999347006443239453
+--- !u!114 &4666649026644151833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,9 +174,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2320065797992553684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba25b8414a19544993700e2ec8371ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 44e3f990548ab7c4db5a79478208f393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 5388283980036735094}
 --- !u!114 &2659684728634918852
 MonoBehaviour:
   m_ObjectHideFlags: 0

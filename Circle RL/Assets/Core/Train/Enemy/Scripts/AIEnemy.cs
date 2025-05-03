@@ -8,6 +8,9 @@ namespace Game.Enemy
 {
     public class AIEnemy : MonoBehaviour
     {
+        static public UnityEvent<AIEnemy> OnSpawned = new();
+        static public UnityEvent<AIEnemy> OnDied = new();
+
         [NonSerialized] public UnityEvent<AIEnemy> OnDie = new();
 
         [field: SerializeField]
@@ -27,12 +30,18 @@ namespace Game.Enemy
 
         private bool _is_die = false;
 
-        public void Initialize(ArenaController _controller)
+        private void Start()
         {
-            ArenaController = _controller;
+            OnSpawned.Invoke(this);
+
             EnemyParameters = new EnemyParameters(EnemyPreset);
             EnemyParameters.OnDieing.AddListener(Die);
             EnemyPreset.ChangeTeam(TagEnum.ENEMY);
+        }
+
+        public void Initialize(ArenaController _controller)
+        {
+            ArenaController = _controller;
         }
 
         private void Die()
@@ -42,6 +51,7 @@ namespace Game.Enemy
 
             _is_die = true;
             OnDie.Invoke(this);
+            OnDied.Invoke(this);
             Destroy(gameObject);
         }
 

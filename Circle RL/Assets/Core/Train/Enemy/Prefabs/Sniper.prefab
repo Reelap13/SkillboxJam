@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 878580790186491217}
   - component: {fileID: 4345865346083231203}
   - component: {fileID: 4903207122368297859}
-  - component: {fileID: 1966546677528842817}
   - component: {fileID: 4858110803781774202}
+  - component: {fileID: 5239498217333596301}
   - component: {fileID: 4757199597327808710}
   - component: {fileID: 8305192239883483813}
   - component: {fileID: 4597764980256569456}
@@ -147,18 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Enemy>k__BackingField: {fileID: 878580790186491217}
   _speed: 3
---- !u!114 &1966546677528842817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886524093968600099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba25b8414a19544993700e2ec8371ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4858110803781774202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +163,19 @@ MonoBehaviour:
   projectile: {fileID: 4760903526890881071, guid: 09efe9d9c62cf4e49ad3304ea424f09c, type: 3}
   countOfShooting: 1
   scatter: 1.8
+--- !u!114 &5239498217333596301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886524093968600099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e3f990548ab7c4db5a79478208f393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 878580790186491217}
 --- !u!114 &4757199597327808710
 MonoBehaviour:
   m_ObjectHideFlags: 0

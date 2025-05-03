@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3255294649593892445}
   - component: {fileID: 8673329161608295317}
   - component: {fileID: 5559558179430323437}
-  - component: {fileID: 4559561599432434491}
+  - component: {fileID: 6966160907008237495}
   - component: {fileID: 8942847845700756308}
   - component: {fileID: 764367407713114376}
   - component: {fileID: 2037048102479170218}
@@ -163,7 +163,7 @@ MonoBehaviour:
   projectile: {fileID: 4016331565663850041, guid: 9adc0099516300947a98470f5dec3b5d, type: 3}
   countOfShooting: 1
   scatter: 1.8
---- !u!114 &4559561599432434491
+--- !u!114 &6966160907008237495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +172,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 846814977275349648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba25b8414a19544993700e2ec8371ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 44e3f990548ab7c4db5a79478208f393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 630374292357531797}
 --- !u!114 &8942847845700756308
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,17 +26,13 @@ public class Dash : Ability
         }
         lastShoot = _cd;
         direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - _rb.transform.position).normalized;
-        Debug.Log(direction);
-        Debug.Log(_rb);
         StartCoroutine(makeDash());
     }
 
     IEnumerator makeDash()
     {
         isInUse = true;
-        Debug.Log("Use");
         yield return new WaitForSeconds(_time);
-        Debug.Log("Unuse");
         isInUse = false;
     }
     private void FixedUpdate()
