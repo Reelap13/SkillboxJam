@@ -72,5 +72,7 @@ namespace Train.Player
         {
             return PlayerWeaponType.W1;
         }
+
+        public PlayerStats Stats { get; private set; }
     }
 }
