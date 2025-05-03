@@ -13,6 +13,7 @@ namespace Train.Player
         private List<float> _distance_to_target = new();
         private int _kills;
         private int _deaths;
+        private int _attack_number;
 
         public void UpdatePlayerData()
         {
@@ -25,6 +26,7 @@ namespace Train.Player
 
             _player.Health.OnDie.AddListener(() => { _deaths += 1; });
             _player.Health.loseHitPoint.AddListener((float damage) => { _hp_lost += damage; });
+            _player.Weapon.Weapon.OnAttackStarted.AddListener(() => { _attack_number++; });
         }
 
         public float GetTotalDamage()
@@ -53,6 +55,10 @@ namespace Train.Player
         public int TotalDeaths()
         {
             return _deaths;
+        }
+        public int GetTotalAttackNumber()
+        {
+            return _attack_number;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Train.Player
             _w1.ImmitateAttack();
         }
 
-
+        public WeaponAttack Weapon => _w1;
         public PlayerWeaponType Type => PlayerWeaponType.W1;
     }
 }

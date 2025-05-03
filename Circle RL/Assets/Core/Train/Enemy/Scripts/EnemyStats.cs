@@ -12,6 +12,7 @@ namespace Game.Enemy
         private List<float> _distance_to_target = new();
         private int _kills;
         private int _deaths;
+        private int _attack_number;
 
         public void UpdateEnemyData()
         {
@@ -26,6 +27,7 @@ namespace Game.Enemy
 
             _enemy.EnemyParameters.OnDieing.AddListener(() => { _deaths += 1; });
             _enemy.EnemyParameters.OnLosedHealth.AddListener((float damage) => { _hp_lost += damage; });
+            _enemy.EnemyBehavior.OnPerformedAbility.AddListener(() => { _attack_number += 1; });
         }
 
         public float GetTotalDamage()
@@ -54,6 +56,11 @@ namespace Game.Enemy
         public int TotalDeaths()
         {
             return _deaths;
+        }
+
+        public int GetTotalAttackNumber()
+        {
+            return _attack_number;
         }
     }
 }
