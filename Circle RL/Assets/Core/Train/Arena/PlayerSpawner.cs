@@ -14,6 +14,8 @@ namespace Train.Player
 
         private void Update()
         {
+            if (_player_stats == null)
+                return;
             _player_stats.UpdatePlayerData();
         }
 
@@ -41,6 +43,7 @@ namespace Train.Player
         { 
             _player.Health.OnDie.RemoveListener(ProcessPlayerDie);
             _player = null;
+            _player_stats = null;
             SpawnPlayer();
         }
 
