@@ -112,6 +112,7 @@ namespace Train.Arena
 
         public EnemyStats GetEnemyStats(AIEnemy enemy)
         {
+            Debug.Log($"{_alive_enemies.Count} {_enemy_stats.Count}");
             return _enemy_stats[enemy.EnemyPreset.Type];
         }
     }
