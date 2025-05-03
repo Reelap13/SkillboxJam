@@ -26,6 +26,7 @@ public class GameCondition : MonoBehaviour, IResetable
         {
             isItWin = isItWin && winCondition.IsWin;
         }
+        Debug.Log(isItWin);
         if (isItWin)
         {
             Debug.Log("WIN");

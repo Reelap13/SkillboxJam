@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Enemy;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class EnemyCounter : WinCondition
 {
@@ -10,17 +8,17 @@ public class EnemyCounter : WinCondition
     private void Awake()
     {
         enemyCounter = 0;
-        EnemyController.summonEnemy.AddListener(OnEnemySummon);
-        EnemyController.destroyEnemy.AddListener(OnEnemyDestroy);
-        isWin = false;
+        AIEnemy.OnSpawned.AddListener(OnEnemySummon);
+        AIEnemy.OnDied.AddListener(OnEnemyDestroy);
+        isWin = true;
     }
 
-    private void OnEnemySummon()
+    private void OnEnemySummon(AIEnemy enemy)
     {
         enemyCounter++;
         isWin = enemyCounter <= 0;
     }
-    private void OnEnemyDestroy()
+    private void OnEnemyDestroy(AIEnemy enemy)
     {
         enemyCounter--;
         isWin = enemyCounter <= 0;

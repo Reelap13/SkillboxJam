@@ -6,5 +6,7 @@ namespace Game.Enemy.Fitness
     {
         [field: SerializeField]
         public AIEnemy Enemy { get; private set; }
+
+        public EnemyStats Stats => Enemy.ArenaController.EnemySpawner.GetEnemyStats(Enemy);
     }
 }
