@@ -19,6 +19,8 @@ namespace Train.Arena
 
         private void Update()
         {
+            if (_alive_enemies.Count != _enemies_prefab.Count)
+                return;
             foreach (var enemy in _alive_enemies)
             {
                 GetEnemyStats(enemy).UpdateEnemyData();
@@ -34,11 +36,12 @@ namespace Train.Arena
                 AIEnemy enemy = SpawnEnemy(enemy_prefab);
                 _alive_enemies.Add(enemy);
                 enemy.OnDie.AddListener(OnEnemyDie);
-                enemy.Initialize(_controller);
 
                 EnemyStats stats = new();
-                stats.InitializeEnemy(enemy);
                 _enemy_stats.Add(enemy.EnemyPreset.Type, stats);
+
+                stats.InitializeEnemy(enemy);
+                enemy.Initialize(_controller);
             }
         }
         
