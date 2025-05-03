@@ -9,7 +9,7 @@ namespace Game.Enemy
 
         private float _damage;
         private float _hp_lost;
-        private List<float> _distance_to_target;
+        private List<float> _distance_to_target = new();
         private int _kills;
         private int _deaths;
 
