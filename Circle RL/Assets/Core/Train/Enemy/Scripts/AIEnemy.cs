@@ -30,7 +30,7 @@ namespace Game.Enemy
 
         private bool _is_die = false;
 
-        private void Start()
+        private void Awake()
         {
             OnSpawned.Invoke(this);
 
