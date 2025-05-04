@@ -6,15 +6,17 @@ namespace Train.Player
 {
     public class PlayerSpawner : MonoBehaviour
     {
-        [SerializeField] private ArenaController _controller;
+        [SerializeField] protected ArenaController _controller;
         [SerializeField] private PlayerAI _player_prefab;
 
-        private PlayerAI _player;
-        private PlayerStats _player_stats;
+        protected PlayerAI _player;
+        protected PlayerStats _player_stats;
+
+        protected bool _block_stats_calculation = false;
 
         private void Update()
         {
-            if (_player_stats == null)
+            if (_player_stats == null || _block_stats_calculation)
                 return;
             _player_stats.UpdatePlayerData();
         }

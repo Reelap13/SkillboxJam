@@ -11,15 +11,17 @@ namespace Train.Arena
     {
         [NonSerialized] public UnityEvent OnAllEnemiesDie = new();
 
-        [SerializeField] private ArenaController _controller;
+        [SerializeField] protected ArenaController _controller;
         [SerializeField] private List<AIEnemy> _enemies_prefab;
 
-        private HashSet<AIEnemy> _alive_enemies = new();
-        private Dictionary<EnemyType, EnemyStats> _enemy_stats = new();
+        protected HashSet<AIEnemy> _alive_enemies = new();
+        protected Dictionary<EnemyType, EnemyStats> _enemy_stats = new();
+
+        protected bool _block_stats_calculation = false;
 
         private void Update()
         {
-            if (_alive_enemies.Count != _enemies_prefab.Count)
+            if (_alive_enemies.Count != _enemies_prefab.Count || _block_stats_calculation)
                 return;
             foreach (var enemy in _alive_enemies)
             {

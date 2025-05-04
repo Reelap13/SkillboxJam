@@ -81,6 +81,8 @@ public class NeuralNetworkController : MonoBehaviour
         }
     }
 
+
+
     Vector<float> ActivateNetwork(Vector<float> input)
     {
         //Create node values vector
