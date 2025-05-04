@@ -3,137 +3,146 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
+using UnityEditor;
+
+
+[Serializable]
+public class NodeData
+{
+    public int key;
+    public float bias;
+    public float response;
+    public string activation;
+    public string aggregation;
+
+    public NodeData(int key, float bias, float response, string activation, string aggregation)
+    {
+        this.key = key;
+        this.bias = bias;
+        this.response = response;
+        this.activation = activation;
+        this.aggregation = aggregation;
+    }
+}
+
+[Serializable]
+public class ConnectionData
+{
+    public int inNode;
+    public int outNode;
+    public float weight;
+    public bool enabled;
+
+    public ConnectionData(int inNode, int outNode, float weight, bool enabled)
+    {
+        this.inNode = inNode;
+        this.outNode = outNode;
+        this.weight = weight;
+        this.enabled = enabled;
+    }
+}
+
+[Serializable]
+[CreateAssetMenu(fileName = "NeuralNetwork", menuName = "Game/NeuralNetwork")]
+public class NeuralNetwork : ScriptableObject
+{
+    public List<NodeData> nodes = new ();
+    public List<ConnectionData> connections = new List<ConnectionData>();
+    public List<int> outputNodes = new List<int>();
+    public int numOfInputNodes;
+
+    public Vector<float> biases;
+    public Matrix<float> weights;
+}
+
+[Serializable]
+public enum ActivationFunction
+{
+    Sigmoid,
+    Tanh,
+    ReLU,
+    Identity,
+    Softmax,
+    None
+}
+
+[Serializable]
+public struct Vector<T>
+{
+    public T[] data;
+
+    public Vector(int size)
+    {
+        data = new T[size];
+    }
+
+    public int Length
+    {
+        get { return data.Length; }
+    }
+
+    public T this[int index]
+    {
+        get { return data[index]; }
+        set { data[index] = value; }
+    }
+}
+
+[Serializable]
+public struct Matrix<T>
+{
+    public T[,] data;
+
+    public Matrix(int rows, int cols)
+    {
+        data = new T[rows, cols];
+    }
+
+    public int Rows
+    {
+        get { return data.GetLength(0); }
+    }
+
+    public int Columns
+    {
+        get { return data.GetLength(1); }
+    }
+
+    public T this[int row, int col]
+    {
+        get { return data[row, col]; }
+        set { data[row, col] = value; }
+    }
+}
+
 
 public class NeatNetworkLoader : MonoBehaviour
 {
     public string filePath = "neat_network.txt"; // Replace with your file path
 
-    private NeuralNetwork network;
+    public NeuralNetwork network;
 
-    [System.Serializable]
-    public class NodeData
-    {
-        public int key;
-        public float bias;
-        public float response;
-        public string activation;
-        public string aggregation;
-
-        public NodeData(int key, float bias, float response, string activation, string aggregation)
-        {
-            this.key = key;
-            this.bias = bias;
-            this.response = response;
-            this.activation = activation;
-            this.aggregation = aggregation;
-        }
-    }
-
-    [System.Serializable]
-    public class ConnectionData
-    {
-        public int inNode;
-        public int outNode;
-        public float weight;
-        public bool enabled;
-
-        public ConnectionData(int inNode, int outNode, float weight, bool enabled)
-        {
-            this.inNode = inNode;
-            this.outNode = outNode;
-            this.weight = weight;
-            this.enabled = enabled;
-        }
-    }
-
-    [System.Serializable]
-    public class NeuralNetwork
-    {
-        public Dictionary<int, NodeData> nodes = new Dictionary<int, NodeData>();
-        public List<ConnectionData> connections = new List<ConnectionData>();
-        public List<int> inputNodes = new List<int>();
-        public List<int> outputNodes = new List<int>();
-
-        public Vector<float> biases;
-        public Matrix<float> weights;
-    }
-
-    public enum ActivationFunction
-    {
-        Sigmoid,
-        Tanh,
-        ReLU,
-        Identity,
-        Softmax,
-        None
-    }
-
-    public struct Vector<T>
-    {
-        public T[] data;
-
-        public Vector(int size)
-        {
-            data = new T[size];
-        }
-
-        public int Length
-        {
-            get { return data.Length; }
-        }
-
-        public T this[int index]
-        {
-            get { return data[index]; }
-            set { data[index] = value; }
-        }
-    }
-
-    public struct Matrix<T>
-    {
-        public T[,] data;
-
-        public Matrix(int rows, int cols)
-        {
-            data = new T[rows, cols];
-        }
-
-        public int Rows
-        {
-            get { return data.GetLength(0); }
-        }
-
-        public int Columns
-        {
-            get { return data.GetLength(1); }
-        }
-
-        public T this[int row, int col]
-        {
-            get { return data[row, col]; }
-            set { data[row, col] = value; }
-        }
-    }
 
     void Start()
     {
-        network = LoadNetworkFromFile(filePath);
 
-        foreach (var item in network.nodes)
-        {
-            Debug.Log(item.Key);
-            Debug.Log(item.Value.bias);
-        }
+        LoadNetworkFromFile(filePath);
+
 
         if (network != null)
         {
             Debug.Log("Network loaded successfully.");
 
             //Initialize matrices
-            InitializeMatrices();
+            //InitializeMatrices();
 
             //Test the network with sample input
-            TestNetwork();
+            //TestNetwork();
+
+            EditorUtility.SetDirty(network);
+            AssetDatabase.SaveAssets(); // Force save
+            AssetDatabase.Refresh();
+
         }
         else
         {
@@ -143,12 +152,11 @@ public class NeatNetworkLoader : MonoBehaviour
 
     NeuralNetwork LoadNetworkFromFile(string path)
     {
-        NeuralNetwork network = new NeuralNetwork();
 
         try
         {
             string[] lines = File.ReadAllLines(path);
-            Dictionary<int, NodeData> nodes = new Dictionary<int, NodeData>();
+            List<NodeData> nodes = new ();
             List<ConnectionData> connections = new List<ConnectionData>();
 
             // Parsing Nodes
@@ -184,19 +192,42 @@ public class NeatNetworkLoader : MonoBehaviour
 
             network.nodes = nodes;
             network.connections = connections;
+            network.outputNodes = new();
 
-            // Identify Input and Output Nodes
-            foreach (var node in network.nodes)
+            int minIndex = 0;
+            foreach (var item in connections)
             {
-                if (node.Key < 0)
+                if(item.inNode < minIndex)
                 {
-                    network.inputNodes.Add(node.Key);
-                }
-                else if (node.Key >= 0 && node.Key <= 2)
-                {
-                    network.outputNodes.Add(node.Key);
+                    minIndex = item.inNode;
                 }
             }
+
+            network.numOfInputNodes = Mathf.Abs(minIndex);
+
+            if(network.nodes.Count == 10)
+            {
+                // Identify Input and Output Nodes
+                foreach (var node in network.nodes)
+                {
+                    if (node.key >= 0 && node.key <= 2)
+                    {
+                        network.outputNodes.Add(node.key);
+                    }
+                }
+            }
+            else if(network.nodes.Count == 15)
+            {
+                // Identify Input and Output Nodes
+                foreach (var node in network.nodes)
+                {
+                    if (node.key >= 0 && node.key <= 5)
+                    {
+                        network.outputNodes.Add(node.key);
+                    }
+                }
+            }
+
         }
         catch (System.Exception e)
         {
@@ -207,7 +238,7 @@ public class NeatNetworkLoader : MonoBehaviour
         return network;
     }
 
-    void ParseNodeLine(string line, Dictionary<int, NodeData> nodes)
+    void ParseNodeLine(string line, List<NodeData> nodes)
     {
         //Example: 0 DefaultNodeGene(key=0, bias=-1.1970967437816664, response=1.0, activation=tanh, aggregation=sum)
         string[] parts = line.Split('(');
@@ -225,7 +256,7 @@ public class NeatNetworkLoader : MonoBehaviour
             string aggregation = properties[4].Split('=')[1].Trim();
 
             NodeData nodeData = new NodeData(key, bias, response, activation, aggregation);
-            nodes.Add(key, nodeData);
+            nodes.Add(nodeData);
         }
     }
 
@@ -251,108 +282,155 @@ public class NeatNetworkLoader : MonoBehaviour
         }
     }
 
-    void InitializeMatrices()
-    {
-        int maxNodeId = network.nodes.Keys.Max();
-        int numNodes = maxNodeId + 1;
+    //void InitializeMatrices()
+    //{
+    //    int minNodeIndex = 0;
 
-        network.weights = new Matrix<float>(numNodes, numNodes);
-        network.biases = new Vector<float>(numNodes);
+    //    foreach (var item in network.connections)
+    //    {
+    //        if (item.inNode < minNodeIndex)
+    //        {
+    //            minNodeIndex = item.inNode;
+    //        }
+    //    }
+    //    int inputNodes = Mathf.Abs(minNodeIndex);
 
-        // Initialize biases
-        foreach (var node in network.nodes)
-        {
-            network.biases[node.Key] = node.Value.bias;
-        }
+    //    for (int i = minNodeIndex; i < 0; i++)
+    //    {
+    //        network.nodeToIndexMap.Add(i, i + inputNodes);
+    //    }
+    //    int idx = 0;
+    //    foreach (var item in network.nodes)
+    //    {
+    //        if (item.key < 10) continue;
+    //        network.nodeToIndexMap.Add(item.key, idx + inputNodes);
+    //        idx++;
+    //    }
+    //    foreach (var item in network.nodes)
+    //    {
+    //        if (item.key >= 10) continue;
+    //        network.nodeToIndexMap.Add(item.key, idx + inputNodes);
+    //        idx++;
+    //    }
 
-        // Initialize weights based on enabled connections
-        foreach (var connection in network.connections)
-        {
-            if (connection.enabled)
-            {
-                network.weights[connection.outNode, connection.inNode] = connection.weight;
-            }
-        }
-    }
+    //    int numNodes = network.nodes.Count + inputNodes;
 
-    Vector<float> ActivateNetwork(Vector<float> input)
-    {
-        //Create node values vector
-        Vector<float> nodeValues = new Vector<float>(network.weights.Rows);
+    //    network.weights = new Matrix<float>(numNodes, numNodes);
+    //    network.biases = new Vector<float>(numNodes);
 
-        //Ensure input vector size matches input node count
-        if (input.Length != network.inputNodes.Count)
-        {
-            Debug.LogError("Input vector size does not match the number of input nodes.");
-            return new Vector<float>(0);
-        }
 
-        //Initialize input nodes with the provided input values
-        for (int i = 0; i < network.inputNodes.Count; i++)
-        {
-            nodeValues[network.inputNodes[i]] = input[i];
-        }
 
-        //Go through each node of the network and caclulate their value
-        for (int i = 0; i < network.weights.Rows; i++)
-        {
-            float sum = network.biases[i];
+    //    // Initialize biases
+    //    foreach (var node in network.nodes)
+    //    {
+    //        network.biases[network.nodeToIndexMap[node.key]] = node.bias;
+    //    }
 
-            //Loop through connected nodes and accumulate their values
-            for (int j = 0; j < network.weights.Columns; j++)
-            {
-                sum += nodeValues[j] * network.weights[i, j];
-            }
+    //    // Initialize weights based on enabled connections
+    //    foreach (var connection in network.connections)
+    //    {
+    //        if (connection.enabled)
+    //        {
+    //            network.weights[network.nodeToIndexMap[connection.outNode], network.nodeToIndexMap[connection.inNode]] = connection.weight;
+    //        }
+    //    }
+    //}
 
-            //Apply the activation function
-            if (network.nodes.ContainsKey(i))
-            {
-                nodeValues[i] = ApplyActivationFunction(sum, network.nodes[i].activation, network.nodes[i].response);
-            }
-        }
+    //Vector<float> ActivateNetwork(Vector<float> input)
+    //{
+    //    //Create node values vector
+    //    Vector<float> nodeValues = new Vector<float>(network.weights.Rows);
 
-        //Extract the network's output values and create output vector
-        Vector<float> output = new Vector<float>(network.outputNodes.Count);
-        for (int i = 0; i < network.outputNodes.Count; i++)
-        {
-            output[i] = nodeValues[network.outputNodes[i]];
-        }
 
-        return output;
-    }
+    //    //Initialize input nodes with the provided input values
+    //    for (int i = 0; i < Mathf.Abs(network.nodeToIndexMap.Keys.Min()); i++)
+    //    {
+    //        nodeValues[i] = input[i];
+    //    }
 
-    float ApplyActivationFunction(float x, string activation, float response)
-    {
-        switch (activation)
-        {
-            case "sigmoid":
-                return 1 / (1 + Mathf.Exp(-x * response));
-            case "relu":
-                return Mathf.Max(0, x * response);
-            case "identity":
-                return x * response;
-            default:
-                Debug.LogError("Unknown activation function: " + activation);
-                return x; // Or some default value
-        }
-    }
+    //    //Go through each node of the network and caclulate their value
+    //    for (int i = 0; i < network.weights.Rows; i++)
+    //    {
+    //        float sum = network.biases[i];
 
-    void TestNetwork()
-    {
-        //Example Usage: Test Network
-        Vector<float> testInput = new Vector<float>(network.inputNodes.Count);
-        testInput[0] = 0.5f;  // Set some input values
-        testInput[1] = 0.2f;
-        testInput[2] = 0.8f;
+    //        //Loop through connected nodes and accumulate their values
+    //        for (int j = 0; j < network.weights.Columns; j++)
+    //        {
+    //            sum += nodeValues[j] * network.weights[i, j];
+    //        }
+    //        int key = -1;
+    //        foreach (var item in network.nodeToIndexMap)
+    //        {
+    //            if (item.Value == i)
+    //            {
+    //                key = item.Key;
+    //            }
+    //        }
 
-        //Activate Network
-        Vector<float> output = ActivateNetwork(testInput);
+    //        foreach (var node in network.nodes)
+    //        {
+    //            if(node.key == key)
+    //            {
+    //                nodeValues[i] = ApplyActivationFunction(sum, node.activation, node.response);
+    //                break;
+    //            }
+    //        }
 
-        //Debug output values
-        Debug.Log("Network Output: ");
-        for (int i = 0; i < output.Length; i++)
-        {
-            Debug.Log("Output " + network.outputNodes[i] + ": " + output[i]);
-        }
-    }
+    //    }
+
+    //    //Extract the network's output values and create output vector
+    //    Vector<float> output = new Vector<float>(network.outputNodes.Count);
+    //    for (int i = 0; i < network.outputNodes.Count; i++)
+    //    {
+    //        output[i] = nodeValues[network.nodeToIndexMap[network.outputNodes[i]]];
+    //    }
+
+    //    for (int i = 0; i < network.weights.Columns; i++)
+    //    {
+    //        string s = "";
+    //        for (int j = 0; j < network.weights.Rows; j++)
+    //        {
+    //            s += network.weights[j, i].ToString();
+    //            s += " ";
+    //        }
+    //        Debug.Log(s);
+    //    }
+
+    //    return output;
+    //}
+
+    //float ApplyActivationFunction(float x, string activation, float response)
+    //{
+    //    switch (activation)
+    //    {
+    //        case "sigmoid":
+    //            return 1 / (1 + Mathf.Exp(-x * response));
+    //        case "relu":
+    //            return Mathf.Max(0, x * response);
+    //        case "identity":
+    //            return x * response;
+    //        default:
+    //            Debug.LogError("Unknown activation function: " + activation);
+    //            return x; // Or some default value
+    //    }
+    //}
+
+    //void TestNetwork()
+    //{
+    //    //Example Usage: Test Network
+    //    Vector<float> testInput = new Vector<float>(Mathf.Abs(network.nodeToIndexMap.Keys.Min()));
+    //    testInput[0] = 0.5f;  // Set some input values
+    //    testInput[1] = 0.2f;
+    //    testInput[2] = 0.8f;
+
+    //    //Activate Network
+    //    Vector<float> output = ActivateNetwork(testInput);
+
+    //    //Debug output values
+    //    Debug.Log("Network Output: ");
+    //    for (int i = 0; i < output.Length; i++)
+    //    {
+    //        Debug.Log("Output " + network.outputNodes[i] + ": " + output[i]);
+    //    }
+    //}
 }

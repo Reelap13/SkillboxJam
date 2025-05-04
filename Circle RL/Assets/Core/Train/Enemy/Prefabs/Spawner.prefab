@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 396086826537075841}
   - component: {fileID: 199731917977398345}
   - component: {fileID: 2904328847538950964}
-  - component: {fileID: 2342234572129895509}
   - component: {fileID: 6496899632002128675}
   - component: {fileID: 5417906653631847428}
+  - component: {fileID: -7049599060708392222}
   m_Layer: 9
   m_Name: Spawner
   m_TagString: Enemy
@@ -115,9 +115,9 @@ MonoBehaviour:
   <DataTaker>k__BackingField: {fileID: 199731917977398345}
   <EnemyPreset>k__BackingField:
     Type: 4
-    StartHealth: 100
+    StartHealth: 200
     StartShield: 0
-    Damage: 50
+    Damage: 1
     Team: 0
 --- !u!114 &4250090723791775717
 MonoBehaviour:
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 4157060755374690972}
   _sensors_taker: {fileID: 2904328847538950964}
-  _fitness_function: {fileID: 2342234572129895509}
+  _fitness_function: {fileID: -7049599060708392222}
 --- !u!114 &2904328847538950964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,19 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distance: 30
---- !u!114 &2342234572129895509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745905492874040608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66d5c57a21501af4d837737abbb9b5d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Enemy>k__BackingField: {fileID: 4157060755374690972}
 --- !u!50 &6496899632002128675
 Rigidbody2D:
   serializedVersion: 5
@@ -288,3 +275,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-7049599060708392222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745905492874040608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675c705bf42d154fbea1de64ff2b3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Enemy>k__BackingField: {fileID: 4157060755374690972}

@@ -37,6 +37,7 @@ namespace Game.Enemy
 
         public float GetDistanceFromPlayer()
         {
+            if (_rb == null) return 0;
             return (Enemy.ArenaController.PlayerSpawner.GetPlayerPosition() - _rb.position).magnitude;
         }
         public Vector2 GetDirectionToPlayer()
