@@ -66,9 +66,9 @@ namespace Train.Player
             return _player.transform.position;
         }
 
-        public PlayerInputType GetPlayerPredictedInput()
+        public Coordinates GetPlayerPredictedInput()
         {
-            return PlayerInputType.W;
+            return new (new(0, 0));
         }
 
         public PlayerWeaponType GetPlayerWeaponType()

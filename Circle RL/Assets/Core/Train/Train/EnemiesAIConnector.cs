@@ -14,8 +14,12 @@ namespace Train.Train
 
         public List<ArenaController> Arenas => IterationsController.Controller.ArenasController.Arenas;
 
+        public bool isDataReceived = true;
+
         public void SendData()
         {
+            if (!isDataReceived) return;
+            isDataReceived = false;
             string data = GetParsedEnemiesData();
 
             RequestData request_data = RequestData.GetBuilder().
@@ -33,6 +37,7 @@ namespace Train.Train
             Tuple<EnemiesCommands, PlayerCommand[]> commands = EnemyCommandParser.Parse(data, Arenas.Count);
             ProcessEnemyCommand(commands.Item1);
             ProcessPlayersCommand(commands.Item2);
+            isDataReceived = true;
         }
 
         private string GetParsedEnemiesData()
@@ -75,7 +80,7 @@ namespace Train.Train
                 players_data[i] = Arenas[i].PlayerSpawner.GetPlayerData();
             data.Players = players_data;
 
-            Debug.Log(JsonUtility.ToJson(data));
+            //Debug.Log(JsonUtility.ToJson(data));
             return JsonUtility.ToJson(data);
         }
 

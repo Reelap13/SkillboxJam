@@ -11,7 +11,7 @@ namespace Train.AIConnection.Data
         public Coordinates Position;
         public Coordinates TargetPosition;
         public float HP;
-        public PlayerInputType PlayerInputPredict;
+        public Coordinates PlayerInputPredict;
         public PlayerWeaponType PlayerWeaponType;
         public float CurrentScore;
         public float MaxScore;

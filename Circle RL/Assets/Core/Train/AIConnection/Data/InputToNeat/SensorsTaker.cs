@@ -30,8 +30,8 @@ namespace Train.AIConnection.Data
 
             RaycastHit2D[] hits = Physics2D.RaycastAll(origin, normalized_direction, _distance);
             float distance = _distance;
-            Debug.Log(origin + " " + normalized_direction);
-            Debug.Log(hits.Length + " " + _distance);
+            //Debug.Log(origin + " " + normalized_direction);
+            //Debug.Log(hits.Length + " " + _distance);
             foreach (var hit in hits)
             {
                 if (hit.collider != null && hit.collider.gameObject != gameObject)

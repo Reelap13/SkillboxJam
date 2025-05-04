@@ -54,8 +54,8 @@ class PlayerAgent:
 
 def get_unity_data():
     while True:
-        data = client_socket.recv(4096 * 4).decode()
-        # print(data)
+        data = client_socket.recv(4096 * 8).decode()
+
         parsed_json = json.loads(data)
 
         if parsed_json["command"] == "Initialize algorithm":
@@ -69,10 +69,10 @@ def get_unity_data():
         elif parsed_json["command"] == "Evaluate population":
             return "new"
         elif parsed_json["command"] == "Process individuals data":
-            print("Process individuals data")
             return parsed_json["data"]
         else:
             print("Error: wrong command")
+            print(parsed_json)
             exit(1)
 
 
@@ -113,8 +113,8 @@ def parse_unity_data(data, name):
             agent = PlayerAgent(sensors, position, health, target_position,
                                 is_alive, max_score, current_score, weapon)
         else:
-            predicted_input = [float(item['PlayerInputPredict']),
-                               float(item['PlayerInputPredict'])]
+            predicted_input = [float(item['PlayerInputPredict']['X']),
+                               float(item['PlayerInputPredict']['Y'])]
             weapon = int(item["PlayerWeaponType"])
             agent = Enemy(sensors, position, health, target_position, is_alive,
                           max_score, current_score, predicted_input, weapon)
@@ -149,9 +149,9 @@ def create_population(config):
 
     p = neat.Population(config)
 
-    p.add_reporter(neat.StdOutReporter(True))
-    stats = neat.StatisticsReporter()
-    p.add_reporter(stats)
+    # p.add_reporter(neat.StdOutReporter(True))
+    # stats = neat.StatisticsReporter()
+    # p.add_reporter(stats)
 
     return p
 
@@ -191,7 +191,6 @@ def eval_genomes_enemies(genomes, config):
             continue
         data = agent_data
         if data == "new":
-            print("exit")
             current_directory = os.getcwd()
             file_path = os.path.join(current_directory, name + ".txt")
 
@@ -377,8 +376,8 @@ def waiting_for_commands():
     global all_queues, agent_data, data_updated
     threads = []
     while True:
-        data = client_socket.recv(4096 * 4).decode()
-        print(data)
+        data = client_socket.recv(4096 * 8).decode()
+        # print(data)
 
         parsed_json = json.loads(data)
 
@@ -494,13 +493,13 @@ def waiting_for_commands():
                         combined_output.extend(outputs)
                 send_unity_outputs(str(combined_output))
                 data_updated = False
-                print("send data")
         elif parsed_json['command'] == "Evaluate population":
             send_unity_outputs("out")
             agent_data = get_unity_data()
             data_updated = True
         else:
             print("Error: wrong command")
+            print(parsed_json)
             exit(1)
 
 

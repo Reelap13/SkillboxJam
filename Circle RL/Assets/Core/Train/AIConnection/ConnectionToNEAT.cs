@@ -39,7 +39,7 @@ namespace Train.AIConnection
                 byte[] bytesToSend = Encoding.UTF8.GetBytes(data.GetJson());
                 await stream.WriteAsync(bytesToSend, 0, bytesToSend.Length);
 
-                byte[] buffer = new byte[4096 * 4];
+                byte[] buffer = new byte[4096 * 8];
                 int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
