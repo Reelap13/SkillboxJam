@@ -1,16 +1,16 @@
+using System.Collections.Generic;
+using Train.AIConnection.Data;
 using UnityEngine;
 
 public class NeurallNetworks : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<NeuralNetworkController> _nns;
 
-    // Update is called once per frame
-    void Update()
+    public EnemyCommand ProcessEnemyData(EnemyData data)
     {
-        
+        foreach (var nn in _nns)
+            if (data.EnemyType == nn.enemyType)
+                return nn.ActivateNetwork(data);
+        return null;
     }
 }

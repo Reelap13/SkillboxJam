@@ -6,6 +6,8 @@ namespace Game.Enemy
 {
     public class EnemyAIDataTaker : MonoBehaviour
     {
+        public static bool BLOCK_FITNESS_CALCULATION = false;
+
         [SerializeField] private AIEnemy _enemy;
         [SerializeField] private SensorsTaker _sensors_taker;
         [SerializeField] private FitnessFunction _fitness_function;
@@ -22,6 +24,8 @@ namespace Game.Enemy
             data.PlayerInputPredict = _enemy.ArenaController.PlayerSpawner.GetPlayerPredictedInput();
             data.PlayerWeaponType = _enemy.ArenaController.PlayerSpawner.GetPlayerWeaponType();
 
+            if (BLOCK_FITNESS_CALCULATION)
+                return data;
             _fitness_function.CalculateFitness();
             data.MaxScore = _fitness_function.MaxFitness;
             data.CurrentScore = _fitness_function.CurrentFitness;

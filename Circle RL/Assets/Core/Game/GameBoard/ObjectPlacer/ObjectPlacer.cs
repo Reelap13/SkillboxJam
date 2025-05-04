@@ -41,14 +41,12 @@ public class ObjectPlacer : MonoBehaviour, IResetable
             Destroy(gameObject);
             return;
         }
-        Debug.Log("New object placer was created");
         instance = this;
         field = new bool[2 * r, 2 * r];
         SetFieldBorder();
     }
     void SetFieldBorder()
     {
-        Debug.Log("Set field border");
         for (int i = 0; i < 2 * r; i++)
             for (int j = 0; j < 2 * r; j++)
             {

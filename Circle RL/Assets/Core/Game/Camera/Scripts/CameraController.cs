@@ -21,6 +21,8 @@ public class CameraController : MonoBehaviour
 
     private void Move()
     {
+        if (_aimOfFollowing == null)
+            return;
         Vector3 newCameraPosition = new Vector3(_aimOfFollowing.position.x, _aimOfFollowing.position.y, -_distanceFromAim);
         _tr.position = Vector3.Lerp(_tr.position, newCameraPosition, _speedOfFollowing * Time.deltaTime);
     }

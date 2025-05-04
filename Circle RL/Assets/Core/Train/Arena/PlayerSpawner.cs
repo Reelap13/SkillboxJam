@@ -9,8 +9,8 @@ namespace Train.Player
         [SerializeField] protected ArenaController _controller;
         [SerializeField] private PlayerAI _player_prefab;
 
-        protected PlayerAI _player;
-        protected PlayerStats _player_stats;
+        private PlayerAI _player;
+        private PlayerStats _player_stats;
 
         protected bool _block_stats_calculation = false;
 
@@ -59,21 +59,21 @@ namespace Train.Player
             _player.Behaviour.ProcessCommand(command);
         }
 
-        public Transform GetPlayer()
+        public virtual Transform GetPlayer()
         {
             return _player.transform;
         }
-        public Vector2 GetPlayerPosition()
+        public virtual Vector2 GetPlayerPosition()
         {
             return _player.transform.position;
         }
 
-        public Coordinates GetPlayerPredictedInput()
+        public virtual Coordinates GetPlayerPredictedInput()
         {
             return new (new(0, 0));
         }
 
-        public PlayerWeaponType GetPlayerWeaponType()
+        public virtual PlayerWeaponType GetPlayerWeaponType()
         {
             return PlayerWeaponType.W1;
         }

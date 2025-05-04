@@ -6,8 +6,15 @@ public class GameBoardCreater : MonoBehaviour
     [SerializeField] GameObject wall, floar;
     [SerializeField] int n, m;
     [SerializeField] int _r;
+    [SerializeField] private bool _load_on_awake = false;
 
     private Vector2 _position;
+
+    private void Awake()
+    {
+        if (_load_on_awake)
+            SummonBoard(new(0, 0));
+    }
 
     public void SummonBoard(Vector2 position)
     {

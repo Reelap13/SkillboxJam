@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using Train.Arena;
 using UnityEngine;
 
@@ -23,5 +25,7 @@ namespace Game.Enemy
         {
             _alive_enemies.Remove(enemy);
         }
+
+        public HashSet<AIEnemy> Enemies => _alive_enemies;
     }
 }
