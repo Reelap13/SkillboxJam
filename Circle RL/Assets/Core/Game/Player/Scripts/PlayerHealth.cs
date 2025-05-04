@@ -56,7 +56,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 OnDie.Invoke();
                 Destroy(gameObject);
-                Debug.Log("DEATH");
             }
         }
     }

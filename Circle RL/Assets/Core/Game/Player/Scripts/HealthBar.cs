@@ -8,7 +8,6 @@ public class HealthBar : MonoBehaviour
 
     public void changeHp()
     {
-        Debug.Log("HP: " + _ph.HitPoint);
         transform.localScale = new Vector3(_ph.HitPoint / _ph.MaxHitPoint, transform.localScale.y, 1);
     }
 }
