@@ -14,1256 +14,1256 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NeuralNetwork
   nodes:
   - key: 0
-    bias: 0.19065459
+    bias: -1.296302
     response: 1
     activation: sigmoid
     aggregation: sum
   - key: 1
-    bias: -1.3736324
+    bias: 0.5895512
     response: 1
     activation: sigmoid
     aggregation: sum
   - key: 2
-    bias: 1.0787351
+    bias: 1.6947813
     response: 1
     activation: sigmoid
     aggregation: sum
   - key: 3
-    bias: 0.67461556
+    bias: 0.038492147
     response: 1
     activation: sigmoid
     aggregation: sum
   - key: 4
-    bias: -0.29045573
+    bias: -0.26845706
     response: 1
     activation: sigmoid
     aggregation: sum
   - key: 5
-    bias: 0.64448345
+    bias: -0.5953041
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 15
-    bias: 0.7107407
+  - key: 6
+    bias: 0.3356867
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 16
-    bias: -0.19502218
+  - key: 7
+    bias: 1.0097831
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 17
-    bias: 0.49189156
+  - key: 8
+    bias: -0.24827302
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 18
-    bias: -0.035884816
+  - key: 9
+    bias: 1.4076687
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 19
-    bias: 0.30676532
+  - key: 10
+    bias: -0.43832204
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 20
-    bias: 0.24380374
+  - key: 11
+    bias: 0.6035958
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 21
-    bias: 1.0830379
+  - key: 12
+    bias: -0.49756882
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 22
-    bias: 0.11418901
+  - key: 13
+    bias: -0.17498131
     response: 1
     activation: sigmoid
     aggregation: sum
-  - key: 23
-    bias: 0.49927452
+  - key: 14
+    bias: 0.14401443
     response: 1
     activation: sigmoid
     aggregation: sum
   connections:
   - inNode: -16
     outNode: 0
-    weight: 0.8158316
+    weight: 0.26009873
     enabled: 1
   - inNode: -16
     outNode: 1
-    weight: -0.823262
+    weight: -1.734384
     enabled: 1
   - inNode: -16
     outNode: 2
-    weight: 1.3319833
+    weight: 0.3016996
     enabled: 1
   - inNode: -16
     outNode: 3
-    weight: 0.36761042
+    weight: 1.1194053
     enabled: 1
   - inNode: -16
     outNode: 4
-    weight: -0.5342927
+    weight: -0.10875134
     enabled: 1
   - inNode: -16
     outNode: 5
-    weight: 0.500795
+    weight: -0.12917359
     enabled: 1
   - inNode: -16
-    outNode: 15
-    weight: -0.54340756
+    outNode: 6
+    weight: -0.074250735
     enabled: 1
   - inNode: -16
-    outNode: 16
-    weight: 0.5477641
+    outNode: 7
+    weight: 0.36410633
     enabled: 1
   - inNode: -16
-    outNode: 17
-    weight: 0.7907719
+    outNode: 8
+    weight: 0.271779
     enabled: 1
   - inNode: -16
-    outNode: 18
-    weight: 1.0230336
+    outNode: 9
+    weight: -0.34709755
     enabled: 1
   - inNode: -16
-    outNode: 19
-    weight: 1.3257421
+    outNode: 10
+    weight: -0.023403173
     enabled: 1
   - inNode: -16
-    outNode: 20
-    weight: 0.04204959
+    outNode: 11
+    weight: -0.043493215
     enabled: 1
   - inNode: -16
-    outNode: 21
-    weight: -0.17691986
+    outNode: 12
+    weight: 0.041912425
     enabled: 1
   - inNode: -16
-    outNode: 22
-    weight: 0.0017672956
+    outNode: 13
+    weight: -0.13339384
     enabled: 1
   - inNode: -16
-    outNode: 23
-    weight: -0.83004
+    outNode: 14
+    weight: -0.53164065
     enabled: 1
   - inNode: -15
     outNode: 0
-    weight: -0.8501327
+    weight: 0.6806027
     enabled: 1
   - inNode: -15
     outNode: 1
-    weight: -0.77426076
+    weight: 2.2848644
     enabled: 1
   - inNode: -15
     outNode: 2
-    weight: -0.12523445
+    weight: 0.7439362
     enabled: 1
   - inNode: -15
     outNode: 3
-    weight: 1.0342919
+    weight: 1.86729
     enabled: 1
   - inNode: -15
     outNode: 4
-    weight: 2.6481378
+    weight: -1.3662459
     enabled: 1
   - inNode: -15
     outNode: 5
-    weight: -2.224097
+    weight: -0.7613041
     enabled: 1
   - inNode: -15
-    outNode: 15
-    weight: 0.056807015
+    outNode: 6
+    weight: 0.056300323
     enabled: 1
   - inNode: -15
-    outNode: 16
-    weight: -0.53914475
+    outNode: 7
+    weight: 0.43909445
     enabled: 1
   - inNode: -15
-    outNode: 17
-    weight: -1.1133506
+    outNode: 8
+    weight: -0.7983822
     enabled: 1
   - inNode: -15
-    outNode: 18
-    weight: 0.8768391
+    outNode: 9
+    weight: -2.123165
     enabled: 1
   - inNode: -15
-    outNode: 19
-    weight: 0.962446
+    outNode: 10
+    weight: -0.09585621
     enabled: 1
   - inNode: -15
-    outNode: 20
-    weight: 0.33434594
+    outNode: 11
+    weight: -1.1502138
     enabled: 1
   - inNode: -15
-    outNode: 21
-    weight: 0.7206247
+    outNode: 12
+    weight: -0.4989159
     enabled: 1
   - inNode: -15
-    outNode: 22
-    weight: -0.4724762
+    outNode: 13
+    weight: -0.6487386
     enabled: 1
   - inNode: -15
-    outNode: 23
-    weight: -1.2727708
+    outNode: 14
+    weight: 0.5565284
     enabled: 1
   - inNode: -14
     outNode: 0
-    weight: -0.48831385
+    weight: 0.9538251
     enabled: 1
   - inNode: -14
     outNode: 1
-    weight: 0.16179547
+    weight: -0.12644513
     enabled: 1
   - inNode: -14
     outNode: 2
-    weight: 1.453101
+    weight: -1.2151601
     enabled: 1
   - inNode: -14
     outNode: 3
-    weight: -2.1658752
+    weight: 1.7476419
     enabled: 1
   - inNode: -14
     outNode: 4
-    weight: 1.0855889
+    weight: 0.096138164
     enabled: 1
   - inNode: -14
     outNode: 5
-    weight: -0.93700534
+    weight: -1.8630427
     enabled: 1
   - inNode: -14
-    outNode: 15
-    weight: -1.1876259
+    outNode: 6
+    weight: 1.4863374
     enabled: 1
   - inNode: -14
-    outNode: 16
-    weight: 1.1356648
+    outNode: 7
+    weight: -0.8750337
     enabled: 1
   - inNode: -14
-    outNode: 17
-    weight: 1.7896632
+    outNode: 8
+    weight: 0.22600071
     enabled: 1
   - inNode: -14
-    outNode: 18
-    weight: -0.9968788
+    outNode: 9
+    weight: -0.37701586
     enabled: 1
   - inNode: -14
-    outNode: 19
-    weight: 1.512088
+    outNode: 10
+    weight: -1.3137407
     enabled: 1
   - inNode: -14
-    outNode: 20
-    weight: 1.7498206
+    outNode: 11
+    weight: -1.4118949
     enabled: 1
   - inNode: -14
-    outNode: 21
-    weight: -0.34956768
+    outNode: 12
+    weight: 0.3374311
     enabled: 1
   - inNode: -14
-    outNode: 22
-    weight: -1.6907868
+    outNode: 13
+    weight: 0.039712317
     enabled: 1
   - inNode: -14
-    outNode: 23
-    weight: 0.7143309
+    outNode: 14
+    weight: -0.5114896
     enabled: 1
   - inNode: -13
     outNode: 0
-    weight: 1.1465466
+    weight: 0.31615233
     enabled: 1
   - inNode: -13
     outNode: 1
-    weight: 0.17151085
+    weight: -2.0867648
     enabled: 1
   - inNode: -13
     outNode: 2
-    weight: -0.4723177
+    weight: 1.162848
     enabled: 1
   - inNode: -13
     outNode: 3
-    weight: 0.45750585
+    weight: 2.6634192
     enabled: 1
   - inNode: -13
     outNode: 4
-    weight: -0.6983712
+    weight: 0.9720099
     enabled: 1
   - inNode: -13
     outNode: 5
-    weight: -1.2544034
+    weight: 0.36030596
     enabled: 1
   - inNode: -13
-    outNode: 15
-    weight: 0.07493467
+    outNode: 6
+    weight: 1.0930648
     enabled: 1
   - inNode: -13
-    outNode: 16
-    weight: -0.48508903
+    outNode: 7
+    weight: 0.4738249
     enabled: 1
   - inNode: -13
-    outNode: 17
-    weight: -0.14154764
+    outNode: 8
+    weight: -0.97115684
     enabled: 1
   - inNode: -13
-    outNode: 18
-    weight: -2.1368978
+    outNode: 9
+    weight: -1.2151526
     enabled: 1
   - inNode: -13
-    outNode: 19
-    weight: -0.16869634
+    outNode: 10
+    weight: 0.38384187
     enabled: 1
   - inNode: -13
-    outNode: 20
-    weight: 0.261629
+    outNode: 11
+    weight: -0.026339065
     enabled: 1
   - inNode: -13
-    outNode: 21
-    weight: 0.7560265
+    outNode: 12
+    weight: 1.8138975
     enabled: 1
   - inNode: -13
-    outNode: 22
-    weight: -1.0507001
+    outNode: 13
+    weight: -0.21693943
     enabled: 1
   - inNode: -13
-    outNode: 23
-    weight: -1.0581608
+    outNode: 14
+    weight: -0.4385022
     enabled: 1
   - inNode: -12
     outNode: 0
-    weight: -1.321741
+    weight: 0.47551027
     enabled: 1
   - inNode: -12
     outNode: 1
-    weight: 1.1212167
+    weight: 0.53810036
     enabled: 1
   - inNode: -12
     outNode: 2
-    weight: 0.302658
+    weight: 0.5132719
     enabled: 1
   - inNode: -12
     outNode: 3
-    weight: -1.3448346
+    weight: 0.64835554
     enabled: 1
   - inNode: -12
     outNode: 4
-    weight: -1.063863
+    weight: -0.1559349
     enabled: 1
   - inNode: -12
     outNode: 5
-    weight: -0.18455392
+    weight: 2.402674
     enabled: 1
   - inNode: -12
-    outNode: 15
-    weight: 1.6083715
+    outNode: 6
+    weight: 0.6997886
     enabled: 1
   - inNode: -12
-    outNode: 16
-    weight: 0.30460408
+    outNode: 7
+    weight: -0.7212542
     enabled: 1
   - inNode: -12
-    outNode: 17
-    weight: 0.63692904
+    outNode: 8
+    weight: 0.55970055
     enabled: 1
   - inNode: -12
-    outNode: 18
-    weight: 1.4176433
+    outNode: 9
+    weight: -0.8175311
     enabled: 1
   - inNode: -12
-    outNode: 19
-    weight: -0.23503281
+    outNode: 10
+    weight: 0.2263387
     enabled: 1
   - inNode: -12
-    outNode: 20
-    weight: 0.8245726
+    outNode: 11
+    weight: 0.97212315
     enabled: 1
   - inNode: -12
-    outNode: 21
-    weight: -0.010415197
+    outNode: 12
+    weight: 0.749104
     enabled: 1
   - inNode: -12
-    outNode: 22
-    weight: 0.6750131
+    outNode: 13
+    weight: 0.19470692
     enabled: 1
   - inNode: -12
-    outNode: 23
-    weight: 0.094225794
+    outNode: 14
+    weight: 1.0737702
     enabled: 1
   - inNode: -11
     outNode: 0
-    weight: -0.4439054
-    enabled: 1
+    weight: -0.44792983
+    enabled: 0
   - inNode: -11
     outNode: 1
-    weight: -0.09538592
+    weight: -0.012858239
     enabled: 1
   - inNode: -11
     outNode: 2
-    weight: -0.18222447
+    weight: -0.06062997
     enabled: 1
   - inNode: -11
     outNode: 3
-    weight: -0.6327259
+    weight: 1.6065409
     enabled: 1
   - inNode: -11
     outNode: 4
-    weight: -0.46607432
+    weight: 0.7661788
     enabled: 1
   - inNode: -11
     outNode: 5
-    weight: 0.32546666
+    weight: -0.064033635
     enabled: 1
   - inNode: -11
-    outNode: 15
-    weight: -0.67190874
+    outNode: 6
+    weight: 0.4059561
     enabled: 1
   - inNode: -11
-    outNode: 16
-    weight: -0.022283513
+    outNode: 7
+    weight: -0.44053665
     enabled: 1
   - inNode: -11
-    outNode: 17
-    weight: -0.90590376
+    outNode: 8
+    weight: -0.3908825
     enabled: 1
   - inNode: -11
-    outNode: 18
-    weight: -0.45663816
+    outNode: 9
+    weight: -0.41317415
     enabled: 1
   - inNode: -11
-    outNode: 19
-    weight: 0.77531374
+    outNode: 10
+    weight: 0.09444367
     enabled: 1
   - inNode: -11
-    outNode: 20
-    weight: -0.72047585
+    outNode: 11
+    weight: 1.5567678
     enabled: 1
   - inNode: -11
-    outNode: 21
-    weight: -0.9941924
+    outNode: 12
+    weight: -2.4768355
     enabled: 1
   - inNode: -11
-    outNode: 22
-    weight: 0.6177687
+    outNode: 13
+    weight: -0.98767
     enabled: 1
   - inNode: -11
-    outNode: 23
-    weight: 0.14871049
+    outNode: 14
+    weight: 2.3416622
     enabled: 1
   - inNode: -10
     outNode: 0
-    weight: -1.0748092
+    weight: -0.27989763
     enabled: 1
   - inNode: -10
     outNode: 1
-    weight: -0.31705078
+    weight: 1.4245527
     enabled: 1
   - inNode: -10
     outNode: 2
-    weight: 0.43332407
+    weight: 1.038659
     enabled: 1
   - inNode: -10
     outNode: 3
-    weight: -0.13665129
+    weight: 2.5678484
     enabled: 1
   - inNode: -10
     outNode: 4
-    weight: -0.0393178
+    weight: 1.0002201
     enabled: 1
   - inNode: -10
     outNode: 5
-    weight: -0.7035251
+    weight: -0.25573006
     enabled: 1
   - inNode: -10
-    outNode: 15
-    weight: 0.32058358
+    outNode: 6
+    weight: 1.1122817
     enabled: 1
   - inNode: -10
-    outNode: 16
-    weight: 1.0839967
+    outNode: 7
+    weight: -0.122499704
     enabled: 1
   - inNode: -10
-    outNode: 17
-    weight: -1.2688533
+    outNode: 8
+    weight: 1.2267495
     enabled: 1
   - inNode: -10
-    outNode: 18
-    weight: -0.081516616
+    outNode: 9
+    weight: 0.70993173
     enabled: 1
   - inNode: -10
-    outNode: 19
-    weight: 1.1736128
+    outNode: 10
+    weight: -0.83565605
     enabled: 1
   - inNode: -10
-    outNode: 20
-    weight: 0.006546835
+    outNode: 11
+    weight: 2.8884828
     enabled: 1
   - inNode: -10
-    outNode: 21
-    weight: 0.31651607
+    outNode: 12
+    weight: -1.1397921
     enabled: 1
   - inNode: -10
-    outNode: 22
-    weight: 0.29439628
+    outNode: 13
+    weight: 1.6331502
     enabled: 1
   - inNode: -10
-    outNode: 23
-    weight: 1.5370846
+    outNode: 14
+    weight: 0.54976976
     enabled: 1
   - inNode: -9
     outNode: 0
-    weight: -0.49965787
+    weight: 2.0216713
     enabled: 1
   - inNode: -9
     outNode: 1
-    weight: -1.800035
+    weight: 1.9868649
     enabled: 1
   - inNode: -9
     outNode: 2
-    weight: -0.007960948
+    weight: 1.6341099
     enabled: 1
   - inNode: -9
     outNode: 3
-    weight: 0.84706897
+    weight: -1.3150649
     enabled: 1
   - inNode: -9
     outNode: 4
-    weight: 1.6129948
+    weight: -1.0435884
     enabled: 1
   - inNode: -9
     outNode: 5
-    weight: -0.50461894
+    weight: 0.70745844
     enabled: 1
   - inNode: -9
-    outNode: 15
-    weight: 1.5436916
+    outNode: 6
+    weight: -1.8761967
     enabled: 1
   - inNode: -9
-    outNode: 16
-    weight: -0.087932855
+    outNode: 7
+    weight: 0.42469123
     enabled: 1
   - inNode: -9
-    outNode: 17
-    weight: 0.7439916
+    outNode: 8
+    weight: 0.9980495
     enabled: 1
   - inNode: -9
-    outNode: 18
-    weight: -0.8231858
+    outNode: 9
+    weight: 0.5679306
     enabled: 1
   - inNode: -9
-    outNode: 19
-    weight: -0.1537074
+    outNode: 10
+    weight: 0.091400534
     enabled: 1
   - inNode: -9
-    outNode: 20
-    weight: 0.39788345
+    outNode: 11
+    weight: 2.0756094
     enabled: 1
   - inNode: -9
-    outNode: 21
-    weight: -0.34360793
+    outNode: 12
+    weight: -0.035891388
     enabled: 1
   - inNode: -9
-    outNode: 22
-    weight: 0.6300818
+    outNode: 13
+    weight: -0.307096
     enabled: 1
   - inNode: -9
-    outNode: 23
-    weight: 0.34073588
+    outNode: 14
+    weight: -0.2089182
     enabled: 1
   - inNode: -8
     outNode: 0
-    weight: -3.162036
+    weight: 2.7266052
     enabled: 1
   - inNode: -8
     outNode: 1
-    weight: -0.55911636
+    weight: -0.8241463
     enabled: 1
   - inNode: -8
     outNode: 2
-    weight: 0.22748841
+    weight: 0.027943494
     enabled: 1
   - inNode: -8
     outNode: 3
-    weight: -0.64055985
-    enabled: 1
+    weight: 2.2497492
+    enabled: 0
   - inNode: -8
     outNode: 4
-    weight: -0.35021523
+    weight: 1.7349565
     enabled: 1
   - inNode: -8
     outNode: 5
-    weight: -0.76990163
+    weight: 0.5993921
     enabled: 1
   - inNode: -8
-    outNode: 15
-    weight: -0.7954333
+    outNode: 6
+    weight: -3.502638
     enabled: 1
   - inNode: -8
-    outNode: 16
-    weight: -0.59495866
+    outNode: 7
+    weight: 1.7510138
     enabled: 1
   - inNode: -8
-    outNode: 17
-    weight: -1.240691
+    outNode: 8
+    weight: 0.10167765
     enabled: 1
   - inNode: -8
-    outNode: 18
-    weight: -1.3389555
+    outNode: 9
+    weight: -0.41457072
     enabled: 1
   - inNode: -8
-    outNode: 19
-    weight: 0.014066562
+    outNode: 10
+    weight: -2.5822814
     enabled: 1
   - inNode: -8
-    outNode: 20
-    weight: -1.007913
+    outNode: 11
+    weight: -0.3040952
     enabled: 1
   - inNode: -8
-    outNode: 21
-    weight: 0.30100077
+    outNode: 12
+    weight: -0.14491822
     enabled: 1
   - inNode: -8
-    outNode: 22
-    weight: -0.22261651
+    outNode: 13
+    weight: -1.4465561
     enabled: 1
   - inNode: -8
-    outNode: 23
-    weight: 0.21362986
+    outNode: 14
+    weight: 0.37455004
     enabled: 1
   - inNode: -7
     outNode: 0
-    weight: 0.21480909
+    weight: -0.16558771
     enabled: 1
   - inNode: -7
     outNode: 1
-    weight: -0.11290818
+    weight: -0.5633055
     enabled: 1
   - inNode: -7
     outNode: 2
-    weight: -1.3482884
+    weight: 0.3745989
     enabled: 1
   - inNode: -7
     outNode: 3
-    weight: 0.16045444
+    weight: 3.0779095
     enabled: 1
   - inNode: -7
     outNode: 4
-    weight: -1.3239685
+    weight: -1.2627188
     enabled: 1
   - inNode: -7
     outNode: 5
-    weight: 0.35942066
+    weight: -0.9276302
     enabled: 1
   - inNode: -7
-    outNode: 15
-    weight: -0.50470287
+    outNode: 6
+    weight: -0.95209676
     enabled: 1
   - inNode: -7
-    outNode: 16
-    weight: -0.4893955
+    outNode: 7
+    weight: -1.5504605
     enabled: 1
   - inNode: -7
-    outNode: 17
-    weight: 0.6277477
+    outNode: 8
+    weight: 1.0794141
     enabled: 1
   - inNode: -7
-    outNode: 18
-    weight: 1.4207834
+    outNode: 9
+    weight: -3.5427356
     enabled: 1
   - inNode: -7
-    outNode: 19
-    weight: -0.7723606
+    outNode: 10
+    weight: 0.4482946
     enabled: 1
   - inNode: -7
-    outNode: 20
-    weight: 0.23794745
+    outNode: 11
+    weight: -0.9045493
     enabled: 1
   - inNode: -7
-    outNode: 21
-    weight: -0.26459834
+    outNode: 12
+    weight: 0.105059564
     enabled: 1
   - inNode: -7
-    outNode: 22
-    weight: 0.5457267
+    outNode: 13
+    weight: 0.20486076
     enabled: 1
   - inNode: -7
-    outNode: 23
-    weight: 0.48717734
+    outNode: 14
+    weight: 2.062402
     enabled: 1
   - inNode: -6
     outNode: 0
-    weight: 0.67738676
+    weight: -1.5946407
     enabled: 1
   - inNode: -6
     outNode: 1
-    weight: -0.38952944
+    weight: -0.884139
     enabled: 1
   - inNode: -6
     outNode: 2
-    weight: 0.444307
+    weight: -0.28562364
     enabled: 1
   - inNode: -6
     outNode: 3
-    weight: -0.0053496053
+    weight: -1.0643319
     enabled: 1
   - inNode: -6
     outNode: 4
-    weight: -0.6552136
+    weight: -1.5530987
     enabled: 1
   - inNode: -6
     outNode: 5
-    weight: -0.7295586
+    weight: 2.0291147
     enabled: 1
   - inNode: -6
-    outNode: 15
-    weight: -0.63838893
+    outNode: 6
+    weight: 1.250922
     enabled: 1
   - inNode: -6
-    outNode: 16
-    weight: -1.0885209
+    outNode: 7
+    weight: -1.729393
     enabled: 1
   - inNode: -6
-    outNode: 17
-    weight: 0.8855524
+    outNode: 8
+    weight: 1.7788258
     enabled: 1
   - inNode: -6
-    outNode: 18
-    weight: 0.38165712
+    outNode: 9
+    weight: 0.47061288
     enabled: 1
   - inNode: -6
-    outNode: 19
-    weight: -0.23412286
+    outNode: 10
+    weight: 0.13326457
     enabled: 1
   - inNode: -6
-    outNode: 20
-    weight: 0.7103217
+    outNode: 11
+    weight: 2.076013
     enabled: 1
   - inNode: -6
-    outNode: 21
-    weight: -0.74008036
+    outNode: 12
+    weight: 0.6298406
     enabled: 1
   - inNode: -6
-    outNode: 22
-    weight: -0.6578813
+    outNode: 13
+    weight: 0.938486
     enabled: 1
   - inNode: -6
-    outNode: 23
-    weight: 1.3425486
+    outNode: 14
+    weight: 1.1392063
     enabled: 1
   - inNode: -5
     outNode: 0
-    weight: -0.6433741
+    weight: 0.8536496
     enabled: 1
   - inNode: -5
     outNode: 1
-    weight: 0.08884501
+    weight: -0.7847109
     enabled: 1
   - inNode: -5
     outNode: 2
-    weight: 0.22334795
+    weight: -0.4387419
     enabled: 1
   - inNode: -5
     outNode: 3
-    weight: -0.6897419
+    weight: 0.81856483
     enabled: 1
   - inNode: -5
     outNode: 4
-    weight: 2.3925297
+    weight: -0.105501845
     enabled: 1
   - inNode: -5
     outNode: 5
-    weight: -0.98235834
+    weight: 0.6995642
     enabled: 1
   - inNode: -5
-    outNode: 15
-    weight: -1.6085777
+    outNode: 6
+    weight: -1.8420439
     enabled: 1
   - inNode: -5
-    outNode: 16
-    weight: 0.8360179
+    outNode: 7
+    weight: -0.12545088
     enabled: 1
   - inNode: -5
-    outNode: 17
-    weight: 0.1367117
+    outNode: 8
+    weight: 0.22873043
     enabled: 1
   - inNode: -5
-    outNode: 18
-    weight: 1.7216752
+    outNode: 9
+    weight: -0.004147036
     enabled: 1
   - inNode: -5
-    outNode: 19
-    weight: 0.6998308
+    outNode: 10
+    weight: 0.6625903
     enabled: 1
   - inNode: -5
-    outNode: 20
-    weight: 0.43583655
+    outNode: 11
+    weight: 0.63124657
     enabled: 1
   - inNode: -5
-    outNode: 21
-    weight: 1.2275196
+    outNode: 12
+    weight: 1.5343361
     enabled: 1
   - inNode: -5
-    outNode: 22
-    weight: 2.0371695
+    outNode: 13
+    weight: -1.234821
     enabled: 1
   - inNode: -5
-    outNode: 23
-    weight: -1.2245127
+    outNode: 14
+    weight: 0.48857313
     enabled: 1
   - inNode: -4
     outNode: 0
-    weight: 0.47981453
+    weight: 0.6768346
     enabled: 1
   - inNode: -4
     outNode: 1
-    weight: 0.3312803
+    weight: -0.69410115
     enabled: 1
   - inNode: -4
     outNode: 2
-    weight: -2.3861704
+    weight: 0.5777027
     enabled: 1
   - inNode: -4
     outNode: 3
-    weight: -1.2416869
+    weight: -1.0198897
     enabled: 1
   - inNode: -4
     outNode: 4
-    weight: -0.6054218
+    weight: 2.1873934
     enabled: 1
   - inNode: -4
     outNode: 5
-    weight: 2.3626993
+    weight: 0.4070594
     enabled: 1
   - inNode: -4
-    outNode: 15
-    weight: 1.6252283
+    outNode: 6
+    weight: -0.5939387
     enabled: 1
   - inNode: -4
-    outNode: 16
-    weight: -0.98269767
+    outNode: 7
+    weight: 1.1294771
     enabled: 1
   - inNode: -4
-    outNode: 17
-    weight: 0.119885154
+    outNode: 8
+    weight: -2.0424345
     enabled: 1
   - inNode: -4
-    outNode: 18
-    weight: 1.0615973
+    outNode: 9
+    weight: 2.2651978
     enabled: 1
   - inNode: -4
-    outNode: 19
-    weight: 0.30216733
+    outNode: 10
+    weight: 2.2447317
     enabled: 1
   - inNode: -4
-    outNode: 20
-    weight: 0.40114287
+    outNode: 11
+    weight: -0.09887921
     enabled: 1
   - inNode: -4
-    outNode: 21
-    weight: -0.094567254
+    outNode: 12
+    weight: -0.18020459
     enabled: 1
   - inNode: -4
-    outNode: 22
-    weight: -1.5932903
+    outNode: 13
+    weight: 0.8401076
     enabled: 1
   - inNode: -4
-    outNode: 23
-    weight: 0.24816199
+    outNode: 14
+    weight: -0.047378197
     enabled: 1
   - inNode: -3
     outNode: 0
-    weight: 0.369912
+    weight: 1.2334659
     enabled: 1
   - inNode: -3
     outNode: 1
-    weight: -0.40331313
+    weight: -1.6200078
     enabled: 1
   - inNode: -3
     outNode: 2
-    weight: 0.17553279
+    weight: -0.14380111
     enabled: 1
   - inNode: -3
     outNode: 3
-    weight: -1.919348
+    weight: -0.4653238
     enabled: 1
   - inNode: -3
     outNode: 4
-    weight: -0.2833544
+    weight: -0.72242737
     enabled: 1
   - inNode: -3
     outNode: 5
-    weight: -0.34334823
+    weight: -0.08681919
     enabled: 1
   - inNode: -3
-    outNode: 15
-    weight: -1.175514
+    outNode: 6
+    weight: 2.0107713
     enabled: 1
   - inNode: -3
-    outNode: 16
-    weight: 0.5994047
+    outNode: 7
+    weight: 0.09902075
     enabled: 1
   - inNode: -3
-    outNode: 17
-    weight: -2.179869
+    outNode: 8
+    weight: -1.559323
     enabled: 1
   - inNode: -3
-    outNode: 18
-    weight: -0.055317827
+    outNode: 9
+    weight: -0.3687728
     enabled: 1
   - inNode: -3
-    outNode: 19
-    weight: 1.7056772
+    outNode: 10
+    weight: -0.34086335
     enabled: 1
   - inNode: -3
-    outNode: 20
-    weight: -0.38588536
+    outNode: 11
+    weight: 1.1031393
     enabled: 1
   - inNode: -3
-    outNode: 21
-    weight: 0.109468155
+    outNode: 12
+    weight: 0.14327686
     enabled: 1
   - inNode: -3
-    outNode: 22
-    weight: -0.49669966
+    outNode: 13
+    weight: 0.6243504
     enabled: 1
   - inNode: -3
-    outNode: 23
-    weight: -0.3357366
+    outNode: 14
+    weight: -1.4644651
     enabled: 1
   - inNode: -2
     outNode: 0
-    weight: -0.66671556
+    weight: 0.23142885
     enabled: 1
   - inNode: -2
     outNode: 1
-    weight: 0.039746862
+    weight: 0.27665326
     enabled: 1
   - inNode: -2
     outNode: 2
-    weight: 0.016938146
+    weight: -1.4232906
     enabled: 1
   - inNode: -2
     outNode: 3
-    weight: 0.5546337
+    weight: 0.24047875
     enabled: 1
   - inNode: -2
     outNode: 4
-    weight: -0.44319323
+    weight: 0.57966405
     enabled: 1
   - inNode: -2
     outNode: 5
-    weight: 2.5256996
+    weight: 0.026210234
     enabled: 1
   - inNode: -2
-    outNode: 15
-    weight: -1.7320552
+    outNode: 6
+    weight: 1.2121387
     enabled: 1
   - inNode: -2
-    outNode: 16
-    weight: 2.6332872
+    outNode: 7
+    weight: -0.081055075
     enabled: 1
   - inNode: -2
-    outNode: 17
-    weight: -1.4436601
+    outNode: 8
+    weight: -0.5858267
     enabled: 1
   - inNode: -2
-    outNode: 18
-    weight: 1.5333385
+    outNode: 9
+    weight: 0.7055421
+    enabled: 0
+  - inNode: -2
+    outNode: 10
+    weight: -0.063924715
     enabled: 1
   - inNode: -2
-    outNode: 19
-    weight: 0.35796013
+    outNode: 11
+    weight: -0.008283713
+    enabled: 0
+  - inNode: -2
+    outNode: 12
+    weight: 0.21439591
     enabled: 1
   - inNode: -2
-    outNode: 20
-    weight: 0.7787816
+    outNode: 13
+    weight: 0.3300278
     enabled: 1
   - inNode: -2
-    outNode: 21
-    weight: -0.2275891
-    enabled: 1
-  - inNode: -2
-    outNode: 22
-    weight: 0.13949291
-    enabled: 1
-  - inNode: -2
-    outNode: 23
-    weight: -0.8543221
+    outNode: 14
+    weight: 0.32950944
     enabled: 1
   - inNode: -1
     outNode: 0
-    weight: -0.40756243
+    weight: -0.69037455
     enabled: 1
   - inNode: -1
     outNode: 1
-    weight: 0.6669336
+    weight: -2.1937447
     enabled: 1
   - inNode: -1
     outNode: 2
-    weight: -0.44115615
+    weight: -0.093152635
     enabled: 1
   - inNode: -1
     outNode: 3
-    weight: 0.31418225
+    weight: -0.21671294
     enabled: 1
   - inNode: -1
     outNode: 4
-    weight: -0.8495392
+    weight: -0.62737906
     enabled: 1
   - inNode: -1
     outNode: 5
-    weight: 2.1229985
+    weight: 1.457871
     enabled: 1
   - inNode: -1
-    outNode: 15
-    weight: -1.1455656
+    outNode: 6
+    weight: 0.3731424
     enabled: 1
   - inNode: -1
-    outNode: 16
-    weight: 0.60939676
+    outNode: 7
+    weight: -0.7176216
     enabled: 1
   - inNode: -1
-    outNode: 17
-    weight: -0.23035693
+    outNode: 8
+    weight: 1.1368363
     enabled: 1
   - inNode: -1
-    outNode: 18
-    weight: -1.3266209
+    outNode: 9
+    weight: 0.7091506
     enabled: 1
   - inNode: -1
-    outNode: 19
-    weight: -0.22309643
+    outNode: 10
+    weight: 0.980458
     enabled: 1
   - inNode: -1
-    outNode: 20
-    weight: -0.4539571
+    outNode: 11
+    weight: 0.4502667
     enabled: 1
   - inNode: -1
-    outNode: 21
-    weight: -0.41563207
+    outNode: 12
+    weight: -0.111899205
     enabled: 1
   - inNode: -1
-    outNode: 22
-    weight: -1.1004498
+    outNode: 13
+    weight: -0.038528234
     enabled: 1
   - inNode: -1
-    outNode: 23
-    weight: -1.5456551
+    outNode: 14
+    weight: 1.5350778
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 0
-    weight: -1.6435374
+    weight: 1.7507594
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 1
-    weight: -0.33713228
+    weight: 2.3877017
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 2
-    weight: -1.2234952
+    weight: 0.0467818
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 3
-    weight: -0.60012716
+    weight: -0.022192098
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 4
-    weight: 0.8338954
+    weight: -1.3357058
     enabled: 1
-  - inNode: 15
+  - inNode: 6
     outNode: 5
-    weight: -1.3411419
+    weight: 0.63279456
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 0
-    weight: 0.35821873
+    weight: 1.2454445
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 1
-    weight: 0.9265764
+    weight: -0.2608165
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 2
-    weight: -2.727935
+    weight: 0.7239645
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 3
-    weight: 0.13250194
+    weight: 1.822486
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 4
-    weight: 0.32214338
+    weight: 0.7851563
     enabled: 1
-  - inNode: 16
+  - inNode: 7
     outNode: 5
-    weight: 0.9302536
+    weight: 0.509747
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 0
-    weight: 0.39629558
+    weight: -0.48503086
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 1
-    weight: 0.15985493
+    weight: -0.6876497
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 2
-    weight: 0.3261891
+    weight: 0.59909976
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 3
-    weight: -0.16208202
+    weight: -0.52229315
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 4
-    weight: -0.05313338
+    weight: -0.46130633
     enabled: 1
-  - inNode: 17
+  - inNode: 8
     outNode: 5
-    weight: -1.683267
+    weight: 0.7911109
     enabled: 1
-  - inNode: 18
+  - inNode: 9
     outNode: 0
-    weight: -0.17901352
-    enabled: 1
-  - inNode: 18
+    weight: -0.17457333
+    enabled: 0
+  - inNode: 9
     outNode: 1
-    weight: -0.25698492
+    weight: -1.8661724
     enabled: 1
-  - inNode: 18
+  - inNode: 9
     outNode: 2
-    weight: -1.0224594
+    weight: 1.3245248
     enabled: 1
-  - inNode: 18
+  - inNode: 9
     outNode: 3
-    weight: 1.3334361
+    weight: 0.81714004
     enabled: 1
-  - inNode: 18
+  - inNode: 9
     outNode: 4
-    weight: -0.7589836
+    weight: 2.4935565
     enabled: 1
-  - inNode: 18
+  - inNode: 9
     outNode: 5
-    weight: 1.6113563
+    weight: -2.1640646
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 0
-    weight: 0.016602674
+    weight: 1.605823
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 1
-    weight: 0.76298106
+    weight: 0.75698096
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 2
-    weight: 0.96758753
+    weight: 0.959886
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 3
-    weight: -0.6164739
+    weight: -0.28829944
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 4
-    weight: 0.91996044
+    weight: -0.8945291
     enabled: 1
-  - inNode: 19
+  - inNode: 10
     outNode: 5
-    weight: 1.3229381
+    weight: 0.73264104
     enabled: 1
-  - inNode: 20
+  - inNode: 11
     outNode: 0
-    weight: 0.9011443
+    weight: 0.45084354
     enabled: 1
-  - inNode: 20
+  - inNode: 11
     outNode: 1
-    weight: 0.22831945
+    weight: 1.459974
     enabled: 1
-  - inNode: 20
+  - inNode: 11
     outNode: 2
-    weight: 0.6140199
+    weight: 0.980267
     enabled: 1
-  - inNode: 20
+  - inNode: 11
     outNode: 3
-    weight: 0.41772664
+    weight: 1.3842632
     enabled: 1
-  - inNode: 20
+  - inNode: 11
     outNode: 4
-    weight: -0.81120485
-    enabled: 1
-  - inNode: 20
+    weight: -0.3421237
+    enabled: 0
+  - inNode: 11
     outNode: 5
-    weight: 1.2326595
+    weight: 0.24374652
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 0
-    weight: -0.7836369
+    weight: 0.12924671
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 1
-    weight: 1.0929714
+    weight: 0.4870215
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 2
-    weight: 1.9138054
+    weight: -1.0625699
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 3
-    weight: 0.6005726
+    weight: -1.2561438
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 4
-    weight: -0.40103808
+    weight: 1.7785791
     enabled: 1
-  - inNode: 21
+  - inNode: 12
     outNode: 5
-    weight: -0.36352187
+    weight: -1.6544882
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 0
-    weight: -0.833426
+    weight: 0.9952352
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 1
-    weight: -0.557687
+    weight: -1.691259
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 2
-    weight: -1.3753529
+    weight: -0.20045342
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 3
-    weight: 0.5590554
+    weight: -2.4786189
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 4
-    weight: 0.7852194
+    weight: 0.11859145
     enabled: 1
-  - inNode: 22
+  - inNode: 13
     outNode: 5
-    weight: -0.48266363
+    weight: -0.15584093
     enabled: 1
-  - inNode: 23
+  - inNode: 14
     outNode: 0
-    weight: 0.4864819
+    weight: 0.8103462
     enabled: 1
-  - inNode: 23
+  - inNode: 14
     outNode: 1
-    weight: 0.983033
+    weight: -0.6874444
     enabled: 1
-  - inNode: 23
+  - inNode: 14
     outNode: 2
-    weight: 0.5376028
-    enabled: 1
-  - inNode: 23
+    weight: 1.0337318
+    enabled: 0
+  - inNode: 14
     outNode: 3
-    weight: 1.2601613
+    weight: -2.0495872
     enabled: 1
-  - inNode: 23
+  - inNode: 14
     outNode: 4
-    weight: -1.1601843
+    weight: 0.9696074
     enabled: 1
-  - inNode: 23
+  - inNode: 14
     outNode: 5
-    weight: 0.079438664
+    weight: -0.4672114
     enabled: 1
   outputNodes: 000000000100000002000000030000000400000005000000
   numOfInputNodes: 16

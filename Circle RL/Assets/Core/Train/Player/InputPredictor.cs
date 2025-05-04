@@ -45,7 +45,7 @@ namespace Train.Player
 
         public Vector2 GetPredictedDirection()
         {
-            if (_inputs.Count < 3)
+            if (_inputs.Count < 4)
                 return GetRandomDirection();
 
             Vector2[] directions = CalculatePredictedDirection();
@@ -139,6 +139,7 @@ namespace Train.Player
                     closest_direction_index = i;
                 }
             }
+            Debug.Log(closest_direction_index);
             return closest_direction_index;
         }
 
