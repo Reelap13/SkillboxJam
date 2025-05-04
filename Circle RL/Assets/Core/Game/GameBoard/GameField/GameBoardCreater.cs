@@ -13,7 +13,7 @@ public class GameBoardCreater : MonoBehaviour
     private void Awake()
     {
         if (_load_on_awake)
-            SummonBoard(new(0, 0));
+            SummonBoard(new(-n, -m));
     }
 
     public void SummonBoard(Vector2 position)

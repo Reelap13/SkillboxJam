@@ -403,7 +403,7 @@ MonoBehaviour:
   n: 22
   m: 22
   _r: 10
-  _load_on_awake: 0
+  _load_on_awake: 1
 --- !u!1 &323482854
 GameObject:
   m_ObjectHideFlags: 0
