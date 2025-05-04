@@ -11,6 +11,7 @@ namespace Train.Player
 
         private PlayerAI _player;
         private PlayerStats _player_stats;
+        protected InputPredictor _input_predictor;
 
         protected bool _block_stats_calculation = false;
 
@@ -29,6 +30,8 @@ namespace Train.Player
             _player.Health.OnDie.AddListener(ProcessPlayerDie);
 
             _player_stats = new();
+            _input_predictor = _player.GetComponent<InputPredictor>();
+
             _player_stats.InitializePlayer(_player);
 
             _player.Initialize(_controller);
@@ -70,12 +73,14 @@ namespace Train.Player
 
         public virtual Coordinates GetPlayerPredictedInput()
         {
-            return new (new(0, 0));
+            Vector2 p = _input_predictor.GetPredictedDirection();
+            Debug.Log(p);
+            return new Coordinates(p);
         }
 
         public virtual PlayerWeaponType GetPlayerWeaponType()
         {
-            return PlayerWeaponType.W1;
+            return  _player.Weapon.Type;
         }
 
         public PlayerStats Stats { get { return _player_stats; } private set { } }

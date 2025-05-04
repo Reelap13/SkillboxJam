@@ -1208,6 +1208,21 @@ MonoBehaviour:
   ThirdWeapon: {fileID: 767000475}
   FourthWeapon: {fileID: 767000475}
   <TimeBetweenSwap>k__BackingField: 0.25
+--- !u!114 &1342273080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302666646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab759d04ba730e4fba958a918808961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1342273061}
+  _updated_time: 0.2
+  _max_sequence_length: 100
 --- !u!1 &1481915461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6521201730327094232, guid: 3415b47634550534c80c8520c85355bd, type: 3}
@@ -2033,6 +2048,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8118936401551306426, guid: 179722715c3992a4a97725695e0499b6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1342273073}
+    - targetCorrespondingSourceObject: {fileID: 8118936401551306426, guid: 179722715c3992a4a97725695e0499b6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1342273080}
   m_SourcePrefab: {fileID: 100100000, guid: 179722715c3992a4a97725695e0499b6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

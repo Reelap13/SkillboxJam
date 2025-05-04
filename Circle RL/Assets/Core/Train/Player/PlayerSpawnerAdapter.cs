@@ -9,6 +9,7 @@ namespace Train.Player
 
         private void Awake()
         {
+            _input_predictor = _player_controller.GetComponent<InputPredictor>();
             _block_stats_calculation = true;
         }
 
@@ -23,7 +24,9 @@ namespace Train.Player
 
         public override Coordinates GetPlayerPredictedInput()
         {
-            return new(new(0, 0));
+            Vector2 p = _input_predictor.GetPredictedDirection();
+            Debug.Log(p);
+            return new(p);
         }
 
         public override PlayerWeaponType GetPlayerWeaponType()

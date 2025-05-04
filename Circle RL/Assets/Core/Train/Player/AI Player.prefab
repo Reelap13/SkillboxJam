@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 9010211887015313415}
   - component: {fileID: 8118676597047795984}
   - component: {fileID: 8638691446776146977}
+  - component: {fileID: 2948789838235375131}
   m_Layer: 10
   m_Name: AI Player
   m_TagString: Player
@@ -324,6 +325,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Player>k__BackingField: {fileID: 5438141607684488499}
+--- !u!114 &2948789838235375131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907473157353889103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab759d04ba730e4fba958a918808961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 610029779373758560}
+  _updated_time: 0.49
+  _max_sequence_length: 100
 --- !u!1001 &811653786911889777
 PrefabInstance:
   m_ObjectHideFlags: 0
