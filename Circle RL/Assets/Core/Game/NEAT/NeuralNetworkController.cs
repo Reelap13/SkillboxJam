@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using Game.Enemy;
+using Train.AIConnection.Data;
 
 public class NeuralNetworkController : MonoBehaviour
 {
@@ -13,28 +14,27 @@ public class NeuralNetworkController : MonoBehaviour
     void Start()
     {
         InitializeMatrices();
-        TestNetwork();
     }
 
-    void TestNetwork()
-    {
-        //Example Usage: Test Network
-        Vector<float> testInput = new Vector<float>(network.numOfInputNodes);
-        testInput[0] = 1f;  // Set some input values
-        testInput[1] = 0f;
-        //testInput[1] = 0.2f;
-        //testInput[2] = 0.8f;
+    //void TestNetwork()
+    //{
+    //    //Example Usage: Test Network
+    //    Vector<float> testInput = new Vector<float>(network.numOfInputNodes);
+    //    testInput[0] = 1f;  // Set some input values
+    //    testInput[1] = 0f;
+    //    //testInput[1] = 0.2f;
+    //    //testInput[2] = 0.8f;
 
-        //Activate Network
-        Vector<float> output = ActivateNetwork(testInput);
+    //    //Activate Network
+    //    Vector<float> output = ActivateNetwork(testInput);
 
-        //Debug output values
-        Debug.Log("Network Output: ");
-        for (int i = 0; i < output.Length; i++)
-        {
-            Debug.Log("Output " + network.outputNodes[i] + ": " + output[i]);
-        }
-    }
+    //    //Debug output values
+    //    Debug.Log("Network Output: ");
+    //    for (int i = 0; i < output.Length; i++)
+    //    {
+    //        Debug.Log("Output " + network.outputNodes[i] + ": " + output[i]);
+    //    }
+    //}
 
     void InitializeMatrices()
     {
@@ -81,10 +81,30 @@ public class NeuralNetworkController : MonoBehaviour
         }
     }
 
-
-
-    Vector<float> ActivateNetwork(Vector<float> input)
+    public EnemyCommand ActivateNetwork(EnemyData enemyData)
     {
+        List<float> inputs = new();
+        inputs.Add(enemyData.Sensors.D);
+        inputs.Add(enemyData.Sensors.DL);
+        inputs.Add(enemyData.Sensors.L);
+        inputs.Add(enemyData.Sensors.UL);
+        inputs.Add(enemyData.Sensors.U);
+        inputs.Add(enemyData.Sensors.UR);
+        inputs.Add(enemyData.Sensors.R);
+        inputs.Add(enemyData.Sensors.DR);
+        inputs.Add(enemyData.Position.X);
+        inputs.Add(enemyData.Position.Y);
+        inputs.Add(enemyData.HP);
+        inputs.Add(enemyData.TargetPosition.X);
+        inputs.Add(enemyData.TargetPosition.Y);
+        inputs.Add(enemyData.PlayerInputPredict.X);
+        inputs.Add(enemyData.PlayerInputPredict.Y);
+        inputs.Add(enemyData.PlayerWeaponType == PlayerWeaponType.W1 ? 1f : 0f);
+        inputs.Add(enemyData.PlayerWeaponType == PlayerWeaponType.W2 ? 1f : 0f);
+        inputs.Add(enemyData.PlayerWeaponType == PlayerWeaponType.W3 ? 1f : 0f);
+
+        Vector<float> input = new(18);
+        input.data = inputs.ToArray();
         //Create node values vector
         Vector<float> nodeValues = new Vector<float>(network.weights.Rows);
 
@@ -131,7 +151,11 @@ public class NeuralNetworkController : MonoBehaviour
             output[i] = nodeValues[nodeToIndexMap[network.outputNodes[i]]];
         }
 
-        return output;
+        EnemyCommand outputCommand = new();
+        outputCommand.Direction = new(new(output[0], output[1]));
+        outputCommand.IsAttack = output[2] > 0.5f;
+
+        return outputCommand;
     }
 
     float ApplyActivationFunction(float x, string activation, float response)

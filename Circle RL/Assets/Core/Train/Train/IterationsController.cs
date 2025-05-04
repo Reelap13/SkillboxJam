@@ -12,14 +12,14 @@ namespace Train.Train
         [NonSerialized] public UnityEvent OnFinishingAlgorithm = new UnityEvent();
 
         [field: SerializeField]
-        public TrainController Controller{ get; private set; }
+        public TrainController Controller { get; private set; }
         [SerializeField] private EnemiesAIConnector _enemies_connector;
         [SerializeField] private float _sending_data_number_per_second = 1f;
         [SerializeField] private float _population_changed_time = 10f;
 
         private float _sending_data_time, _population_time, _time_between_sending_data;
 
-        public ConnectingToNEAT NEAT=> Controller.ConnectingToNEAT;
+        public ConnectingToNEAT NEAT => Controller.ConnectingToNEAT;
         public ArenasController ArenasController => Controller.ArenasController;
 
         private bool _is_population_active = false;
@@ -125,7 +125,7 @@ namespace Train.Train
 
         private void TrySendData()
         {
-            if (_sending_data_time < _time_between_sending_data)
+            if (_sending_data_time < _time_between_sending_data || _population_time >= _population_changed_time)
                 return;
 
             _sending_data_time = 0;
@@ -135,7 +135,7 @@ namespace Train.Train
 
         private void TryUpdatePopulation()
         {
-            if (_population_time < _population_changed_time)
+            if (_population_time < _population_changed_time || !_enemies_connector.isDataReceived)
                 return;
 
             _is_population_active = false;

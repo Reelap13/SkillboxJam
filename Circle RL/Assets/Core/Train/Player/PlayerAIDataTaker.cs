@@ -19,7 +19,7 @@ namespace Train.Player
             data.Position = _player.ArenaController.Board.GetParsedPosition(_player.transform.position);
             data.TargetPosition = _player.ArenaController.Board.GetParsedPosition(
                 _player.ArenaController.EnemySpawner.GetClosestEnemyToPoint(_player.transform.position).position);
-            data.HP = _player.Health.HitPoint;
+            data.HP = _player.Health.HitPoint / _player.Health.MaxHitPoint;
             data.CurrentWeapon = _player.Weapon.Type;
 
             _fitness_function.CalculateFitness();

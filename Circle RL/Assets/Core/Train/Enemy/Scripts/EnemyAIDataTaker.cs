@@ -18,7 +18,7 @@ namespace Game.Enemy
             data.Sensors = _sensors_taker.GetSensorsData();
             data.Position = _enemy.ArenaController.Board.GetParsedPosition(transform.position);
             data.TargetPosition = _enemy.ArenaController.Board.GetParsedPosition(_enemy.ArenaController.PlayerSpawner.GetPlayerPosition());
-            data.HP = _enemy.EnemyParameters.Health;
+            data.HP = _enemy.EnemyParameters.Health / _enemy.EnemyPreset.StartHealth;
             data.PlayerInputPredict = _enemy.ArenaController.PlayerSpawner.GetPlayerPredictedInput();
             data.PlayerWeaponType = _enemy.ArenaController.PlayerSpawner.GetPlayerWeaponType();
 

@@ -43,7 +43,7 @@ public class GameBoardCreater : MonoBehaviour
 
     public Coordinates GetParsedPosition(Vector2 position)
     {
-        return new Coordinates(_position + position);
+        return new Coordinates(new Vector2((position.x - _position.x) / (2 * n), (position.y - _position.y) / (2 * m)));
     }
 
     public Vector2 GetMiddleOfBoard()
